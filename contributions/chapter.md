@@ -17,7 +17,7 @@ https://github.com/python-pillow/Pillow/pull/3776
 On the Pillow documentation page, the authors provide only a small description of how different methods work. But for many functions, it is not clear how to use them properly. And there are many issues related to it in the Pillow GitHub repository.
 
 
-## 2. Proposed Solution:
+### 2. Proposed Solution:
 We have taken seven essential and most commonly used functions and provided some examples with helpful comments on explaining how to use that particular method properly. As an example, we have attached a small picture below.
 
 ![](../images/Pillow/filter_doc.png)
