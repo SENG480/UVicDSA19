@@ -39,6 +39,7 @@ This project was completed for the University of Victoria's Documenting and Unde
 
 ## 2.0 About Mailpile System
 Mailpile is a [Mail User Agent](https://en.wikipedia.org/wiki/Email_client) (MUA - commonly known as "mail client") which currently knows how to read mail from Mbox, Maildir, POP3 and IMAP. Mail client is the software that lets a user view, compose, receive and send mail. Mailpile is written in Python, and has very few external dependencies that are not packaged with Python's standard library. 
+
 Mailpile is different from most MUAs predominantly in that its architectural paradigm is not "list mail from folders", focusing on fetching, listing, viewing, writing and sending mail, with features like search and tagging as an afterthought, but rather a "search engine for mail" with a focus on searching and tagging, with fetching, viewing, writing and sending as necessary but in terms of workflow, secondary actions [1]. 
 
 ## 3.0 Stakeholders
