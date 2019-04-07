@@ -581,15 +581,198 @@ While storing search indexes locally does provide the advantage of having faster
 
 
 ## 10.0 Code Quality and Technical Debt
+### 10.1 CodeScene Analysis 
+
+
+Codescene Cloud is an online tool that analyzes github repositories and identifies patterns. These patterns relate to the evolutionary timeline of the code, and reports are generated based on several important aspects. These include: size, coupling, code churn, hotspots, and refactoring targets. These reports can be used to help predict future faults and potential technical debt. Here is our [CodeScene analysis of Mailpile](https://codescene.io/projects/4421/jobs/12421/results)
+
+
+#### 10.1.1 Hotspots
+
+A hotspots map is used to visually show the hierarchy of packages inside a given project. In the image below, the dark red modules are the ones with the most development activity (aka hotspots). Hotspots are calculated using two methods:
+
+1.The lines of code in each file
+
+2.The change frequency of each file
+
+The report shows that both [commands.py ](https://github.com/mailpile/Mailpile/blob/babc3e5c3e7dfa3326998d1628ffad5b0bbd27f5/mailpile/commands.py) and [manager.py](https://github.com/mailpile/Mailpile/blob/01b72a43e9f2b4e7bf7dd4fc4cb12780f7139262/mailpile/config/manager.py) have the highest churn percentage. This means that these areas of the project are where most of development activities occur.
+
+
+![alt text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/Hotspots.png "Hotspots")
+
+
+Hotspots are a preliminary metric to find frequent developmental activity locations. Locations which are changed very often may reflect a greater architectural problem.
+
+
+#### 10.1.2 Refactoring Targets
+
+In this section, CodeScene tries to create a "priority" of improvements. Codescene gives a rating for each file/folder, with the "seriousness" of their technical debt represented by the color of their bubble.
+
+![alt text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/Refactoring%20Targets.png "Refactoring Targets")
+
+As we can see in below, the files which should most be prioritized are: [commands.py ](https://github.com/mailpile/Mailpile/blob/babc3e5c3e7dfa3326998d1628ffad5b0bbd27f5/mailpile/commands.py) ,  [manager.py](https://github.com/mailpile/Mailpile/blob/01b72a43e9f2b4e7bf7dd4fc4cb12780f7139262/mailpile/config/manager.py), [search.py](https://github.com/mailpile/Mailpile/blob/master/mailpile/search.py) and [gpgi.py](https://github.com/mailpile/Mailpile/blob/master/mailpile/crypto/gpgi.py). This is because these are the files Codescene judges as having the highest technical debt interest rate. These files can create large problems in other files/modules if they ever need to be changed. We will investigate how coupled these packages are in the next section.
+
+![alt text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/List%20of%20RT.png "Refactoring Targets List")
+
+
+The final task we will do with refactoring, is to investigate the file "command.py". Codescene allows you to "X-Ray" a file. The "X-Ray" shows detailed information about the complexity of various functions/classes which are defined inside. In figure below , we can see that the function ` __ init __`  has the highest complexity/size of 53 followed by  `_choose_messages` and then `run_sync`.
+
+![alt text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/x-ray.png "x-ray")
+<p align="center">Figure 5.1.2.2: File X-Ray Results</p>
+
+#### 10.1.3 Temporal Coupling
+
+Temporal coupling is a metric which measures when two or more modules change **together**. In the image below, we can see the modules with the highest coupling rates. These modules are:
+[manager.py](https://github.com/mailpile/Mailpile/blob/01b72a43e9f2b4e7bf7dd4fc4cb12780f7139262/mailpile/config/manager.py) with 803 couplings
+[commands.py](https://github.com/mailpile/Mailpile/blob/babc3e5c3e7dfa3326998d1628ffad5b0bbd27f5/mailpile/commands.py) with 764 couplings
+[search.py](https://github.com/mailpile/Mailpile/blob/master/mailpile/search.py) with 579 couplings
+
+![alt text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/Coupling%20number.png "List of Coupled Modules")
+
+
+We can also use Codescene to examine these coupling more closely.[manager.py](https://github.com/mailpile/Mailpile/blob/01b72a43e9f2b4e7bf7dd4fc4cb12780f7139262/mailpile/config/manager.py) and [commands.py](https://github.com/mailpile/Mailpile/blob/babc3e5c3e7dfa3326998d1628ffad5b0bbd27f5/mailpile/commands.py) have a 45% degree of coupling, with a total number of 214 revisions. The [manager.py](https://github.com/mailpile/Mailpile/blob/01b72a43e9f2b4e7bf7dd4fc4cb12780f7139262/mailpile/config/manager.py) and [search.py](https://github.com/mailpile/Mailpile/blob/master/mailpile/search.py) files have a 35% degree of coupling and a total of 190 revisions. Finally, [commands.py](https://github.com/mailpile/Mailpile/blob/babc3e5c3e7dfa3326998d1628ffad5b0bbd27f5/mailpile/commands.py) and [search.py](https://github.com/mailpile/Mailpile/blob/master/mailpile/search.py) have a 40% degree of coupling, with a total of 190 revisions also.
+
+![alt text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/Coupling%20map.png "Coupling Map")
+
+
+Suggested refactoring may involve decoupling larger classes and functions, and creating more specialization of files and packages. This process would lead to better maintainability.
 
 
 
-
-\
-
+### 10.2 Sonarcloud/ SonarQube Analysis
 
 
+Sonarcloud is a cloud based service, created by SonarSource. It is based on SonarQube, which is an open source project. It does a code quality review of software projects, and provides a report on various metrics. These metrics relate to reliability, security, maintainability, code coverage, duplication, and complexity. The [Quality Report](https://sonarcloud.io/dashboard?id=deepak21188_Mailpile) we generated for Mailpile shows that it is in and "OK" state. SonarQube judges it's overall quality as "passing", which indicates that the code is production ready. This measurement is based on many boolean conditions. [Code Analysis of Mailpile by SonarQube](https://sonarcloud.io/dashboard?id=deepak21188_Mailpile)
 
+
+#### 10.2.1 Code Issues
+
+SonarQube reports issues found in the source code in terms of many different metrics (bugs, vulnerabilities, code smells,  debt, coverage and code duplication) (see the image below). The code issues found in a project can effect the overall quality of the project. In this section we will explore many code quality issues in Mailpile.
+
+![alt text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/sonar-overview.PNG "Sonar report overview")
+
+
+
+##### Bugs
+
+SonarQube can find code which is either "objectively wrong", or not likely to give intended behaviour. These occurences can cause the code to behave in unexpected/unintended ways. Since Mailpile is still in it's early, pre-release days, it is import to eliminate these bugs, as they can hinder the further development of the project. SonarQube has identified 271 total bugs in Mailpile. They can be broken down into different severity levels as follows:
+
+| Severity  |  Number of bugs |
+|------|--------|
+| Blocker | 3 |
+| Critical | 22 |
+| Major | 41 |
+| Minor | 205 |
+| Info | 0 |
+
+Most of the major bugs can be further divided, into two categories:
+
+1. Usage of “return” statement in the middle of code (which makes the code after unreachable). 
+2. Usage of keywords that have been deprecated (for example `<tt>` element in HTML). 
+
+Most of the minor bugs suggest to use newer versions of outdated HTML tags, including: `<b>` instead of `<strong>` , and `<i>` instead of `<em>`.
+ 
+##### Vulnerabilities 
+
+SonarQube can also detect security related problems, which are called "Vulnerabilities". These are any implementation details which can expose the project to attackers. SonarQube found eleven such instances inside Mailpile. All of these vulnerabilities fall under the "minor" severity level. Every vulnerability found relates to the use of either the "alter" or “confirm” statements inside javascript code. "Alter" and "confirm" statements may expose the system to the XSS(Cross-Site Scripting) attacks. 
+
+##### Code Smells
+
+Code smells are problems related to the "maintainability" quality attribute. While code smells can be a subjective measure, SonarQube still is able to measure them. Refactoring/removing these smells will directly result in the lowering of techincal debt for this project. SonarQube reports 1404 code smells in total. The breakdown of code smells, based on severity levels, is as follows:
+
+| Severity  |  Number of bugs |
+|------|--------|
+| Blocker | 60 |
+| Critical | 212 |
+| Major | 929 |
+| Minor | 203 |
+| Info | 0 |
+
+Most of the code smells in Mailpile are under the "Major" severity level. Once again, it is mostly the same type of problem, repeated over and over again. In this case, the common issues we see are: function names not following convention, many "FIXME" and related comments, and use of obsolete statements.
+
+There are also 212 critical issues. Critical issues normally indicate that a "high cognitive load" is required to understand/modify the section in question.
+
+The last worrying category under the "Code Smells" is "blockers". Blocker issues can fall into two categories "pitfall" or "confused". Pitfall issues occur when the current implementation works, but a trap has been set for future changes. "Confused" simply means that future maintainers/modifiers may be confused by the current implementation. Most of the blocking issues in Mailpile relate to the implicit nature of defining javascript variables using "let", "const", or "var".
+
+SonarQube reports that Mailpile requires a total of twenty-five days to resolve the technical debt of the current code smells.
+
+#### 10.2.2 Code Quality Metrics
+
+This section analyzes various "code quality" metrics, as reported by SonarQube.
+
+##### Reliability
+
+SonarQube measures "Reliability" based on the total number of bugs in a system, and the remediation efforts required. Mailpile currently has a reliability rating of **E**. This is a low rating, and is given based on the many "blocker" bugs present. SonarQube has detected three blocker bugs in the project. The remediation efforts required to fix them is estimated at two days and six hours.
+
+![alt_text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/reliability.PNG "reliability chart")
+
+
+  
+##### Security Rating
+
+SonarQube measures "Security" of a project based on the number of vulnerabilities present in a system, as well as their severity. Mailpile is given **B** rating, as it has only has minor vulnerabilities present. The remediation effort to remove these vulnerabilities is estimated to be one hour and fifty mins.
+
+![alt_text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/security.PNG "Security chart")
+ 
+
+
+##### Maintainability Rating
+
+SonarQube measures "Maintainability" of a project, based on the technical debt ratio. This is calculated as: 
+
+```Technical debt ratio = Remediation cost / Development cost```
+
+The maintainability rating given to Mailpile is an **A**. This is outstanding, and it means that less than five percent of the time put into the project needs to be used to fix current debt.
+
+![alt_text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/maintainability.PNG "maintainabilty chart")
+
+
+##### Duplication
+
+SonarQube has a duplication metric, which is a measure of the total number of duplicate lines (822), duplicate blocks (35) or duplicate files (20). Duplication can also be measured as duplication density, which is the percentage of duplicate line in the entire code base. Mailpile has a reported duplication density of 0.8%  
+
+##### Complexity
+
+Complexity is a measure of how complex the control flow of a system is. SonarQube uses two complexity metrics:
+
+1. Cyclomatic complexity - a measure of the total number of linear paths through the ocde
+2. Cognitive complexity -how difficult a system is to understand for mailpile
+
+The cyclomatic complexity is reported as 12 378, and the cognitive complexity is reported as 13 283.
+
+
+### 10.3 Technical Debt Analysis
+
+In the final section of this document we will take a deeper dive into some of the issues found inside the Mailpile source code. To find these problems, we searched through the codebase for various key-phrases such as "FIXME", "TODO", and "HACK". These comments represent areas where the development team need to tackle in the future (i.e. technical debt).
+
+We have chosen to investigate the upgrading from Python 2.7 to Python 3.x, and memory usage.
+
+##### 1. Upgrade from Python 2.7 to Python 3.x
+
+This issue is also being tracked inside Mailpile's issue tracker: [issue 160](
+https://github.com/mailpile/Mailpile/issues/160).
+
+Mailpile is currently being written using Python 2.7, which is not in active development, and has it's "end of life" planned for the year 2020 (see [official announcement](https://hg.python.org/peps/rev/76d43e52d978)).
+
+In order for Mailpile to work properly in the future, it needs to be upgraded to some version of Python 3. This process may involve a significant amount of work. This is because their are currently many libraries which are used by Mailpile, but do not exist in Python 3. An example of this problem is the SpamBayes library. There are also some obsolete statements currently being used in the code base (as reported by SonarQube). These statements include things such as improper "print" statements, and won't be too difficult to fix.
+
+This issue was first raised in 2013 and according to the lead developer, they are considering this issue in their long term roadmap. The response from the lead developer is as follows:
+
+```> This remains on our long term roadmap, but won't be addressed in the near term because our priority at the moment is to just ship  something that works. :-)```
+
+
+The issue is still in an "open" state. Technical debt will increase further as long as Mailpile  does not perform the upgrade to Python 3.
+
+
+##### 2. Memory usage
+
+One of the most important business goals for Mailpile is to have a fast search engine. The implementation of this feature, however, has led to some technical debt. 
+
+In [Issue#1782](https://github.com/mailpile/Mailpile/issues/1782), a user complains about the large amount of memory/CPU used by Mailpile. The lead developer, Bjarni Einarsson, has explained that this is the result of an intentional trade-off, and is the only way they can offer certain features (such as the fast serarching).
+
+Once cause of this problem is that mail indexing (which is one thing that enables the fast searching), requires mail indexes to be stored in memory. An explanation of this process can be found [here](https://www.mailpile.is/blog/2013-08-15_Digging_Through_the_Details.html). [The amount of RAM used by Mailpile will increase linearly with the size of the indexes present.](https://github.com/mailpile/Mailpile/issues/1782#issuecomment-279882693)
+
+This may become problematic, especially for users with a large volume of emails (think enterprise/business users).
 
 
 
