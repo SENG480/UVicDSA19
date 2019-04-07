@@ -614,7 +614,7 @@ Duplicate lines of code show possible redundancy within a system. Though it isnâ
 | Error | 96 | 
 | Fatal | 0 |
 
-In conjunction with the above table, a breakdown percentage of errors are shown [here](https://github.com/SENG480/project-team-13/blob/master/percentErrWarnByModule.md) and the number of occurrences for each message type is shown [here](https://github.com/SENG480/project-team-13/blob/master/pylintMessageSumm.md).
+In conjunction with the above table, a breakdown percentage of errors are shown [here](pylint_report/percentErrWarnByModule.md) and the number of occurrences for each message type is shown [here](pylint_report/pylintMessageSumm.md).
 
 ##### Convention Violations
 By far, the coding standard convention violations are where most of the flags are raised. This could demonstrate that the programmers were not practiced in standard coding conventions. This could cause a difficulty in understanding by someone expecting a particular standard and having to interpret the developers' (of Ray) implications. 
