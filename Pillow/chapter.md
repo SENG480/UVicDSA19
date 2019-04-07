@@ -1,6 +1,6 @@
 # 0. Introduction
 
-## Group Members
+## 0.1 Group Members
 
 1. Cameron Zarubiak
 2. Yige Tang
@@ -8,7 +8,7 @@
 4. Mauricio de Paula
 5. Abhishake Kumar Bojja
 
-## Projects
+## 0.2 Projects
 
 | Project Name | URL | Language | KSLOC | Activity |
 | :--- | :--- | :--- | :--- | :--- |
