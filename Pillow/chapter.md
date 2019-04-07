@@ -201,7 +201,7 @@ To summarize, we identified various ethical dilemmas and privacy/security concer
 
 ## 2.4 Utility Tree
 
-![](.UVicDSA19/images/Pillow/utility_tree.png)
+![](images/Pillow/utility_tree.png)
 
 ## 2.5 Quality Attribute Scenarios
 
