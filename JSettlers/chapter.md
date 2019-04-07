@@ -37,7 +37,7 @@
 
 Proudly brought to you by:
 
-![Git R Dun](diagrams/Logo.PNG "Logo")
+![Git R Dun](../images/JSettlers/Logo.PNG "Logo")
 
 * [Colin Werner](https://github.com/colinwerner)
 * Zane Li
@@ -110,7 +110,7 @@ In order to derive the architecturally significant requirements (ASR) we develop
 * JSettlers2's game play must be easily modifiable by end users.
 
 ## 6. Utility Tree <a name="utility-tree"></a>
-![Utility Tree](diagrams/UtilityTree.png)
+![Utility Tree](../images/JSettlers/UtilityTree.png)
 
 ## 7. Quality Attribute Scenarios <a name="qas"></a>
 As part of the development of our quality attribute scenarios (QAS), we performed a comprehensive review of the key elements required to ensure JSettlers2 is a success. Each QAS defines a key behavioural component and includes a measurable metric, which will be used to verify that the QAS has been met.
@@ -234,7 +234,7 @@ A module view represents the static structure of an architecture. In particular,
 ### 8.1 Primary Presentation <a name="prim-pres"></a>
 The uses diagram below depicts JSettlers2 at a package level, outlining the components most relevant to the project's [Quality Attribute Scenarios](#qas). The uses diagram demonstrates the separation of concerns within the application, and shows where JSettlers2 interacts with external entities, namely third party robots and SQL database software. Some dependencies, such as those depending on message, game, and util, are omitted as they are used by most packages. The presence of such overbearing dependencies would dilute the diagram and distract from more insightful relationships.
 
-![Primary Presentation](diagrams/primary-presentation.png)
+![Primary Presentation](../images/JSettlers/primary-presentation.png)
 
 ### 8.2 Element Catalog <a name="ele-cat"></a>
 #### 8.2.1 Elements <a name="ele-mod"></a>
@@ -333,7 +333,7 @@ The util package contains a variety of utility classes used across JSettlers2. A
 ### 8.3 Element Behaviour <a name="beh-mod"></a>
 The server state diagram was created to show the various states of starting and running a JSettlers2 server. Once a server is started, the server enters an initial "waiting for player", state where it will remain until a player joins. After one player has joined the playerCount becomes 1 and the server transitions into a composite state "waiting for more players / new games". The server will remain in this state until the playerCount reaches 0 (when it returns to the initial "waiting for player" state) or the server is ultimately shutdown. As part of the composite state the server tracks the number of players and games. In particular, as a player is connected or disconnected to the server, the playerCount is incremented or decremented, as appropriate. Finally, as part of the composite state a player is able to create a new game (or games) and the server tracks each game.
 
-![State Diagram 1](diagrams/server-state-diagram.png)
+![State Diagram 1](../images/JSettlers/server-state-diagram.png)
 
 (Note: that a player is a human player, a local robot, or a third party robot.)
 
@@ -663,7 +663,7 @@ Note: This is not an exhaustive list of usage examples for the database interfac
 ### 8.5 Context Diagram <a name="con-dia"></a>
 JSettlers2 has very few logical external entities, as most of the external interactions involve a human. However, JSettlers2 enables a third party developer to implement their own artificially intelligent robot through the robot interface (see primary presentation), which can then join a game. In addition, JSettlers2 has the ability to store user information in a SQL database, which is not part of the internal code structure.
 
-![Context Diagram](diagrams/ContextDiagram.png)
+![Context Diagram](../images/JSettlers/ContextDiagram.png)
 
 ### 8.6 Rationale <a name="rationale"></a>
 Although any online multiplayer video game may follow a similar architecture, each video game has unique major architectural considerations. In particular, the JSettlers2 architecture follows a stereotypical old-fashioned client-server architecture in order to allow online play as outlined by [QAS 7](#qas-7) (as opposed to a distributed peer-to-peer or block chain network), along with being able to run on any computing platform [QAS 1](#qas-1). Thus, architecturally speaking, it makes sense to logically separate and containerize as much of the client logic in its own container (or package) and similarly with the server logic. Furthermore, any component that is used by both a client or server should be packaged in a shared library that can be access by both (util, message, and game).
@@ -680,7 +680,7 @@ A component and connector view represents the runtime structure of an architectu
 ### 9.1 Primary Presentation <a name="prim-pres-candc"></a>
 The client-server diagram below depicts the component and connector view of JSettlers2, which primarily supports [QAS 2](#qas-2) and [QAS 7](#qas-7). The diagram shows the various processes (client, third party robot, and server) that may be created when running JSettlers2. In particular, one or more client processes may run at any time (even on the same hardware). Similarly, one or more third party robot processes may run at any time. However, a client or robot process may connect to only a single server process, specified by an IP and port. A server process is run by a host machine and includes several built-in robots, which can participate in any game on that particular server instance. A server process can communicate with multiple, possibly distributed, client or robot connections.
 
-![Primary Presentation](diagrams/CandC-Diagram.png)
+![Primary Presentation](../images/JSettlers/CandC-Diagram.png)
 
 Note: In order to keep the diagram as simple as possible we only included major Objects for each process. Also, we omitted the database interface, as it is optional and not required to run JSettlers2.
 
@@ -807,7 +807,7 @@ A SOCDisplaylessPlayerClient object contains one socket (for a third party robot
 
 ### 9.3 Element Behaviour <a name="beh-candc"></a>
 
-![Sequence Diagram](diagrams/PlayerTurnSequence.png)
+![Sequence Diagram](../images/JSettlers/PlayerTurnSequence.png)
 
 The communication between the server process and each client process is performed through the [SOC Message Interface](#socm-int-candc), as each asynchronous message (within the system) is represented by a child class of SOCMessage (e.g. SOCTurn, SOCRollDicePrompt). In this sequence diagram we have reduced all client related classes into a single client process (although there may be more than one client process on any given server) and all server related classes into a single server processes.
 
@@ -1236,7 +1236,7 @@ The purpose of the GameOptions interface is to allow a JSettlers2 game to be pla
 ##### 9.4.2.7 Usage Guide
 The GameOptions interface allows a player to play a JSettlers2 game under rules set by the creator of a game. For example, a creator of a game can choose to allow upwards of 6 players in a game. Furthermore, a developer can extend the GameOptions interface so that new game options are available in addition to the default game options. For more information on the configurability aspect of the GameOptions interface, please see the [Variability Section](#gameoptions-variability). In general, a player can access the GameOptions interface with the player starts a new game. As seen in the screenshot:
 
-![game options picture](diagrams/game-options.PNG)
+![game options picture](../images/JSettlers/game-options.PNG)
 
 a player starting a new game will be prompted with a popup, where the player may choose a game name and specific game rules. After deciding on the rules that the player wants to play, a new game is created when the player clicks "Create Game". The actual game options are transmitted between a player's client and a JSettlers2 server and vice versa using the SOCMessage interface, SOCNewGameWithOptionsRequest, and SOCNewGameWithOptions [classes](#gameoptions-syntax).
 
@@ -1245,7 +1245,7 @@ Note: This is not an exhaustive list of usage examples for the GameOptions inter
 ### 9.5 Context Diagram <a name="context-candc"></a>
 During runtime, a JSettlers2 server does not interact with external entities, other than human and robot clients. Therefore, we show the external entities in a typical JSettlers2 game during runtime (i.e. human client and robot client). Since JSettlers2 sends serialized SOCMessages between entities to transmit game messages, we label serialized SOCMessage as the data flowing in our context diagram.
 
-![Context Diagram](diagrams/ContextDiagram_CandC.png)
+![Context Diagram](../images/JSettlers/ContextDiagram_CandC.png)
 
 ### 9.6 Variability Guide <a name="var-guide-candc"></a>
 The variability guide is used to describe the areas of potential change within the JSettlers2 system with relation to the component and connector view. This section will delve into how these potential changes might affect performance, cost, and functionality, as well as how a developer could make these changes. This section will also consider areas of the system that are not subject to change and have no forecasted possibility of any changes.
