@@ -304,7 +304,7 @@ We use the following two scenarios to complete the primary presentation, context
 
 ## 3.3 Context Diagram
 
-![Context Diagram](../images/Pillow/Context_Diagram)
+![Context Diagram](../images/Pillow/Context_Diagram.png)
 
 This context diagram shows how the external interfaces interact with the Pillow library. Two quality attribute scenarios namely usability and portability are considered for this diagram.
 
