@@ -1,41 +1,44 @@
 # Mailpile
 ## Table Of Contents
 
- 1. Purpose
- 2. About XXX System
- 3. Stakeholders
- 4. Business Goals
- 5. Architecturally Significant Requirements (ASR)
- 6. Utility Tree
- 7. Quality Attribute Scenarios (QAS)
- 8. Module View
+ 1. [Purpose](#1)
+ 2. [About Mailpile System](#2)
+ 3. [Stakeholders](#3)
+ 4. [Business Goals](#4)
+ 5. [Architecturally Significant Requirements (ASR)](#5)
+ 6. [Utility Tree](#6)
+ 7. [Quality Attribute Scenarios (QAS)](#7)
+ 8. [Module View](#8)
     * Primary Presentation
     * Element Catalog
     * Context Diagram
     * Interfaces
     * Rationale
- 9. Component and Connector View
+ 9. [Component and Connector View](#9)
     * Primary Presentation
     * Element Catalog
     * Context Diagram
     * Variability Guide
     * Rationale
- 10. Code Quality and Technical Debt
- 11. Conclusion
+ 10. [Code Quality and Technical Debt](#10)
+ 11. [Conclusion](#11)
 
 ## Team 
 1. [Ahmad Alsaif](https://github.com/AhmadAlsaif)
 2. [Deepak Kumar](https://github.com/deepak21188)
 3. [Travis Wilson](https://github.com/TWilsonT)
 
+<a name="1"></a>
 ## 1.0 Purpose
 This project was completed for the University of Victoria's Documenting and Understanding Software Systems course. It is constructed to be an in-depth analysis of an open-source software system to gain a deeper understanding of its purpose, implementation and architecture through a set of procedures taking to document the system. In this chapter, we are presenting Mailpile's stakeholders, business goals, quality attributes, architecturally significant requirements, a module view of the system, a component and connector view of the system, and an inspection of the code quality of Mailpile.
 
+<a name="2"></a>
 ## 2.0 About Mailpile System
 Mailpile is a [Mail User Agent](https://en.wikipedia.org/wiki/Email_client) (MUA - commonly known as "mail client") which currently knows how to read mail from Mbox, Maildir, POP3 and IMAP. Mail client is the software that lets a user view, compose, receive and send mail. Mailpile is written in Python, and has very few external dependencies that are not packaged with Python's standard library. 
 
 Mailpile is different from most MUAs predominantly in that its architectural paradigm is not "list mail from folders", focusing on fetching, listing, viewing, writing and sending mail, with features like search and tagging as an afterthought, but rather a "search engine for mail" with a focus on searching and tagging, with fetching, viewing, writing and sending as necessary but in terms of workflow, secondary actions [1]. 
 
+<a name="3"></a>
 ## 3.0 Stakeholders
 
 
@@ -52,6 +55,7 @@ Mailpile is different from most MUAs predominantly in that its architectural par
 | Users | Define the system’s functionality and ultimately make use of it | It is meant for wide range of users who prefer integrity and privacy of their data. For example : Researchers, Professional, Business Owners, Academics, Students etc|
 
 
+<a name="4"></a>
 ## 4.0 Business Goals
 
 Once we have recorded the Mailpile stakeholders; we can consider their interests in Milepile to complete a list of their business goals. The following table provides the business goals alongside a description for each goal.
@@ -73,6 +77,7 @@ The system should be safe, easy and allow users to read, write, search and organ
 | Growth | To increase open source community and financial supports/backers. Currently, there are 3500+ donors which includes businesses, organizations and individual supporters |
 
 
+<a name="5"></a>
 ## 5.0 Architecturally Significant Requirements
 
 ### 5.1 List of ASRs
@@ -112,10 +117,12 @@ The system should be safe, easy and allow users to read, write, search and organ
 | Privacy and Security | Data Integrity, Privacy And Security | Messages are delivered intact, and their contents have not been eavesdropped on. Mailpile will support the OpenPGP, PGP/MIME and Autocrypt standards for encryption and digital e-mail signatures. Generally user metadata should not be tracked, if it must be then it is kept anonymous. |
 
 
+<a name="6"></a>
 ## 6.0 Utility Tree
 
 ![alt text](https://github.com/AhmadAlsaif/UVicDSA19/blob/patch-1/images/Mailpile/Utility%20Tree.png "Logo Title Text 1")
 
+<a name="7"></a>
 ## 7.0 Quality Attribute Scenarios (QAS)
 
 #### 7.1 Foreign Access Scenario
@@ -159,6 +166,7 @@ The system should be safe, easy and allow users to read, write, search and organ
 
 
 
+<a name="8"></a>
 ## 8.0 Module View
 
 ### 8.1 Introduction 
@@ -302,6 +310,7 @@ The final consideration for the project, is that Mailpile must operate within al
 
 
 
+<a name="9"></a>
 ## 9.0 Component and Connector View
 
 
@@ -580,6 +589,7 @@ While storing search indexes locally does provide the advantage of having faster
 
 
 
+<a name="10"></a>
 ## 10.0 Code Quality and Technical Debt
 ### 10.1 CodeScene Analysis 
 
@@ -778,7 +788,7 @@ This may become problematic, especially for users with a large volume of emails 
 
 
 
-
+<a name="11"></a>
 ## 11.0 Conclusion
 
 
