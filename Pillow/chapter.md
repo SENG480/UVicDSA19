@@ -92,3 +92,152 @@ To summarize, we identified various ethical dilemmas and privacy/security concer
 12. [https://github.com/python-pillow/Pillow/issues/3496](https://github.com/python-pillow/Pillow/issues/3496) 
 13. [https://code.djangoproject.com/ticket/19934](https://code.djangoproject.com/ticket/19934)
 
+# 2.Architecturally significant requirements and utility tree
+
+## 2.1 Architecturally Significant Requirements
+
+| Quality | ASR | Description |
+| :---: | :---: | :---: |
+| Extensibility | Documentation | Pillow should follow some sort of documented versioning so users know when upgrading the library could introduce breaking changes. |
+| Extensibility | Library Extension | Should allow users to extend the library by implementing new features \(done through GitHub via pull requests\). |
+| Maintainability | Detecting Bugs | The system should generate bug reports if a failure occurs. |
+| Maintainability | Detailed Documentation | A clear explanation for a depreciated function in a later released version and a link to the document of newly built function. |
+| Performance | Operation Speed | The system should respond in a quick manner when the library is referenced and utilized in code. Should support to read various file formats and write to various file formats. |
+| Portability | Operating System Compatibility | For displaying images, Pillow should support operating systems such as Windows, Mac OS, and Linux. |
+| Reliability | Data Reliability | Pillow must assure that the result of an operation must be efficient, consistent and accurate. |
+| Security | Authorization | Should be very careful approving pull requests for code changes because it is an open source project, widely used as a dependency by many frameworks. |
+| Security | Authentication | Pillow should ensure that every call to its library is properly authenticated to reduce vulnerabilities. It should be easily accessible in Python environments. |
+| Testability | System Testing | We can test our system to determine whether it is operating properly or not. |
+| Maintainability | Configuration Readability | The API should be easy to interact with. |
+| Usability | User Satisfaction | Should contain modules which support transforming between different color spaces. |
+| Usability | Raster Image Input | Pillow should be able to handle raster images as input. \(Rectangles of pixel data\) |
+| Usability | File Format Conversion | Pillow should be able to handle to convert/read/write different file formats. |
+
+## 2.2 List of Architecturally Significant Requirements.
+
+1. Pillow should support to read various file formats and write.
+2. The result of an any image processing operation must be efficient, consistent and accurate
+3. Pillow should be an accessible library in the Python environment.
+4. The Pillow API should be easy to interact with.
+5. It should support all sorts of image processing operations like image resizing, rotation and arbitrary affine transform.
+6. Pillow must enable continuous integration and testing
+7. Conversion between file formats must be consistent and should not fail.
+8. All image operations must be fast
+9. As pillow supports batch processing applications, they must be parallelized. \(Must be scalable\)
+10. For displaying images, the library should support all interfaces like Windows, Linux
+11. The library/ code written on one platform like windows should work on the other platform like Linux.
+12. The library should contain modules which describe the statistics of an image \(like mean , median, histogram bins etc..\).
+13. Pillow should contain modules which support transforming between different color spaces.
+14. Pillow should be very careful approving pull requests for code changes because it is an open source project, widely used as a dependency by many frameworks.
+15. Pillow should follow some sort of documented versioning so users know when upgrading the library could introduce breaking changes.
+16. The library should allow users to extend the library by implementing new features \(done through GitHub via pull requests\).
+17. The code syntax must be clear and non-confusing.
+18. Pillow should be able to handle raster images as input
+
+## 2.3 List of Quality Attributes with Scenarios
+
+### 2.3.1 Performance
+
+* Operation Speed
+  * Time taken to perform an image processing operation must be within milliseconds.
+    * Business Complexity - H, Technical Complexity - H
+* Vectorizing algorithms for high speed
+  * Minimize the number of for loops used to create an image processing algorithm and vectorize, where ever possible.
+    * Business Complexity - M, Technical Complexity - H
+
+### 2.3.2 Reliability
+
+* Less Error Prone
+  * The result of an image processing operation must be efficient, consistent and accurate.
+    * Business Complexity - H, Technical Complexity - H
+
+### 2.3.3 Usability
+
+* File Format Conversion
+  * A user wants to convert an image from .png format to .jpeg format.
+    * Business Complexity -  H, Technical  Complexity - L
+* Interaction with GUI     
+  * A user wants to display an image from the Pillow library using a GUI on windows.
+    * Business Complexity - L, Technical  Complexity - M
+
+### 2.3.4 Extensibility
+
+* New Feature Implementation
+  * Should allow users to extend the library by implementing new features \(done through GitHub via pull requests\).
+    * Business Complexity - M, Technical Complexity - L
+* Versioning System
+  * Pillow should follow some sort of documented versioning so users know when upgrading the library could introduce breaking changes.
+    * Business Complexity - M, Technical  Complexity - L
+
+### 2.3.5 Usability
+
+* Image Processing Support
+  * A user wants to do image processing operations such as image resizing, rotation and arbitrary affine transform.
+    * Business Complexity - H, Technical Complexity - H
+
+### 2.3.6 Security
+
+* Authorization
+  * Users/Developers want to add code to the library as a pull request and the team has to review the code carefully.
+    * Business Complexity - H, Technical Complexity - H
+
+### 2.3.7 Scalability
+
+* Big Data Support  
+  * The user wants to apply the same algorithms to a big dataset of images like a 100k number of images.
+    * Business Complexity - L, Technical  Complexity - H
+
+### 2.3.8 Portability
+
+* Operating Systems Compatibility
+  * The users from different platforms and different system environments need to use PIL, such as Linux and Windows.
+    * Business Complexity - H, Technical  Complexity - L
+* Device Cooperation
+  * Users who have multiple image processing work to do, have to use several devices at the same time. Therefore, when logging in several devices such as iPhone, iPad, and iMac or logging in several computers including ios and Android the system has  to be compatible.
+    * Business Complexity - H, Technical  Complexity - L
+* Image and File Format Matching
+  * Users need to use some of the same image formats in different file formats, so we need to ensure that the same image format is compatible with different file formats.
+    * Business Complexity - H, Technical  Complexity - H
+
+## 2.4 Utility Tree
+
+![](images/Pillow/utility_tree.png)
+
+## 2.5 Quality Attribute Scenarios
+
+### 2.5.1 Scenario 1
+
+| Aspect | Details |
+| :---: | :---: |
+| Scenario Name | Perform image processing on images |
+| Business Goals | Make image processing easy for users with different backgrounds and technical skill levels to analyze images by providing efficient and accurate algorithms for doing image processing like Image Rotation, image resizing and affine transforms. |
+| Quality Attributes | Performance |
+| Stimulus | Need from user to resize the image. |
+| Stimulus Source | A user wants to resize an image from 640x480 image resolution to 320x240. |
+| Response | Load the input image from the user and produce the resized image as output. |
+| Response Measure | Complete operation in &lt; 10 milliseconds. |
+
+### 2.5.2 Scenario 2
+
+| Aspect | Details |
+| :---: | :---: |
+| Scenario Name | Provide image processing support to PyTorch library. |
+| Business Goals | Make image processing easy for users with different backgrounds and technical skill levels to analyze images and convert them into different formats. |
+| Quality Attributes | Usability. |
+| Stimulus | PyTorch, a deep learning framework wants to use Pillow to blur an image. |
+| Stimulus Source | The PyTorch library. |
+| Response | Take the input image from PyTorch and apply gaussian filter and return the blurred image. |
+| Response Measure | The output image should be returned in &lt; 1 milli second and the output is reliable with almost 100% accuracy. |
+
+### 2.5.3 Scenario 3
+
+| Aspect | Details |
+| :---: | :---: |
+| Scenario Name | Using Pillow in different operating system environments like Windows, Linux, and Mobile. |
+| Business Goals | Try to make image processing accessible across different systems and platforms, and develop applications for mobile devices that helps users manipulate images from anywhere in the world. |
+| Quality Attributes | Portability |
+| Stimulus | A user wants to enhance an image using the pillow library on Linux, Windows, and on a Mobile Python Interpreter like Termux. |
+| Stimulus Source | Any end user or developer. |
+| Response | The Pillow library should take an input image on any provided operating system environment and produce the resultant enhanced image. |
+| Response Measure | The output image should be returned in &lt; 1 second and the provided result should be consistent on all environments |
+
