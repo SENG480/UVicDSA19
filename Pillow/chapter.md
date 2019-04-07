@@ -36,17 +36,17 @@ Pillow is a Python Imaging Library that adds the **image processing** capabiliti
 
 ## 1.2 Business goals
 
-1. **To serve as a replacement of the older version of PIL \(Python Imaging Library\), which was created by Fredrik Lundh and other open source contributors.** 
+1. **To serve as a replacement of the older version of PIL \(Python Imaging Library\), which was created by Fredrik Lundh and other open source contributors.**
    * Pillow has been adopted as a replacement for the original PIL in Linux distributions including Debian and Ubuntu. \[5\]
-2. **Make image processing easy for users with different backgrounds and technical skill levels to analyze images and convert them into different formats.** 
+2. **Make image processing easy for users with different backgrounds and technical skill levels to analyze images and convert them into different formats.**
    * Pillow has been widely adopted by the computer vision community.
    * It is one of the best open source image processing library available to use.
    * PyTorch, one of the best deep learning library uses Pillow for basic image related operations.
    * Python web- framework Django uses Pillow to represent an ImageField in a database \[8\]\[13\].
-3. **Try to make image processing accessible across different Systems and platforms, and develop applications for mobile devices that helps users to manipulate images from anywhere in the world.** 
+3. **Try to make image processing accessible across different Systems and platforms, and develop applications for mobile devices that helps users to manipulate images from anywhere in the world.**
    * Pillow is available for Windows, Mac OS X and Linux.\[5\]
    * Many users have implemented Pillow in to mobile python interpreters, such as Termux and Kivy on their android phones.
-4. **Achieve the integration of image processing in python interpreter.** 
+4. **Achieve the integration of image processing in python interpreter.**
    * Pillow is a library for the Python programming language that adds support for opening, manipulating, and saving many different image file formats\[5\].
    * Some image manipulations functions offered by pillow: \[5\]
      * Per-pixel manipulation
@@ -54,7 +54,7 @@ Pillow is a Python Imaging Library that adds the **image processing** capabiliti
      * Image filtering \(blurring, contouring, smoothing, and edge finding\)
      * Image enhancing \(sharping, adjusting brightness, contrast or colour\)
      * Adding text to images
-5. **Further development and goals.** 
+5. **Further development and goals.**
    * To integrate continuously by testing via Travis CI and AppVeyor\[4\].
    * To release regularly through the Python Package Index\[4\].
 
@@ -78,18 +78,18 @@ To summarize, we identified various ethical dilemmas and privacy/security concer
 
 ## 1.4 References
 
-1. [https://www.acm.org/code-of-ethics](https://www.acm.org/code-of-ethics) 
+1. [https://www.acm.org/code-of-ethics](https://www.acm.org/code-of-ethics)
 2. [https://github.com/python-pillow/Pillow/blob/master/LICENSE](https://github.com/python-pillow/Pillow/blob/master/LICENSE)
 3. [https://stackoverflow.com/questions/tagged/python-imaging-library](https://stackoverflow.com/questions/tagged/python-imaging-library)
 4. [https://pillow.readthedocs.io/en/stable/handbook/overview.html](https://pillow.readthedocs.io/en/stable/handbook/overview.html)
 5. [https://en.wikipedia.org/wiki/Python\_Imaging\_Library](https://en.wikipedia.org/wiki/Python_Imaging_Library)
 6. [https://timesofindia.indiatimes.com/city/chandigarh/Net-threat-Morphing-pictures-for-revenge/articleshow/47981141.cms](https://timesofindia.indiatimes.com/city/chandigarh/Net-threat-Morphing-pictures-for-revenge/articleshow/47981141.cms)
 7. [https://docs.python-guide.org/scenarios/imaging/\#python-imaging-library](https://docs.python-guide.org/scenarios/imaging/#python-imaging-library)
-8. [https://www.pyimagesearch.com/2014/01/12/my-top-9-favorite-python-libraries-for-building-image-search-engines/](https://www.pyimagesearch.com/2014/01/12/my-top-9-favorite-python-libraries-for-building-image-search-engines/) 
-9. [https://www.djangoproject.com/weblog/2015/jan/02/pillow-security-release/](https://www.djangoproject.com/weblog/2015/jan/02/pillow-security-release/) 
-10. [https://github.com/python-pillow/Pillow/issues/3610](https://github.com/python-pillow/Pillow/issues/3610) 
-11. [https://github.com/python-pillow/Pillow/issues/2105](https://github.com/python-pillow/Pillow/issues/2105) 
-12. [https://github.com/python-pillow/Pillow/issues/3496](https://github.com/python-pillow/Pillow/issues/3496) 
+8. [https://www.pyimagesearch.com/2014/01/12/my-top-9-favorite-python-libraries-for-building-image-search-engines/](https://www.pyimagesearch.com/2014/01/12/my-top-9-favorite-python-libraries-for-building-image-search-engines/)
+9. [https://www.djangoproject.com/weblog/2015/jan/02/pillow-security-release/](https://www.djangoproject.com/weblog/2015/jan/02/pillow-security-release/)
+10. [https://github.com/python-pillow/Pillow/issues/3610](https://github.com/python-pillow/Pillow/issues/3610)
+11. [https://github.com/python-pillow/Pillow/issues/2105](https://github.com/python-pillow/Pillow/issues/2105)
+12. [https://github.com/python-pillow/Pillow/issues/3496](https://github.com/python-pillow/Pillow/issues/3496)
 13. [https://code.djangoproject.com/ticket/19934](https://code.djangoproject.com/ticket/19934)
 
 # 2.Architecturally significant requirements and utility tree
@@ -201,7 +201,7 @@ To summarize, we identified various ethical dilemmas and privacy/security concer
 
 ## 2.4 Utility Tree
 
-![](images/Pillow/utility_tree.png)
+![](../images/Pillow/utility_tree.png)
 
 ## 2.5 Quality Attribute Scenarios
 
@@ -271,7 +271,7 @@ We use the following two scenarios to complete the primary presentation, context
 
 ## 3.1 Primary Presentation
 
-![](.gitbook/assets/primary_presentation.png)
+![](../images/Pillow/primary_presentation.png)
 
 ## 3.2 Element Catalog
 
@@ -304,7 +304,7 @@ We use the following two scenarios to complete the primary presentation, context
 
 ## 3.3 Context Diagram
 
-![Context Diagram](https://user-images.githubusercontent.com/32720405/54098830-72553e80-4373-11e9-83df-4467d3fd609e.png)
+![Context Diagram](../images/Pillow/Context_Diagram)
 
 This context diagram shows how the external interfaces interact with the Pillow library. Two quality attribute scenarios namely usability and portability are considered for this diagram.
 
@@ -314,7 +314,7 @@ And for the portability quality attribute, the scenario we deal here is for any 
 
 ## 3.4 Behaviour Diagram
 
-![](.gitbook/assets/sequence_diagram1.png)
+![](../images/Pillow/sequence_diagram1.png)
 
 This behaviour diagram shows the sequence of steps the PyTorch framework would take in order to blur an image.
 
@@ -324,7 +324,7 @@ This behaviour diagram shows the sequence of steps the PyTorch framework would t
 
 **3.** PyTorch calls on the `save()` method found in the Image class in order for Pillow to write the new image data to a file path and format.
 
-![](.gitbook/assets/sequence_diagram2.png)
+![](../images/Pillow/sequence_diagram2.png)
 
 This behaviour diagram shows the sequence of steps a user would do on different operating systems such as Windows, Linux, and Mobile Interpreter, to run a command to enhance the colour of an image.
 
@@ -347,7 +347,7 @@ This behaviour diagram shows the sequence of steps a user would do on different 
 
 ## 3.5 Interfaces
 
-![](.gitbook/assets/interfaces.png)
+![](../images/Pillow/interfaces.png)
 
 ### 3.5.1 Blurring an Image Interface
 
@@ -438,11 +438,11 @@ The primary presentation uses the Component and Connector view to represent the 
 
 ### a. Code Tutorial for Resizing an Image
 
-![](.gitbook/assets/code-resize.png)
+![](../images/Pillow/code-resize.png)
 
 ### b. Component and Connector View
 
-![](.gitbook/assets/cc_diagram.png)
+![](../images/Pillow/cc_diagram.png)
 
 ## 4.2 Element Catalogue
 
@@ -579,7 +579,7 @@ outputImage = im.resize((320, 240))
 
 ## 4.4 Context diagrams
 
-![](.gitbook/assets/context_diagram.png)
+![](../images/Pillow/Context_Diagram.png)
 
 This context diagram shows how the external interfaces interact with the Pillow library. The performance quality attribute scenario is considered for this diagram.
 
@@ -587,7 +587,7 @@ For the performance quality attribute, the scenario here is to resize an image t
 
 ## 4.5 Behaviour diagram
 
-![](.gitbook/assets/activity_diagram.png)
+![](../images/Pillow/activity_diagram.png)
 
 The diagram above is an activity diagram that presents a series of actions in the system when the user wants to perform resize operation on image data. This diagram shows the interactions between the user and the system during the execution and the internal connections of source files. In order to resize an image, the user first needs to provide the path of the image file, then the system will check and open the file if the path exists. Then, based on instructions given by the user like the target image size, resampling filter, and the target image file format, Pillow resizes the image and saves it to the target directory provided. This entire process should take less than 10 ms on any operating system.
 
@@ -628,7 +628,7 @@ Technical debt is the extra time and effort required for completing software dev
 
 CodeScene is a behavioural code analysis tool that supports the project in different languages, provides code visualizations, and helps to identify and to prioritize technical debt in software systems. CodeScene makes software development more efficient by showing technical debt with most returns.
 
-![](.gitbook/assets/dashborad.png)
+![](../images/Pillow/Dashborad.png)
 
 From the dashboard, we can see from the scope section that Pillow has 61701 lines of code and with a majority of 33619 lines of python code. Also, in total 218 authors contributed to the project, and 13 are still active. This number of users reflects that there is a huge variety of knowledge bases when building and maintaining the system, which could make code maintenance possibly a nightmare in the future.
 
@@ -636,7 +636,7 @@ From the dashboard, we can see from the scope section that Pillow has 61701 line
 
 A hotspot is the files or module that consumes most of the time and with most development activities. From the hotspots section in the dashboard, we can see that prioritized hotspots make up to 8.7% of the total database, 9.7% of the development efforts were in these hotspots, and 31% of the bugs detected and fixed are in these hotspots. Based on the hotspots report, we know that both the cost of the system and returns from refactoring of these hotspots will be tremendous because, in the most database, red hotspots are responsible for an even larger percentage of fixed defects, which means 31% is on the lower end.  
 
-![](.gitbook/assets/hotspots.png)
+![](../images/Pillow/Hotspots.png)
 
 On this hotspots analysis map, each large blue circle represents a folder in the database. The left diagram shows the files with most development activities, and the right diagram shows the refactoring targets based on the following three conditions: The hotspot has to be changed together with several other modules. The hotspot affects many different developers on different teams. The hotspot is likely to be a coordination bottleneck for multiple developers. There are two red targets on the refactoring target diagram, which are image.py and \_image.c, that will give a substantial return on investment.
 
@@ -644,7 +644,7 @@ On this hotspots analysis map, each large blue circle represents a folder in the
 
 In Pillow, the module _Image_ in PIL/Image.py is responsible for all the critical operations, including reading and writing images, and other major image processing operations.
 
-![](.gitbook/assets/refactoring_targets.png)
+![](../images/Pillow/Refactoring_targets.png)
 
 On the left is the Temporal Coupling of files in Pillow depend on if the same programmer modifies them within a specific period. Combined with the sum of couplings list on the right, PIL/Image.py is the primary file to obtain technical debt and bring the most returns of investment.
 
@@ -652,7 +652,7 @@ On the left is the Temporal Coupling of files in Pillow depend on if the same pr
 
 A Complexity Trend is calculated by fetching each old version of a Hotspot and calculating the code complexity of those historical versions.
 
-![](.gitbook/assets/complexity_trend.png)
+![](../images/Pillow/Complexity_trend.png)
 
 From the complexity trend diagram, we can see that the growths of lines of code and complexity are matching, and complexity increased faster than the lines of code after 2017, which is a bad sign that tells us that without refactoring, the difficulty of maintenance will keep increasing in the future.
 
@@ -660,7 +660,7 @@ From the complexity trend diagram, we can see that the growths of lines of code 
 
 X-Ray is an analysis that operates on the function/method level of different files. It provides detailed information on what’s happening inside a Hotspot and gives an idea of the construction of large files and get specific recommendations on the parts to improve. Moreover, X-Ray shows how a cluster of files is temporally coupled.  
 
-![](.gitbook/assets/x-ray.png)
+![](../images/Pillow/X-ray.png)
 
 This is the x-ray result of image.py. The higher the change frequency, the more likely the return of investment on these functions will be immediate. Moreover, the complexity gives us an idea of the effort we need to put into refactoring the function. For cyclomatic complexity, usually, any section with a value higher than ten means this function is problematic and higher than 25 means it will become a nightmare in future maintenance. In Image.py, there are five functions with red colour, which means these are the functions we should start refactoring first and will bring the most return on investment.
 
@@ -670,9 +670,9 @@ SonarQube provides extensive analysis of source code using common technical debt
 
 **Overview**
 
-SonarQube categorizes issues found as either Bugs, Vulnerabilities or Code Smells. Issues found in the code are seen as having an impact on the maintainability of the system. SonarQube estimates that Pillow has 6 days and 6 hours of technical debt. This is the time that it would take to refactor the source code based on the issues and measures generated from the report. 
+SonarQube categorizes issues found as either Bugs, Vulnerabilities or Code Smells. Issues found in the code are seen as having an impact on the maintainability of the system. SonarQube estimates that Pillow has 6 days and 6 hours of technical debt. This is the time that it would take to refactor the source code based on the issues and measures generated from the report.
 
-![](.gitbook/assets/sonarqube1.png)
+![](../images/Pillow/sonarQube1.png)
 
 **112 Bugs**
 
@@ -688,9 +688,9 @@ Code smells are issues that could lead to problems arising in the future. The se
 
 **Reliability Rating: B**
 
-SonarQube gives the system a reliability rating of B, which is because of the 112 bugs in the bmpsuite.html file. The remediation effort is 1 day and 1 hour for this file. 
+SonarQube gives the system a reliability rating of B, which is because of the 112 bugs in the bmpsuite.html file. The remediation effort is 1 day and 1 hour for this file.
 
-![](.gitbook/assets/sonarqube2.png)
+![](../images/Pillow/sonarQube2.png)
 
 **Security Rating: A**
 
@@ -698,21 +698,21 @@ The system received a Security rating of A based on the number of vulnerabilitie
 
 **Maintainability Rating: A**
 
-SonarQube gives the system a maintainability rating of A, which is to say that the outstanding remediation cost is less than or equal to 5% of the time that has already gone into the application. Pillow is estimated to require 6 days and 6 hours of code refactoring and has a Debt Ratio of 0.4%. 
+SonarQube gives the system a maintainability rating of A, which is to say that the outstanding remediation cost is less than or equal to 5% of the time that has already gone into the application. Pillow is estimated to require 6 days and 6 hours of code refactoring and has a Debt Ratio of 0.4%.
 
-![](.gitbook/assets/sonarqube3.png)
+![](../images/Pillow/sonarQube3.png)
 
 **0% Coverage**
 
-This measure is based on how much of the source code has been covered by the system unit tests. No lines of code were found to be covered during unit tests execution. 
+This measure is based on how much of the source code has been covered by the system unit tests. No lines of code were found to be covered during unit tests execution.
 
-![](.gitbook/assets/sonarqube4.png)
+![](../images/Pillow/sonarQube4.png)
 
 **Duplications**
 
 This is a measure of the total number of lines, files, and blocks of code considered to be duplicated. The analysis says there is 436 duplicated lines, 10 duplicated files, and 16 duplicated blocks of code. The system has 0.9% density of duplication, which is duplicated lines divided by total lines.
 
-![](.gitbook/assets/sonarqube5.png)
+![](../images/Pillow/sonarQube5.png)
 
 **Size**
 
@@ -748,19 +748,19 @@ The string “Fixme” occurs at 63 instances in the Pillow repository. By searc
 
 _**A. Buffer Size**_:  
 
-![](.gitbook/assets/buffer-size-1-rawencode.png)
+![](../images/Pillow/buffer-size-1-rawencode.png)
 
-a. Code screenshot for a class in RawEncode.c 
+a. Code screenshot for a class in RawEncode.c
 
-![](.gitbook/assets/buffer-2.png)
+![](../images/Pillow/buffer-2.png)
 
 b. Code screenshot for a class in ImageFile.py
 
 The code screenshot b is for a class level function in ImageFile.py. Here we see the comment _“ FIXME: make MAXBLOCK a configuration parameter. It would be great if we could have the encoder specify what it needs. However, it would need at least the image size in most cases. RawEncode is a tricky case”._ The module _ImageFile_ uses the functions in _RawEncode.c_, which are implemented at the system level to speed up the operations and improve the performance. In the screenshot, a, _RawEncode.c_, the comment _“FIXME: This encoder will fail if the buffer is not large enough to hold one full line of data. There's a workaround for this problem in ImageFile.py, but it should be solved here instead.”_, states that the encoder will fail to work if the buffer size is not enough to hold one full line of data. In general, there is no limit on the size of the image resolution data people can use. Rather than fixing this bug, the PIL developers used a small hack for defining buffer size in ImageFile.py itself and sent the value to the C functions. Here it is a minute hack, which is a design flaw in the system, and issues like this can accumulate and lead to technical debt.
 
-_**B. Compiler issue**_: 
+_**B. Compiler issue**_:
 
-![](.gitbook/assets/compiler-issues-1.png)
+![](../images/Pillow/compiler-issues-1.png)
 
 a. Code screenshot for a method in ImageCms.py
 
@@ -768,7 +768,7 @@ The above image is a screenshot of a method taken from the ImageCms.py. Here we 
 
 _**C. Reading file issue:**_
 
-![](.gitbook/assets/reading_file.png)
+![](../images/Pillow/reading_file.png)
 
 a. Code screenshot for a method in ImtImagePlugin.py
 
@@ -787,7 +787,7 @@ Other strings, "hack", "quick fix", "change later" were searched for and analyze
 
 ### 5.3.4 Issue search: “Hasn't worked in 20 years”
 
-![](.gitbook/assets/20_years.png)
+![](../images/Pillow/20_years.png)
 
 a. Screenshot from open issues
 
@@ -795,15 +795,15 @@ By searching “Hasn't worked in 20 years” in the Pillow issues, we found the 
 
 > The library supports transformations between each supported mode and the “L” and “RGB” modes.
 
-But, Pillow failed to convert grayscale image to ‘L’ mode, which is a design flaw and even the provide the wrong documentation. The third issue states that the function call _ImageTk.getImage_ does not return anything. By carefully looking at the code attached below, it states that the function is not implemented but it is not throwing any error, which misguides the user by also calling to other function. 
+But, Pillow failed to convert grayscale image to ‘L’ mode, which is a design flaw and even the provide the wrong documentation. The third issue states that the function call _ImageTk.getImage_ does not return anything. By carefully looking at the code attached below, it states that the function is not implemented but it is not throwing any error, which misguides the user by also calling to other function.
 
-![](.gitbook/assets/20_yrs_getimage.png)
+![](../images/Pillow/20_yrs_getimage.png)
 
 ### 5.3.5 Issue Opened: "Eliminate Python 2 Support" and Recommendation
 
 In the Pillow Github repository, there is one issue \([\#3642](https://github.com/python-pillow/Pillow/issues/3642)\) that was open in the beginning of 2019, and is still open. This issue says that Pillow should drop support for Python 2. This issues has been made aware and will be looked at for the next major release in 2020. As the years go by, the use of Pillow use has been mostly made by Python 3 users. Below is an image and a table from PyPI that shows the decline of Python 2 users.
 
-![](.gitbook/assets/pillow-python2-support.png)
+![](../images/Pillow/pillow-python2-support.png)
 
 PyPI stats for January 2019:
 
@@ -832,7 +832,7 @@ The pull request is available at this link:
 
 https://github.com/python-pillow/Pillow/pull/3776
 
-![](Images/pull_req.png)
+![](../images/Pillow/pull_req.png)
 
 ## 7.1 Problem Description:
 
@@ -842,16 +842,12 @@ On the Pillow documentation page, the authors provide only a small description o
 ## 7.2 Proposed Solution:
 We have taken seven essential and most commonly used functions and provided some examples with helpful comments on explaining how to use that particular method properly. As an example, we have attached a small picture below.
 
-![](Images/filter_doc.png)
+![](../images/Pillow/filter_doc.png)
 
 The above image is from the Pillow documentation page. Here it just describes that the method is used to filter an image. It would be helpful to users if they could provide an example of how to use it.
 
-![](Images/filter_doc_example.png)
+![](../images/Pillow/filter_doc_example.png)
 
-So, we added this above code block, which shows how to blur an image using the method filter. 
+So, we added this above code block, which shows how to blur an image using the method filter.
 
 Similarly, we have added the code documentation to seven essential functions and added as a pull request. The methods include: crop(), filter(), getbands(), getbbox(), resize(), rotate(), transpose().
-
-
-
-
