@@ -419,7 +419,8 @@ The Ray [Web UI](https://ray.readthedocs.io/en/ray-0.6.0/webui.html) version 0.6
 **A. Resource Syntax:** 
 
 In order to successfully run the Web UI, everything defined in the ```ray.init()``` function must run correctly. Upon completion, a URL of the Web UI will be displayed as an index in the dictionary created, such as:
- ```View the web UI at http://localhost:8889/notebooks/ray_ui92131.ipynb? ˓→token=89354a314e5a81bf56e023ad18bda3a3d272ee216f342938 
+ ```
+ View the web UI at http://localhost:8889/notebooks/ray_ui92131.ipynb? ˓→token=89354a314e5a81bf56e023ad18bda3a3d272ee216f342938 
 ```
 This will create a  .JSON file that is required to run the interface and is stored in a ‘tmp’ folder. The modules from Jupyter are required in order to run the UI as shown below.
 ```
