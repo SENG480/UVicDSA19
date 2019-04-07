@@ -826,7 +826,7 @@ The recommendation is that Pillow officially drops support for Python 2 on their
 
 Our team found Pillow to be a project with a somewhat large number of technical debts, but also somewhat an acceptable number of technical debts. The technical debts found were not considered vulnerabilities. And for it being open source and community development driven project, we deemed those technical debts acceptable. The CodeScene analysis made it clear that there were only two main files that were clearly visible in the hotspot map, these could be looked into in the future but should not be a priority since it was not considered much in terms of debt. The SonarQube analysis, estimated that Pillow has 6 days and 6 hours worth of technical debt, with most of it being code smells and bugs but 0 vulnerabilities. It also obtained a reliability rating of B, security rating of A, and maintainability rating of A. The manual search for technical debts, that included searching through reported issues on GitHub and comments in the source code that indicate some sort of issue, found some issues but nothing major and no actual vulnerabilities. To conclude, we believe that Pillow should fix some of the technical debts reported in this report but is not required to do it immediately. This can be done over a planned period of time as it requires no urgency.
 
-## 7.0 Pull Request:
+# 7.0 Pull Request:
 
 The pull request is available at this link:
 
