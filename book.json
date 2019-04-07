@@ -1,0 +1,7 @@
+{
+	"title":"UVic Students Documenting Software Architectures -- 2019",
+    "plugins": ["expandable-chapters"],
+    "lunr": {
+        "maxIndexSize": 1000000000
+    }
+}
