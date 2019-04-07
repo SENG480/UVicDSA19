@@ -118,7 +118,7 @@ The system should be safe, easy and allow users to read, write, search and organ
 
 ## 7.0 Quality Attribute Scenarios (QAS)
 
-#### Foreign Access Scenario
+#### 7.1 Foreign Access Scenario
 
 | Aspect | Details |
 | ------------- |-------------|
@@ -131,7 +131,7 @@ The system should be safe, easy and allow users to read, write, search and organ
 | Response measure | No part of the message can be viewed (subject, from, to, body, etc.) |
 
 
-#### Foreign Access Scenario
+#### 7.2 Foreign Access Scenario
 
 | Aspect | Details |
 | ------------- |-------------|
@@ -144,7 +144,7 @@ The system should be safe, easy and allow users to read, write, search and organ
 | Response measure | Matching objects are shown to the user in less than 1 second  |
 
 
-#### Data Availability Scenario
+#### 7.3 Data Availability Scenario
 
 | Aspect | Details |
 | ------------- |-------------|
@@ -577,4 +577,25 @@ Once a piece of email has been both tagged and indexed, it no longer matters whi
 While storing search indexes locally does provide the advantage of having faster searches, it is not without issues. Since search indexes are only stored on the local system (and their is no backing up implemented), if something happens to your laptop or PC, the search index will be permanently lost. Their is no way for a user to recover search indexes in this case. The only option is for Mailpile to manually re-scan every mailbox (and email), to rebuild the indexes. This can be a very long process, especially when their is a large number of mailboxes, and emails.
 
 [Search Function Implementation](https://github.com/mailpile/Mailpile/blob/ac03b658c1a50672102dccd205e49739f709177e/mailpile/search.py#L1852)
+
+
+
+## 10.0 Code Quality and Technical Debt
+
+
+
+
+\
+
+
+
+
+
+
+
+
+
+
+## 11.0 Conclusion
+
 
