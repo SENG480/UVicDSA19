@@ -137,7 +137,7 @@ A module view is a representation of the structure of modules in a system, inclu
 
 The uses view below shows the modules involved in sending and receiving messages between the client and server to update the game based on user inputs. 
 
-![Quake Module View](images/Quake_Module_View.png)
+![Quake Module View](../images/Quake3/Quake_Module_View.png)
 
 ## Element Catalog
 
@@ -170,13 +170,13 @@ The uses view below shows the modules involved in sending and receiving messages
 
 The diagram below shows Quake's context in an external system, including its dependencies on external libraries and interaction with the operating system.
 
-![Quake Context View](images/context_diagram.jpg)
+![Quake Context View](../images/Quake3/context_diagram.jpg)
 
 ## Behaviour
 
 The sequence diagram shows the sequence of calls made by the system to send a message from the server to a client. As Quake operates via UDP, it does not wait for return values; instead, it continually updates every frame regardless of whether the client has received the message.
 
-![Quake Sequence Diagram](images/Quake_Sequence.png)
+![Quake Sequence Diagram](../images/Quake3/Quake_Sequence.png)
 
 ## Rationale
 Quake 3 is an online real-time shooting game. It requires immediate feedback for any actions taken by the players. The performance quality attribute is therefore essential to the architecture of the game. To establish a fair gaming environment, a client’s actions must be communicated to other clients within a required time constraint. This is the Quality Attribute Scenario this document aims to analyze.
@@ -197,7 +197,7 @@ A component and connector view provides a runtime representation of a system. It
 
 The client-server style was chosen to represent this quality attribute scenario, as it best illustrates how Quake 3: Arena handles simultaneously updating up to 16 client connections and keeping them in sync with one "master" server instance of the game.
 
-![Quake CC View](images/M4CC-ClientServer.png)
+![Quake CC View](../images/Quake3/M4CC-ClientServer.png)
 
 ## Element Catalog
 
@@ -296,13 +296,13 @@ Quake 3 Arena contains libraries within its source code which are able to be com
 ## Context Diagram
 
 The diagram below shows Quake's context in an external system, including its dependencies on external libraries and interaction with the operating system.
-![Quake Context View](images/context.png)
+![Quake Context View](../images/Quake3/context.png)
 
 
 ## Behaviour
 
 Behavioural diagrams capture the steps taken between actors and processes throughout the system. More specifically, the following sequence diagram outlines the steps taken between the user and the Quake 3 Arena system in the event of matchmaking. The user first runs their game locally, in this case on the Linux operating system version of the game. Local game files then process the request when matchmaking is selected by the user and sends the request to the local game event handler, which acts as a middle man between the local game and the server. The server processes the request in its main entry point and passes the data to the server’s copy of the game to create the client connection for matchmaking. Once the connection is made the server sends feedback to the client’s event handler via UDP sockets and monitors the connection periodically, dropping the client upon any connection timeouts. The event handler on the client’s side processes these UDP packets and updates the local game files. The process repeats in this manner until the end of the session or a break in connection.
-![Quake Sequence View](images/sequence.png)
+![Quake Sequence View](../images/Quake3/sequence.png)
 
 ## Rationale
 
@@ -335,7 +335,7 @@ Unfortunately, the community edition of SonarQube is not compatible with C proje
 
 Although open source tools for analyzing projects written in C are limited, some insights are able to be made through the use of Codacy's automated code review tool. Functionality for C is still not fully supported with this tool, but issues involving security, performance of functions and other common "code smells" are brought to light.
 
-![Quake III Static Analysis](images/Capture.PNG)
+![Quake III Static Analysis](../images/Quake3/Capture.png)
 
 For projects written in C, Codacy does not support detection of duplicated code or other difficult to detect issues such as overly complicated files and their structures. However, an analysis of common performance issues and "code smells" was attainable. Based on the software tests, Quake holds up very well in code style and functional performance. As seen in the image above, the number of issues found in the scan puts Quake in the top 3% of results on the platform. This is relative to the size of the code base (only 2,972 issues are reported on the code base of nearly 400,000 lines of code). The most common and concerning issues are outlined below.
 
@@ -343,7 +343,7 @@ For projects written in C, Codacy does not support detection of duplicated code 
 
 Memory leaks are a very common error in C programming. When memory is allocated to the heap, the space used must be freed once it is no longer needed, otherwise the program will continue accumulating unused memory. Considerable memory leaks may slow down other programs, or even cause a system crash. One mistake often made by developers is forgetting to check whether allocation of memory was successful or not. In the instance that the allocation fails, the memory is "leaked" and cannot be referenced. For example if the following line of code fails to realloc() the data, the memory would be leaked and become inaccessible to the programmer, causing unnecessary RAM usage.
 
-![Quake III Static Analysis](images/memoryleak.PNG)
+![Quake III Static Analysis](../images/Quake3/memoryleak.png)
 
 A solution to these issues, is to check if the allocation has failed by checking it's equality with the NULL datatype, and saving a reference to this data until it can be determined whether the new allocation is valid, as seen below. 
 
@@ -365,7 +365,7 @@ A solution to these issues, is to check if the allocation has failed by checking
 
 Often, strings are checked for validity by calling the strlen() function, which will return a value of 0 if the string is empty. However, the function does this by checking characters preceding a null terminator, which is expected to be at the end of the string. See the example below which is found frequently throughout the Quake III code base.
 
-![Quake III Static Analysis](images/stringcheck.PNG)
+![Quake III Static Analysis](../images/Quake3/stringcheck.png)
 
 If the string is not null terminated, the function call to strlen() will keep trying to count until it reaches the null terminator of the string, which may result in a memory access violation. One solution to this issue would be to invoke the strnlen() function instead, assuming the contents of the string don't need to verified, which appears to be the case. Other approaches would involve looping though the string to find the terminator, but the expected size would be required, or simply ensuring non-zero terminated strings are not used, which is what we must assume is the case at the moment.
 
@@ -373,15 +373,15 @@ If the string is not null terminated, the function call to strlen() will keep tr
 
 Other more minor problems worth noting include the declaration of variables throughout the code base which remain unused, and frequent snippets of assignments that seem to be assigning the value of a variable to the value it already had stored, as seen below.
 
-![Quake III Static Analysis](images/vars.PNG)
+![Quake III Static Analysis](../images/Quake3/vars.png)
 
-![Quake III Static Analysis](images/memnull.PNG)
+![Quake III Static Analysis](../images/Quake3/memnull.png)
 
 ### CLion Analysis
 
 We also used the CLion IDE's built-in static analysis tool to scan the code base. Unfortunately, without CMake, the tool was unable to find any architecturally significant technical debt. The scan's results mostly highlighted insignificant code smells. 
 
-![Quake III Static Analysis](images/clion_quakeIII_static.png)
+![Quake III Static Analysis](../images/Quake3/clion_quakeIII_static.png)
 
 #### CMake
 
