@@ -1,4 +1,4 @@
-![Ray Logo](https://github.com/ray-project/ray/raw/master/doc/source/images/ray_header_logo.png)
+![Ray Logo](../images/Ray/ray_header_logo.png)
 
 ## Table Of Contents
 
@@ -202,7 +202,7 @@ Quality attribute scenarios are used to qualitatively measure the success of an 
 
 # 8. Utility Tree
 
-![Utility Tree](../images/util_tree_key.png)
+![Utility Tree](../images/Ray/util_tree_key.png)
 
 Figure 1: Utility Tree outlining Ray's primary ASRs.
 
@@ -212,7 +212,7 @@ Figure 1: Utility Tree outlining Ray's primary ASRs.
 The module view captures some of Ray’s important elements and their relations. Modifiability was selected as the key quality attribute to examine because of the emphasis on modularity throughout Ray’s overall structure.
 
 ## Primary Presentation
-![Primary Presentation](../images/RayPrimary_Key.png)
+![Primary Presentation](../images/Ray/RayPrimary_Key.png)
 
 Figure 2: Primary presentation of Ray's overall structure.
 
@@ -250,7 +250,7 @@ End users are free to create their own custom applications and involve Ray funct
 
 The context diagram was designed to provide more detail surrounding the structure of Ray and its behaviour with respect to modifiability. Ray’s set of extended support modules are decomposed into a hierarchical structure to capture the notion of modularity. As described by the QAS, adding another server option to Autoscaler would require only one additional module defining the specific behaviour between Ray and the cloud service. Also outlined by the context diagram are some examples of Ray’s interactions with other entities. For instance, one example is Ray’s use of a parameter server to enable multiple algorithms to run simultaneously. The context diagram and key are provided in Figure 3. 
 
-![Context Diagram](../images/M3_context_diagram_4.png)
+![Context Diagram](../images/Ray/M3_context_diagram_4.png)
 
 Figure 3: Context diagram of Ray with emphasis on modularity and modifiability.
 
@@ -259,7 +259,7 @@ Figure 3: Context diagram of Ray with emphasis on modularity and modifiability.
 
 The behavior diagram relates a specific sequence of actions within Ray to our modifiability scenario defined in Section 2. Figure 4 demonstrates the steps taken by the user and the interactions throughout the system’s modules to create and host a cluster. By calling **ray.init()**, the user initiates Ray on their personal computer. Next, the user calls **ray up** to start an existing cluster. Once part of a cluster, the user can login to their choice of server (GCP in this case) then can begin using Ray’s functionality on a cluster of machines. The diagram shows the different modules in Ray's architecture and the interaction between them when starting this new cluster. The part of the diagram under the Autoscaler object shows how the bootstrap manages the different ids to make a connection to the cloud service. This step in the sequence would differ should the user choose a different server, including the possibility of newly added server options such as Rackspace Cloud as discussed in the modifiability QAS. The remainder of the steps show the relationships between Ray modules in the system and their interactions in setting up Redis connection. These steps would remain identical regardless of server choice except for specific login requirements of the different servers.
 
-![Behaviour Diagram](../images/behaviour_diagram.png)
+![Behaviour Diagram](../images/Ray/behaviour_diagram.png)
 
 Figure 4: Sequence diagram outlining the process of initilizing a head node for a cluster with Ray's Autoscaler module.
 
@@ -278,7 +278,7 @@ Building the extended modules separately from core Ray also enhances the modifia
 # 10. Component and Connector View
 
 ## Primary Presentation
-![C&C Primary Presentation](../images/C&C_Primary_Presentation.png)
+![C&C Primary Presentation](../images/Ray/C&C_Primary_Presentation.png)
 
 Figure 5: The primary presentation observes the core functionality of Ray.
 
@@ -422,10 +422,12 @@ In order to successfully run the Web UI, everything defined in the ```ray.init()
  ```
  View the web UI at http://localhost:8889/notebooks/ray_ui92131.ipynb→token=89354a314e5a81bf56e023ad18bda3a3d272ee216f342938 
 ```
+
 This will create a  .JSON file that is required to run the interface and is stored in a ‘tmp’ folder. The modules from Jupyter are required in order to run the UI as shown below.
 ```
 pip install jupyter ipywidgets bokeh 
 ``` 
+
 If [Ray.remote()](https://github.com/ray-project/ray/blob/739ddfa2290ecbbeeae572a7ab1743055379e3a0/python/ray/experimental/array/remote/linalg.py) is being used then the following will launch the UI 
 ```
 ssh -L <local_port>:localhost:<remote_port> <user>@<ip-address>
@@ -484,7 +486,7 @@ ray.init(include_webui = True)
 ```
 Next, the user must input the resulting url into their web browser. Then the interface appears (Figure 6) as the controls for the widget are at the top, the timeline itself centre screen, and the details area at the bottom. The user is able to select a task or sub-set, the number of task and the percentage of value.
 
-![web_ui](../images/m4_web_ui.png)
+![web_ui](../images/Ray/m4_web_ui.png)
 
 Figure 6: An example of Web UI showing tasks as module nodes and dependencies and lines between.
 
@@ -492,7 +494,7 @@ Figure 6: An example of Web UI showing tasks as module nodes and dependencies an
 
 The context diagram (Figure 7) extends on the primary presentation in order to show external modules that help improve Ray’s performance. As described in section 3, the module view, Ray’s functionality can be employed either on its own or with its extended modules such as Autoscaler and Tune. These extended modules are not part of Ray’s core functionality and exist to provide additional functionality and improve Ray’s overall performance depending on the needs of the user. 
 
-![Context Diagram](../images/ContextDiagramM4.png)
+![Context Diagram](../images/Ray/ContextDiagramM4.png)
 
 Figure 7: Context Diagram of Ray with emphasis on Performance.
 
@@ -509,7 +511,7 @@ Some external entities aren’t used directly by Ray, but are instead employed b
 
 ## Behaviour Diagram
 
-![Behaviour diagram](../images/M4_Behaviour_Diagram.png)
+![Behaviour diagram](../images/Ray/M4_Behaviour_Diagram.png)
 
 Figure 8: Behaviour diagram
 
