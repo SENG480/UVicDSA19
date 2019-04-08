@@ -1,6 +1,6 @@
 # [Bokeh]() - Documentation
 
-![Bokeh Logo](img/bokeh-logo.png)
+![Bokeh Logo](../images/Bokeh/bokeh-logo.png)
 
 ## Table Of Contents
 
@@ -45,7 +45,7 @@
 
 Bokeh is a Python-based interactive visualization library for web browsers. It aims to provide elegant, high-performance interactive graphics and data-centric applications, such as interactive plots, dashboards, and data applications [1]. Some examples of Bokeh visualizations are shown below. Bokeh is an open source project available for anyone to use and allows public contribution to its development through GitHub [2].
 
-![Bokeh examples](img/examples.png)
+![Bokeh examples](../images/Bokeh/examples.png)
 
 Financially, Bokeh is supported by NumFOCUS, an American non-profit dedicated to supporting the open source scientific computing community [3]. This sponsorship allows for a few core team members to continuously oversee and contribute to the project. Previously, Bokeh has also received funding from both the DARPA XDATA program at Georgia Tech and Anaconda, Inc. Consequently, Bokeh’s development team is currently comprised almost exclusively of Anaconda employees [4][5]. All three main sponsors have amplified Bokeh’s success through various marketing strategies and helped it become a widely-used tool in many professional fields, such as finance, oil and gas, meteorology, computational biology, and astronomy [3].
 
@@ -121,7 +121,7 @@ The recent surge in large quantities of easy-to-collect data has increased the d
 
 ## Utility Tree
 
-![Utility Tree](img/utility-tree.png)
+![Utility Tree](../images/Bokeh/utility-tree.png)
 
 ## Quality Attribute Scenarios
 
@@ -187,7 +187,7 @@ The recent surge in large quantities of easy-to-collect data has increased the d
 
 ### Primary Presentation <a name="m-primary-presentation"></a>
 
-![Primary-Presentation](img/primary-view.png)
+![Primary-Presentation](../images/Bokeh/m-primary-view.png)
 
 ### Element Catalog <a name="m-element-catalogue"></a>
 
@@ -244,11 +244,11 @@ All relations in the primary view relate to a “uses” relationship. A uses B 
 
 #### Element Behaviour <a name="m-behaviour"></a>
 
-![Behaviour-Diagram](img/behaviour-diagram.png)
+![Behaviour-Diagram](../images/Bokeh/m-behaviour-diagram.png)
 
 ### Context Diagram <a name="m-context-diagram"></a>
 
-![Context-Diagram](img/context-diagram.png)
+![Context-Diagram](../images/Bokeh/m-context-diagram.png)
 
 Bokeh interacts with external entities as shown in the diagram above. There are two users: User and Viewer. User creates the Bokeh application and Viewer interacts, views, and manipulates the Bokeh visualization. Bokeh also relies on third-party libraries and dependencies in the environment and for the Bokeh application to perform. These required third-party dependencies include: Jinja2, numpy, packaging, Pillow, python-dateutil, PyYAML, six, and Tornado Websockets and for them to be in range of the specified versions. In addition to the required dependencies, some additional packages are necessary for certain optional features and to use the Bokeh server with Python 2.7, you must also install the Futures package. 
 
@@ -283,7 +283,7 @@ With all of this said, and additional quality attribute that greatly benefits fr
 
 ### Primary Presentation <a name="c-primary-presentation"></a>
 
-![Primary-Presentation](img/primary-presentation.png)
+![Primary-Presentation](../images/Bokeh/m-primary-presentation.png)
 
 ### Element Catalog <a name="m-element-catalogue"></a>
 
@@ -389,11 +389,11 @@ Each session has a document instance. When a browser connects to the server, it 
 
 #### Element Behaviour <a name="c-behaviour"></a>
 
-![Behaviour-Diagram](img/behaviour-diagram.png)
+![Behaviour-Diagram](../images/Bokeh/cc-behaviour-diagram.png)
 
 ### Context Diagram <a name="c-context-diagram"></a>
 
-![Context-Diagram](img/cc-context-diagram.png)
+![Context-Diagram](../images/Bokeh/cc-context-diagram.png)
 
 ### Variability Guide <a name="c-variability-guide"></a>
 
@@ -434,14 +434,14 @@ We used a combination of CodeScene, SonarQube, and human inspection to analyze B
 
 CodeScene offers in-depth and valuable insight when exploring the code quality of software. It analyzes an application and displays the results for the user in a high-level, clear and legible format. By dividing up the information into sections such as _Technical Debt_, _Architecture_, and _Project Management_, it facilitates our jobs as software architects. While using CodeScene to evaluate Bokeh, the _Technical Debt_ section shed a light on issues that were not apparent while previously examining the source code. Within the Technical Debt section, the subsections _Refactoring Targets_ and _Defects_ proved to be especially helpful.
 
-The _Refactoring Targets_ subsection is meant to provide the areas in the code where improvements will provide the largest return on their investment. As stated by CodeScene's documentation, refactoring targets help “shrink the problem space with main suspects”. When looking into the refactoring targets for Bokeh, the majority of main suspects were found within bokeh.models. This was to be expected; as we have discussed in [previous milestones](../chapter-5/README.md#rationale), Bokeh utilizes `bokeh.models` as the base for a lot of functionality within the application. It makes sense that changes within this module would impact the rest of the application the most. Apart from this CodeScene highlighted modules such as bokeh.test and bokeh.plotting which although are not as crucial as the models module, are still involved in a multitude of processes across the application.
+The _Refactoring Targets_ subsection is meant to provide the areas in the code where improvements will provide the largest return on their investment. As stated by CodeScene's documentation, refactoring targets help “shrink the problem space with main suspects”. When looking into the refactoring targets for Bokeh, the majority of main suspects were found within bokeh.models. This was to be expected; as we have discussed in [previous milestones](#rationale), Bokeh utilizes `bokeh.models` as the base for a lot of functionality within the application. It makes sense that changes within this module would impact the rest of the application the most. Apart from this CodeScene highlighted modules such as bokeh.test and bokeh.plotting which although are not as crucial as the models module, are still involved in a multitude of processes across the application.
 
-![Defects and Refacting Targets Visualization - CodeScene](img/defects-and-refactoring-targets.png)
+![Defects and Refacting Targets Visualization - CodeScene](../images/Bokeh/defects-and-refactoring-targets.png)
 *Defects (Right) and Refactoring Targets (Left) Visualization*
 
 The _Defects_ subsection provided by CodeScene presents to the user a visual representation of where in the codebase it is likely that there are defects due to factors such as unnecessary code complexity. Keep in mind that unless CodeScene is configured properly, it does not take into account auto-generated content that could skew these results; regardless, it offers a good starting point for possible improvements. When it analyzing Bokeh with this tool, it returns a much more even spread of highlighted sections or Hotspots as they are referred to on CodeScene. On top of this, CodeScene also returns the following summary:
 
-![CodeScene Hotspot Summary](img/codescene-summary.png)
+![CodeScene Hotspot Summary](../images/Bokeh/codescene-summary.png)
 
 These values convey to the user that the prioritized hotspots only make up 6% of the total codebase, the Bokeh dev team spends 9.9% of our development efforts in those hotspots, and
 33% of all bugs that we detect and fix are in that small part of the code. If accurate, is incredibly valuable information to software architects and developers alike.
