@@ -409,11 +409,11 @@ Data Transfer interface is another important interface used by Teammates storage
 
 2. Resource Provided: \
 
-  a. Resource Syntax: The method is defined named Builder and takes courseId, name and timeZone as a parameter. This method also perform some validation checks on these parameters passed and then create the CourseAttribute.  
+  **a. Resource Syntax:** The method is defined named Builder and takes courseId, name and timeZone as a parameter. This method also perform some validation checks on these parameters passed and then create the CourseAttribute.  
 
-  b. Resource Semantics: The resource performs the validation checks on the data required for the course and encapsulate them to the data object that can be transferred for the querying.  
+  **b. Resource Semantics:** The resource performs the validation checks on the data required for the course and encapsulate them to the data object that can be transferred for the querying.  
 
-  c. Error Handling: The resource performs the validity checks on parameter values. The null value exceptions are handled.  
+  **c. Error Handling:** The resource performs the validity checks on parameter values. The null value exceptions are handled.  
 
 3. Data Types: The data types of the variables are as follow:
     a. courseId: String  
