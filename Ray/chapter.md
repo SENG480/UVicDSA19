@@ -120,19 +120,19 @@ Architecturally significant requirements are the core components of any architec
 
 ## ASRs for Ray
 
-1. Low latency
-2. Accessible reinforcement learning scaling
-3. Parallelization
-4. Scheduling
-5. CPU utilization
-6. GPU utilization
-7. Nodal utilization
+1. Low latency - Ray requires low latency in order to efficiently assign, execute, store, and provide for the tasks it is used in support of.
+2. Accessible reinforcement learning scaling - RLlib enables open source developers to take maximum advantage of Ray in their reinforcement learning projects.
+3. Parallelization - This is the primary purpose of Ray. Ray is designed to allow developers to accelerate their ML tasks by applying the power of a highly scalable cluster of nodes.
+4. Scheduling - Ray uses schedulers both within nodes and across the cluster to ensure that tasks are assigned to workers and nodes with the necessary available resources and prerequisites as soon as those prerequisites become available.
+5. CPU utilization - CPUs offer a powerful and broad instruction set capable of accomplishing any number of different tasks, and anyone using Ray on their personal computer can take advantage of its CPU utilization features to parallelize their tasks or simply to see Ray in operation.
+6. GPU utilization - GPUs offer an enormous source of processing power for vector math, a massive factor in ML applications. Taking advantage of this power is critical to enabling Ray users to achieve the greatest efficiency in their applications.
+7. Nodal utilization - Ray distributes its tasks across nodes in a cluster, an abstraction for a particular quantity of processing power. By taking advantage of this nodal architecture, Ray provides its parallel execution, and allows for flexibility in the requirement of CPU or GPU resources alloted to tasks and to the cluster.
 8. Reduced computational cost
-9. Patches to fix exploitable weaknesses
-10. Network deployability (AWS, GCP)
-11. Redis functionality
-12. Object serialization
-13. Fault Tolerance
+9. Patches to fix exploitable weaknesses - Ray must continually be adapted to vulnerability or oversight in its development, and react to the rapidly evolving ML landscape. To this end, Ray remains under open development.
+10. Network deployability (AWS, GCP) - In order to provide easy scalability for large tasks with low hardware investment, Ray is built to take advantage of AWS and GCP processing resources.
+11. Redis functionality - Ray uses Redis to coordinate between its various elements, in order to enable its parallel nature.
+12. Object serialization - Ray relies on object serialization to distribute necessary resources as well as the tasks themselves across the nodes in a cluster. Serialization is an essential component of the processes  through which Ray parallelizes task execution.
+13. Fault Tolerance - Ray is designed to execute massive work loads over potentially long periods of time. Faults in the system cannot be permitted to upset these processes, as the cost of lost work would be intolerable to its users.
 
 # 7. Quality Attributes 
 For Ray to satisfy the stakeholders' needs and expectations, we examine the quality attributes on this system to ensure it achieves their business goals. "Usability" and "Performance” are the two most fundamental attributes for parallelizing AI applications. Together they improve the system flexibility too. "Testability" and "Interoperability" support the goal of managing change in environmental factors. The “Modifiability” attributes achieve the goal of contributing to open source software solutions. Although these quality attributes do not cover all the business goals, they maintain the system to satisfy all the stakeholders' needs.
