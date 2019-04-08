@@ -151,7 +151,7 @@ Ray must continually be adapted to vulnerability or oversight in its development
 In order to provide easy scalability for large tasks with low hardware investment, Ray is built to take advantage of AWS and GCP processing resources.
 
 ### 11. Redis functionality
-Ray uses Redis to coordinate between its various elements, in order to enable its parallel nature.
+Ray uses Redis to coordinate between its various elements, in order to enable clusters to establish connection between each other and use its parallel nature.
 
 ### 12. Object serialization
 Ray relies on object serialization to distribute necessary resources as well as the tasks themselves across the nodes in a cluster. Serialization is an essential component of the processes  through which Ray parallelizes task execution.
@@ -332,6 +332,7 @@ The Object Store is a [Plasma Store](https://ray.readthedocs.io/en/latest/plasma
 ### Local Scheduler
 The [Local Scheduler](https://ray.readthedocs.io/en/latest/internals-overview.html) prioritizes received tasks and passes them on to the Worker requesting the next task. Tasks can also be passed to other local schedulers. If all of the task’s object dependencies are present in the local object store and there are enough CPU and GPU resources available to execute the task, then the local scheduler will assign the task to one of its available workers. If those conditions are not met, the task will be passed on to a global scheduler. This is done by adding the task to the task table, which is part of the centralized control state. 
 A global scheduler will be notified of the update and will assign the task to a local scheduler by updating the task’s state in the task table. The local scheduler will be notified and pull the task object. 
+
 ### Raylet Client
 A combined local scheduler and object manager. Once a task is passed to the Raylet Client from the Worker, it is published to the Redis server which will delegate the task to Redis Instances/Clients - the Raylet Client has no knowledge of what the Redis server does with the task once published. The Raylet Client then listens (subscribes) to the Redis server waiting for results to be published from the server. 
 
