@@ -30,7 +30,6 @@
     * Rationale
 9. [Code Quality and Technical Debt](#code-quality-and-technical-debt)
 10. [Conclusion](#conclusion)
-11. [References](#references)
 
 ## Team Members
 
@@ -50,7 +49,7 @@ Financially, Bokeh is supported by NumFOCUS, an American non-profit dedicated to
 
 In the following chapter, we detail our interpretation and analysis of Bokeh's system architecture. We begin by presenting potential system stakeholders and the business goals that may be important to them. Next, we describe architecturally significant requirements for Bokeh and detail three resulting quality attribute scenarios. Then, we give a module view and component and connector view of the system. Finally, we present our analysis of technical debt in Bokeh using various code quality tools and human inspection.
 
-## Sources
+**Sources**
 
 [1] Bokeh, “Welcome to Bokeh - Bokeh 1.0.4 Documentation,” PyData [Online] Available: https://bokeh.pydata.org/en/latest/. [Accessed: January 30, 2019].
 
@@ -272,7 +271,7 @@ The benefits of Bokeh’s flexibility can be explored when re-examining one of o
 
 With all of this said, and additional quality attribute that greatly benefits from this system module design is modifiability. In order for Bokeh to deliver the expansive catalogue of graphics and stay relevant among its users, it must be able to adopt change efficiently. Using `bokeh.models` as the foundation for the rest of the application creates an environment where adding, changing or removing features can occur with minimal impact to the other system modules.  
 
-## Sources
+**Sources**
 
 [1] Bokeh, “bokeh.models - Bokeh 1.0.4 Documentation,” PyData [Online] Available: https://bokeh.pydata.org/en/latest/docs/reference/models.html. [Accessed: March 10, 2019].
 
@@ -411,7 +410,7 @@ When analyzing this design choice from a software architecture point of view, on
 
 In addition to architecture developed by the Bokeh team, Bokeh’s server communication design depends heavily upon the Tornado websocket framework. This design decision allows Bokeh to take advantage of an efficient, real-time, dual-directional connection without having to reinvent the “web server wheel”. Because Bokeh is a small project, the development team has made the decision to implement only the bare minimum using the Tornado library. This includes limitations such as not allowing parallelized messaging and potential bugs resulting from circular Message references sent over the websocket connection.
 
-## Sources
+**Sources**
 
 [1] Bokeh, "Server Architecture - Bokeh 1.0.4 Documentation," PyData [Online] Available: https://bokeh.pydata.org/en/latest/docs/dev_guide/server.html#devguide-server. [Accessed: March 17, 2019].
 
@@ -499,5 +498,3 @@ In analyzing the technical debt present in Bokeh, we utilized the resources Code
 ## Conclusion
 
 blah
-
-## References
