@@ -503,11 +503,13 @@ The list of IP addresses could be easily configured in a separate configuration 
 
 Since we have examined the architecture and documented it for this past 3-4 months, we wanted to contribute to their developer documentation. Their documentation can be found [here](https://developers.home-assistant.io/) and the repository [here](https://github.com/home-assistant/developers.home-assistant). In their documentation, there was a clear `TODO` to draw a diagram for the Multi Factor Authentication Workflow. We examined the architecture of Multifactor Authentication and built a diagram of the workflow. Fig. 16 shows the workflow diagram.
 
-![alt text](https://github.com/alvi2496/UVicDSA19/blob/master/images/homeassistant/milestone_7/ha_mfa_workflow.png "Multifactor Authentication Workflow")
+![alt text](https://github.com/alvi2496/UVicDSA19/blob/master/images/homeassistant/milestone_7/ha_mfa_workflow.png "Multifactor Authentication Workflow")  
+Figure. 16
 
 **Good news is the pull request was reviewed by the founder of Home Assistant and  accepted. He asked for the link of the image for any future work that could be needed and was very nice to thank us for contribution.**
 
-Link of the pull request: [Multi Factor Authentication Workflow Diagram Pull Request](https://github.com/home-assistant/developers.home-assistant/pull/216)
+Link of the pull request: [Multi Factor Authentication Workflow Diagram Pull Request](https://github.com/home-assistant/developers.home-assistant/pull/216)  
+
 
 # 8.0 Conclusion
 
