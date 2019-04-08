@@ -140,7 +140,7 @@ There is ongoing discussion regarding security implications of OSS vs CSS partic
 
 ### 3.2  Utility Tree <a name="utility-tree"></a>
 
-![FIGURE 1.0: UTILITY TREE](../images/Teammates/UtilityTree.PNG "Logo")
+![FIGURE 1.0: UTILITY TREE](../images/Teammates/UtilityTree.png)
 
 
 ### 3.3  Quality Attribute Scenarios (QAS) <a name="quality-attribute-scenarios-qas"></a>
