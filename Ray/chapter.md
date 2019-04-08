@@ -193,13 +193,13 @@ Quality attribute scenarios are used to qualitatively measure the success of an 
 
 | Aspect | Details |
 | --- | --- 
-| Scenario Name | Computationally expensive AI application|
-| Business Goals | Reduce the cost and improve efficiency of the application|
+| Scenario Name | Using Tune to improve performance of ML algorithms |
+| Business Goals | Improve efficiency of machine learning applications |
 | Quality Attributes |Performance |
-| Stimulus |Learning function called by application |
-| Stimulus Source |User programming AI application |
-| Response |Parallelizes functionality of the application to improve efficiency|
-| Response Measure | Throughput of parallel tasks|
+| Stimulus | User wants to optimize ML algorithm efficiency by identifying hyperparameters for optimal performance |
+| Stimulus Source | User creating ML application |
+| Response | Tune identifies appropriate hyperparameters to optimize algorithm performance |
+| Response Measure | Optimal hyperparameters identified |
 
 ### Modifiability
 
@@ -217,13 +217,13 @@ Quality attribute scenarios are used to qualitatively measure the success of an 
 
 | Aspect | Details |
 | --- | --- |
-| Scenario Name |Inter-module functionality of Ray |
-| Business Goals |Ensure that information is reliably and efficiently passed between modules |
+| Scenario Name | Inter-node communication in machine cluster |
+| Business Goals |Improve communication and information flow between various nodes of a cluster|
 | Quality Attributes |Interoperability |
-| Stimulus |Function from module A calls function in module B |
-| Stimulus Source |User running some functionality of Ray |
-| Response |Modules exchange information to compute reliable results |
-| Response Measure |System reports expected results |
+| Stimulus | Parallelized AI application running across a cluster |
+| Stimulus Source | User employing Ray’s distributed computing functionality |
+| Response | Nodes communicate efficiently |
+| Response Measure | Sufficiently low latency between nodes of a machine cluster |
 
 # 8. Utility Tree
 
