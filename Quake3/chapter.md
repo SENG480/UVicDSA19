@@ -1,4 +1,28 @@
-# Milestone 1: Stakeholders, Business Goals, and Ethics Report
+# SENG 480 Architecture Report – Quake 3: Arena 
+
+## Team 9ine
+* Matthew Paletta
+* Cole Funk
+* Nicholas Kobald
+* Darian Sampare
+* Junran Zhang
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Milestone 1: Stakeholders, Business Goals, and Ethics Report](#milestone1)
+3. [Milestone 2: Quality Attribute Scenarios](#milestone2)
+4. [Milestone 3: Module View](#milestone3)
+5. [Milestone 4: Component and Connector View](#milestone4)
+6. [Milestone 5: Technical Debt](#milestone5)
+
+# Introduction <a name="introduction"></a>
+
+Quake 3 is a competitive multiplayer shooter originally developed and released by id Software in 1999. At the time, Quake 3 was not an open source project; however, the source code was made public in 2005 and later released on GitHub in 2012. This report aims to document the architecture of Quake 3: Arena, in a series of "milestones" which will each be centered around a particular architectural topic.
+
+We will begin by identifying the project's original stakeholders and business goals. Using this knowledge, we will develop a series of quality attribute scenarios which we believe are the driving forces behind the project's architecture. We will then present two architecural views of the project: a module view, which will provide a static representation of the system's structure, and a component and connector view, which will give a behavioural interpretation of the system in runtime. Finally, we will report on the findings of our investigation into the project's technical debt, aided by code analysis tools such as Codacy.
+
+# Milestone 1: Stakeholders, Business Goals, and Ethics Report <a name="milestone1"></a>
 
 ## Stakeholders
 Considering stakeholders plays a critical role in assessing or designing a piece of software. It is quite often that identifying these
@@ -56,7 +80,7 @@ Quake 3 was ultimately a successful update to a beloved franchise, though not on
 - <https://github.com/id-Software/Quake-III-Arena>
 - <https://www.esrb.org/ratings/search.aspx?searchType=title&titleOrPublisher=Quake+II>
 
-# Milestone 2: Quality Attribute Scenarios
+# Milestone 2: Quality Attribute Scenarios <a name="milestone2"></a>
 
 ## List of ASRs
 1. Client actions must be accurately communicated to the server a certain percentage of the time. (performance)
@@ -127,7 +151,7 @@ Table 3: QAS for usability in template form
 | Usability         | Interface Customizeability| Controls should be adjusteable in sensitivity or by changing the corresponding key (M, E)  |
 | Security          | password security  | Passwords should be encrypted and stored according to current best practices (M, M) | 
 
-# Milestone 3: Module View
+# Milestone 3: Module View <a name="milestone3"></a>
 
 A module view is a representation of the structure of modules in a system, including their properties and responsibilities. Such a view aims to decompose the system into manageable units that can be reasoned about more easily. This helps with various aspects of design and development, including understanding the code structure, communicating to new stakeholders, and determining how changes may affect the system.
 
@@ -187,7 +211,7 @@ The data sent from client to server depends on the internet connection of the cl
 
 Furthermore, the module structure outlined in the primary presentation shows how the game loop and messaging are neatly organized, allowing common code to be re-used when appropriate. For example, when the client or server have built a message to send, they both can utilize the NetChan_Transmit() function to send out packets via UDP to their destination socket.
 
-# Milestone 4: Component and Connector View
+# Milestone 4: Component and Connector View <a name="milestone4"></a>
 
 A component and connector view provides a runtime representation of a system. It shows how data is processed and passed between components, giving insight into the behaviour of a system.
 
@@ -316,7 +340,7 @@ In Quake, we can see from the client-server diagram that the clients and server 
 
 The client-server architecture provides a simple, elegant way to scale a game to include multiple players without needing to put too much pressure on any single machine. Using the client-server approach, Quake 3: Arena easily handles up to 16 client connections, and updates them as required, all while introducing very little latency.
 
-# Milestone 5: Technical Debt
+# Milestone 5: Technical Debt <a name="milestone5"></a>
 
 Technical debt in software development is a measure of the additional work that will accumulate later in the project, 
 based on a choice made earlier in the project’s lifecycle. Evidence of technical debt can be found in nearly every large-scale 
