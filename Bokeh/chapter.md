@@ -182,15 +182,15 @@ The recent surge in large quantities of easy-to-collect data has increased the d
 | Response           | An updated Bokeh plot that includes the expected result from having performed the specified interaction. |
 | Response measure   | Listing all possible interactive actions and their results is infeasible as there are uncountably many ways to interact with a generic figure, instead we define the following measure based on the definition of interactivity: <ul> <li>“Interactive” implies not having to wait, so response can be based on time taken to respond to an interaction.</li> <li>Feedback should appear to be immediate to a human user. E.g. clicking a button that navigates to another page and loads a new plot is not interactive, whereas another button that changes colors of plot elements could be considered as such </li></ul> |
 
-## Module View 
+## Module View
 
-### Primary Presentation <a name="m-primary-presentation"></a>
+### Primary Presentation
 
 ![Primary-Presentation](../images/Bokeh/m-primary-view.png)
 
-### Element Catalog <a name="m-element-catalogue"></a>
+### Element Catalog
 
-#### Elements and their Properties <a name="m-elements"></a>
+#### Elements and their Properties
 
 **`bokeh.application`**
 
@@ -212,7 +212,7 @@ The recent surge in large quantities of easy-to-collect data has increased the d
 
 * BokehJS is the in-browser client-side runtime library that users of Bokeh ultimately interact with [2]. BokehJS manages both client sessions and asynchronous updates to the visualization via server-side Bokeh documents.
 
-#### Relations and their Properties <a name="m-relations"></a>
+#### Relations and their Properties
 
 All relations in the primary view relate to a “uses” relationship. A uses B implies there is a dependency between A and B, where A requires correct functionality of B to work properly. Below we detail the specific types of use dependencies in the primary presentation.
 
@@ -241,19 +241,19 @@ All relations in the primary view relate to a “uses” relationship. A uses B 
 * Bokeh documents hold multiple instances of Bokeh models to build a complete visualization design.
 * Bokeh servers are built with the ability to maintain multiple server sessions.
 
-#### Element Behaviour <a name="m-behaviour"></a>
+#### Element Behaviour
 
 ![Behaviour-Diagram](../images/Bokeh/m-behaviour-diagram.png)
 
-### Context Diagram <a name="m-context-diagram"></a>
+### Context Diagram
 
 ![Context-Diagram](../images/Bokeh/m-context-diagram.png)
 
-Bokeh interacts with external entities as shown in the diagram above. There are two users: User and Viewer. User creates the Bokeh application and Viewer interacts, views, and manipulates the Bokeh visualization. Bokeh also relies on third-party libraries and dependencies in the environment and for the Bokeh application to perform. These required third-party dependencies include: Jinja2, numpy, packaging, Pillow, python-dateutil, PyYAML, six, and Tornado Websockets and for them to be in range of the specified versions. In addition to the required dependencies, some additional packages are necessary for certain optional features and to use the Bokeh server with Python 2.7, you must also install the Futures package. 
+Bokeh interacts with external entities as shown in the diagram above. There are two users: User and Viewer. User creates the Bokeh application and Viewer interacts, views, and manipulates the Bokeh visualization. Bokeh also relies on third-party libraries and dependencies in the environment and for the Bokeh application to perform. These required third-party dependencies include: Jinja2, numpy, packaging, Pillow, python-dateutil, PyYAML, six, and Tornado Websockets and for them to be in range of the specified versions. In addition to the required dependencies, some additional packages are necessary for certain optional features and to use the Bokeh server with Python 2.7, you must also install the Futures package.
 
 To serve a Bokeh web application publicly on the internet, it is often desirable to host the Bokeh application module on an internal network with proxy connections to it through a dedicated HTTP server. This functionality is not illustrated in the above diagram, however a Bokeh application can utilize Nginx or Apache to serve this purpose. The Bokeh server architecture is also designed to be scalable, so if you need more capacity, you simply run additional servers. It may be a good idea to run all the Bokeh server instances behind a load balancer. Nginx also offers this load balancing capability.
 
-### Rationale <a name="m-rationale"></a>
+### Rationale
 
 The system designers of Bokeh put in a lot of effort into the layout of all the system modules. Their attention to detail becomes most apparent when exploring the source code of the application and discovering the astute approached to software architecture. As stated by the Bokeh documentation, there are many modules that make up this application but the more significant and important ones are:
 
@@ -280,13 +280,13 @@ With all of this said, and additional quality attribute that greatly benefits fr
 
 ## Component and Connector View
 
-### Primary Presentation <a name="c-primary-presentation"></a>
+### Primary Presentation
 
 ![Primary-Presentation](../images/Bokeh/cc-primary-presentation.png)
 
-### Element Catalog <a name="m-element-catalogue"></a>
+### Element Catalog
 
-#### Elements and their Properties <a name="c-elements"></a>
+#### Elements and their Properties
 
 **`Database Component`**
 
@@ -316,7 +316,7 @@ With all of this said, and additional quality attribute that greatly benefits fr
 
 * Database implementation is independent of Bokeh, so communication style and formatting between database and server will vary. In some fashion, a query will be transmitted to the database and data will be returned. Before this data is usable to the Bokeh library, preprocessing must occur to format it as a Bokeh ColumnDataSource or Pandas DataFrame/GroupBy object.
 
-#### Relations and their Properties <a name="c-relations"></a>
+#### Relations and their Properties
 
 **`Server Port to Request Message Role`**
 
@@ -338,7 +338,7 @@ With all of this said, and additional quality attribute that greatly benefits fr
 
 * Users interact with browser elements using their mouse which triggers Javascript events.
 
-#### Element Interfaces <a name="c-interfaces"></a>
+#### Element Interfaces
 
 1. Name: Client-Server Interface
 
@@ -386,19 +386,19 @@ This client-server synchronization method is agnostic to how the visualization o
 8. Usage Guide: 
 Each session has a document instance. When a browser connects to the server, it gets a new session; the application fills in the session’s document with data. This means that a user is able to utilize this interface when accessing a Bokeh application
 
-#### Element Behaviour <a name="c-behaviour"></a>
+#### Element Behaviour
 
 ![Behaviour-Diagram](../images/Bokeh/cc-behaviour-diagram.png)
 
-### Context Diagram <a name="c-context-diagram"></a>
+### Context Diagram
 
 ![Context-Diagram](../images/Bokeh/cc-context-diagram.png)
 
-### Variability Guide <a name="c-variability-guide"></a>
+### Variability Guide
 
 This Bokeh server/in-browser paired design has multiple points of variability. Firstly, code authors may host multiple Bokeh servers which distribute client sessions among themselves. As well, authors may implement load balancing between servers through Nginx. Multiple platforms also exist for hosting and accessing Bokeh servers from BokehJS. These alternatives include Nginx, Apache, and SSH tunneling. As well, Bokeh visualizations can be interacted with and tested without a Bokeh server. A common option for this alternative is to import the library into Jupyter for simple visualization creation. Finally, Bokeh’s heavy reliance on the Tornado websocket framework implies that users can offload further elements of the server-browser communication onto Tornado. In this case, Tornado would act as an intermediary between the server and browser Message requests and responses.
 
-### Rationale <a name="c-rationale"></a>
+### Rationale
 
 While examining Bokeh at run-time, the developers’ dedication to providing the users with a smooth and interactive experience becomes clear. They have designed a model for presenting in-depth and responsive visuals while at the same time offering a flexible software capable of delivering the same quality experience across many programming language implementations. Although many different Bokeh modules work to ensure an optimal user-experience at run-time, there are two that stand out from the others:
 
