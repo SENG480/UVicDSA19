@@ -29,9 +29,8 @@
     * Variability Guide
     * Rationale
 9. [Code Quality and Technical Debt](#code-quality-and-technical-debt)
-10. [Pull Request](#pull-request)
-11. [Conclusion](#conclusion)
-12. [References](#references)
+10. [Conclusion](#conclusion)
+11. [References](#references)
 
 ## Team Members
 
