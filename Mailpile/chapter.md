@@ -130,7 +130,7 @@ The system should be safe, easy and allow users to read, write, search and organ
 | Aspect | Details |
 | ------------- |-------------|
 | Scenario Name | Foreign Access Scenario |
-| Business Goal | The content of the email is encrypted and only visible to the sender and receiver |
+| Business Goal | End to end secured communication of email messages |
 | Quality Attribute | Privacy |
 | Stimulus | Interception of email (man in the middle, or related) |
 | Stimulus Source | Malicious Third Party |
@@ -156,12 +156,12 @@ The system should be safe, easy and allow users to read, write, search and organ
 | Aspect | Details |
 | ------------- |-------------|
 | Scenario Name | Data Availability Scenario |
-| Business Goal | Users should be able to easily access the content of their email |
+| Business Goal | Having more relaible email client |
 | Quality Attribute | Availability |
-| Stimulus | The authorized user clicks on the desired email  |
-| Stimulus Source | User |
-| Response | Feedback that their email is being downloaded |
-| Response measure | A new interface open and shows the contents of the email |
+| Stimulus | System failure(hardware\software) occurs  |
+| Stimulus Source | Some internal components of the machine |
+| Response | Email content is recovered by Mailpile  |
+| Response measure | 98% of the data is recoved by Mailpile in case of system failure |
 
 
 
