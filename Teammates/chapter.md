@@ -407,7 +407,7 @@ Data Transfer interface is another important interface used by Teammates storage
 
 1. Interface Identity: CourseAttribute Interface
 
-2. Resource Provided:  
+2. Resource Provided:  \newline
   a. Resource Syntax: The method is defined named Builder and takes courseId, name and timeZone as a parameter. This method also perform some validation checks on these parameters passed and then create the CourseAttribute.  
 
   b. Resource Semantics: The resource performs the validation checks on the data required for the course and encapsulate them to the data object that can be transferred for the querying.  
