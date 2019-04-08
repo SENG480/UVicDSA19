@@ -108,14 +108,14 @@ The recent surge in large quantities of easy-to-collect data has increased the d
 
 ### List of Architecturally Significant Requirements
 
-* Optimized rendering times for varying datasets. The amount of time required for Bokeh to deliver visuals is crucial to its performance goal.
+* Optimized rendering times for varying datasets. The amount of time required for Bokeh to deliver visuals is crucial to its performance goals.
 * Support for large datasets. Bokeh's ability to handle large amounts of data without sacrificing any performance or effectiveness.
 * Alternative language use. The ability to use Bokeh with a variety of programming languages is critical for the flexibility of the application.
 * Interactivity
 * Browser embedding. The ability to utilize Bokeh visualizations from most modern browsers. 
-* Visualization accuracy. The capacity to accurately represent large data is crucial to Bokeh's effectiveness.
-* Visualization options. The capacity to offer users a multtitude of choice in the way they desire to present data.
-* Aesthetic Design. Not only being able to offer accurate visulizations but for them to be visually appealing as well.
+* Visualization accuracy. The capacity to accurately represent large data while utilizing various optimization techniques is crucial to Bokeh's effectiveness.
+* Visualization options. The capacity to offer users a multitude of choice in the way they desire to present their data.
+* Aesthetic Design. Not only offering technically accurate visulizations, but for them to be visually appealing as well.
 * Input data format agnostic.
 
 ## Utility Tree
