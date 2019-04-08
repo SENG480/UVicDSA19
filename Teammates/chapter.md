@@ -439,35 +439,30 @@ Objectify is the convenient interface used by teammates to communicate with Goog
 
 ##### 5.3.2.1  SEI Element Interface Specifications <a name="objectify-interface-sei"></a>
 
-1.       Interface Identity: CourseDB Interface
+1. Interface Identity: CourseDB Interface
 
-2.       Resource Provided:
+2. Resource Provided:
+  a. Resource Syntax: The method is defined named getCourseEntity and takes courseId as a parameter. It returns load\(\).id\(courseId\).now\(\) .
+  
+  b. Resource Semantics: The resource performs the functionality of fetching the course details providing the CourseId parameter.
+  
+  c. Error Handling: DatastoreTimeoutException, ConcurrentModificationException, or DatastoreFailureException are thrown by Objectify if something goes wrong.
 
-a.       Resource Syntax: The method is defined named getCourseEntity and takes courseId as a parameter. It returns load\(\).id\(courseId\).now\(\) .
+3. Data Types: The data types of the variables are as follow:
 
-b.       Resource Semantics: The resource performs the functionality of fetching the course details providing the CourseId parameter.
+  a.       courseId: String
+  b.       courseName: String
+  c.       createdAt: DateTime
+  d.       deletedAt: DateTime
+  e.       timezone: ZoneId
 
-c.       Error Handling: DatastoreTimeoutException, ConcurrentModificationException, or DatastoreFailureException are thrown by Objectify if something goes wrong.
+4. Error Handling: In case anything goes wrong, the exceptions are thrown. Some of the exceptions that are handled are DateTimeException, EntityDoesNotExistException, InvalidParametersException.
 
-3.       Data Types: The data types of the variables are as follow:
+5. Variability: The interface can be modified to scale up the transactions handling if the peak load is exceeded.
 
-a.       courseId: String
+6. Quality Attributes: The interface can impact the performance while querying the data from the data store when the transactions\(queries\) are performed.
 
-b.       courseName: String
-
-c.       createdAt: DateTime
-
-d.       deletedAt: DateTime
-
-e.       timezone: ZoneId
-
-4.       Error Handling: In case anything goes wrong, the exceptions are thrown. Some of the exceptions that are handled are DateTimeException, EntityDoesNotExistException, InvalidParametersException.
-
-5.       Variability: The interface can be modified to scale up the transactions handling if the peak load is exceeded.
-
-6.       Quality Attributes: The interface can impact the performance while querying the data from the data store when the transactions\(queries\) are performed.
-
-7.       Rationale: The interface is designed to improve the performance of the transactions performed on the data store. It also provides human friendly query interface and easy-to understand transaction model.
+7. Rationale: The interface is designed to improve the performance of the transactions performed on the data store. It also provides human friendly query interface and easy-to understand transaction model.
 
 ### 5.4  Behaviour Documentation <a name="Behavior_docs"></a>
 
