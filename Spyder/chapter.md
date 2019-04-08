@@ -905,19 +905,33 @@ The Spyder project certainly has it's issues. The behavior of the product, when 
 ### Citations
 
 [1.1] https://github.com/spyder-ide/spyder/blob/master/CONTRIBUTING.md
+
 [1.2] https://github.com/spyder-ide/spyder/blob/master/NOTICE.txt
+
 [1.3] https://en.wikipedia.org/wiki/Spyder_(software)
+
 [1.4] https://www.acm.org/code-of-ethics
+
 [1.5] https://dougallj.wordpress.com/2016/11/13/exploiting-dolphin-part-1/
+
 [1.6] https://github.com/dolphin-emu/dolphin/pull/4447
+
 [1.7] https://github.com/spyder-ide/spyder/wiki/Current-Funding-and-Development-Status 
+
 [1.8] https://github.com/spyder-ide/spyder/wiki/Current-Funding-and-Development-Status#our-progress-so-far 
+
 [1.9] https://github.com/spyder-ide/spyder/wiki/Current-Funding-and-Development-Status#the-importance-of-external-funding 
+
 [1.10] https://github.com/spyder-ide/spyder/issues 
+
 [1.11] https://www.ghacks.net/2017/03/09/notepad-7-3-3-update-fixes-cia-vulnerability/ 
+
 [4.1] https://www.spyder-ide.org/
+
 [5.1] https://codescene.io/about 
+
 [5.2] https://docs.sonarqube.org/latest/user-guide/concepts/ 
+
 [5.3] https://en.wikipedia.org/wiki/SonarQube
 
 
