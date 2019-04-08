@@ -793,8 +793,6 @@ This may become problematic, especially for users with a large volume of emails 
 <a name="11"></a>
 ## 11.0 Pull Request
 
-## Mailpile
-
 [Pull Request](https://github.com/mailpile/Mailpile/pull/2215)
 
 Nowadays, there are many sites like google drive, dropbox, onedrive, etc, which allows to create, edit and save the document online. Users can share these online file using URLs. Mailpile being a morder e-mail client, should be able to send URLs of these files as attachement instead of sending the actual file. We found this [issue](https://github.com/mailpile/Mailpile/issues/2204) in Mailpile's github issue tracker raised by Mailpile's lead developer Mr. Bjarni Rúnar Einarsson. He created a list [list of tasks](https://github.com/mailpile/Mailpile/issues/2204#issue-403099577) to be completed to implement this feature .Initial two tasks were already completed in a commit. However, there are still other tasks that needs to be completed.
