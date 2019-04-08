@@ -569,6 +569,116 @@ The Notify data change which we got from the ShellWidget class will be passed to
 
 Any event which triggers the user interface of Spyder to become changed in some way. In this particular case, the UI event is caused first by a user clicking Run Cell, culminating in a series of broadcasts and functions calls, leading to the rendering of an image on the FigureBrowser
 
+![Spyder IDE](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/SpyderIDE.PNG?raw=true)
+
+### Element Interface
+
+![](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/m4_interface.png?raw=true)
+
+An interface is a boundary across which two independent entities meet and interact or communicate with each other.
+
+## QT Signals and Slots Interface
+
+### Interface Identity
+
+QtCore.SIGNAL() and QtCore.SLOT() macros allow Python to interface with Qt signal and slot delivery mechanisms.
+
+### Resources Provided
+
+1. Signal(void) or Signal(object)
+2. Connect(function)
+3. Emit(void) or Emit(object)
+4. Slot(void) or Slot(params)
+
+### Resource Syntax
+
+### Emit
+
+~~~~
+# Run actions
+     self.run_cell_action = create_action(
+         self, _("Run cell"), icon=ima.icon('run_cell'),
+         shortcut=QKeySequence(RUN_CELL_SHORTCUT),
+         triggered=self.sig_run_cell.emit)
+~~~~
+
+### Signal
+
+~~~~
+sig_run_cell = Signal()
+~~~~
+
+### Connect
+
+~~~~
+editor.sig_run_cell.connect(self.run_cell)
+~~~~
+
+### Slot
+
+~~~~
+@Slot(str, dict)
+ def handle_response(self, method, params):
+     if method in self.handler_registry:
+         handler_name = self.handler_registry[method]
+         handler = getattr(self, handler_name)
+         handler(params)
+         # This signal is only used on tests.
+         # It could be used to track and profile LSP diagnostics.
+         self.lsp_response_signal.emit(method, params)
+~~~~
+
+### Resource Semantics
+
+Signal is an interface that is provided by the QTCore library utilized by Spyder. It provides Emit which is a broadcast to any classes which have connected functions. These classes listen for emits which cause functions to be executed.
+
+Emit is simply a broadcast function that causes connection functions to fire.
+
+Slot is an annotation that can be provided to functions that allow emits to fire with/without connecting them first.
+
+Connecting is a way to call functions using emit signals without using the Slot annotation.
+
+### Resource Usage Restrictions
+
+The signals and slots interface provides an intermediate set of functions which facilitate publishers and subscribers within Spyder. 1. Signal is a constructor for a Signals and Slots Interface object. 2. Connect takes a callback function that will run only when a publisher received an emitted signal from a subscriber. 3. Emit allows a publisher to broadcast a signal to any connected or slotted class functions within Python. 4. Slot provides an ability to annotate multiple functions which, when connected to a Signal object, may optionally receive emissions that contain Python data objects.
+
+### Error Handling
+
+Any of the functions provided by the interface cannot be used within the try and catch statements. Doing so will cause an error itself. For errors to be handled, QTApplication must be subclassed and the code tried and caught there. Exceptions are not thrown in the typical sense by QT. Instead, error codes are used. Error codes will propagate if there is not a connected function (or set of connected functions) if the connected function itself causes erroneous behavior or slot code does not exist.
+
+### Locally Defined Data Types
+
+There are no explicitly defined local datatypes made in order to utilize this interface. A python data object is can be any data type which can be emitted and received by a publisher/subscriber pair. These include serialized first-class functions (functions that can be treated like objects, including anonymous functions), primitive data types, and data structures like arrays and dictionaries.
+
+### Variability Provided
+
+It would be possible to implement one's own version of a publisher and subscriber system. This may or may not be faster than the current solution which is asynchronous and apparently robust. In terms of whether or not a publisher-subscriber system might be replaced with another design pattern, it seems that the model view controller could possibly be used for this specific example. In addition, it might be less subject to the confusing code, resulting in a more maintainable project. Publisher and subscriber can result in sometimes hard to trace listens and broadcasts.
+
+### Quality Attribute Characteristics
+
+This interface lends itself to the quality attribute where the user executes code and can see their graph quite quickly. Signals and emissions facilitate asynchronous communication between classes with connected functions, and thus, communication between the Spyder figure browser, and any code that is executed by an internal or external kernel.
+
+### What the element requires
+
+The element requires functions and defined signals. These functions can be both pre-defined or anonymous.
+
+### Rationale and design issues
+
+As mentioned in variability, it is possible that the use of signals and connected functions for the publisher and subscriber model could lead to difficult to trace or debug code. Since one emit can potentially trigger one or more function calls, it may be hard to trace behavior should a bug arise.
+
+### Usage Guide
+
+A user wishes to facilitate communication between the two classes. One or more functions are defined in class A. In class B, a signal object is created and connected to the functions previously defined in class A. In future, the signal object is "emitted" which then calls any connected functions.
+
+## Spyder Plugin Widget Interface
+
+### Interface Identity 
+
+A Spyder Plugin Widget Interface allows a user to input value or performs a function. Widgets enhance user interaction with the IPython notebook.
+
+### Resources Provided
+
+
 
 
 
