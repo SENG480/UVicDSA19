@@ -793,6 +793,17 @@ This may become problematic, especially for users with a large volume of emails 
 <a name="11"></a>
 ## 11.0 Pull Request
 
+## Mailpile
+
+[Pull Request](https://github.com/mailpile/Mailpile/pull/2215)
+
+Nowadays, there are many sites like google drive, dropbox, onedrive, etc, which allows to create, edit and save the document online. Users can share these online file using URLs. Mailpile being a morder e-mail client, should be able to send URLs of these files as attachement instead of sending the actual file. We found this [issue](https://github.com/mailpile/Mailpile/issues/2204) in Mailpile's github issue tracker raised by Mailpile's lead developer Mr. Bjarni Rúnar Einarsson. He created a list [list of tasks](https://github.com/mailpile/Mailpile/issues/2204#issue-403099577) to be completed to implement this feature .Initial two tasks were already completed in a commit. However, there are still other tasks that needs to be completed.
+
+In our pull request, we have completed some tasks to implement beforementioned feature as follows.
+1. We have extended `read_email` function in `mailpile/search.py` to scan and find any valid URL present in the email text. For this we have used a regular expression to identify any valid URL within the text. Once the URL is idetified, it is being added to the `att_urls` list which contains attachement URLs.
+2. We have created a large list of regular expresssions of trusted URLs of common file sharing sites like dropbox, google drive, etc.
+3. We added the list created in second task to default list of attachement URLs in the session configurations. 
+
 <a name="12"></a>
 ## 12.0 Conclusion
 
