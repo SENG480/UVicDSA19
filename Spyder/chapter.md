@@ -278,7 +278,61 @@ This is a static convenience function that will return a file name selected by t
 
 This class provides a higher level programming interface for a timer for the application which imports it. The QTimer class provides a single shot and repetitive timer functionality.
 
+## Element Interface
 
+![Interface 1]https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/interface1.png?raw=true
 
+An interface is a boundary across which two independent entities meet and interact or communicate with each other.
+
+### Interface Identity 
+
+This means giving a meaningful name to the interface in a context that explains exactly what the interface does. This interface is called the "ZMQ/TCP Proxy Module". It is a small collection of two classes working together under one controller, acting independently of the Spyder main code.
+
+### Resources Provided
+
+A set of resources that the element provides to its actors
+
+### Resource Syntax
+
+1. msg = {'id': self.request_seq, 'method': method,'params': params}
+2. zmq_out_socket.send_pyobj(msg)
+
+### Resource Semantics 
+
+1. msg creates a Python JSON formatted data structure containing the method request name, the Id parameter is is a numeric value to keep track of the total language server requests, and the params parameter which is an additional JSON python object populated with different parameters depending on an external element that makes use of the interface.
+2. The zmq_out_socket is a ZMQ socket object which has bound to it as send_pyobj function. That function takes the msg parameter and serializes it using pickle. The interface requires this resource to be serialized since it is a JSON data structure, that it will later convert and re-send via TCP.
+
+### Resource Usage Restrictions
+
+This section defines the circumstances under which the resource may be used. The resources provided to the ZMQ/TCP Proxy Module must include all parameters including Id, Method, and the nested params object. In addition, this resource cannot be used until it broadcasts a SERVER READY signal, indicating that a language request can be made.
+
+### Locally defined data types
+
+There are no data types not natively supported by Python that are required to use this resource. Python natively supports JSON style objects. The resource itself converts these datatypes to serialized Python objects using Python Pickle.
+
+### Error Handling
+
+Errors are handled by Python try-except. ZMQ sockets handle errors by converting error messages with zmq_sterror() to meaningly error strings passed into the current environment.
+
+### Variability provided
+
+This section highlights how the interface may allow the element to be configured in some way. zmq_setsockopt() allows configurations to be viewed and set. They act in a similar way to settings typical TCP sockets.
+
+### Quality attribute characteristics
+
+The architect needs to document what quality attribute characteristics the interface makes known to the element’s users. Here we have the QAS under usability being made visible to the element's users, which use it indirectly. The element provides indirect access to code completion functionality.
+
+### What the element requires
+
+In this section, we highlight what the element requires that may be specific, named resources provided by other elements. External language server must be initialized, and it required that the parameters specified in the above sections be passed in exactly as noted. The element itself requires a developer to specify its network and port addresses for TCP, as well as the ZMQ in and out ports. In terms of data input to the element, the element can act asynchronously so it can be accessed simultaneously by multiple external elements. 
+
+### Rationale and design issues
+
+For this section, the rationale should explain the motivation behind the design. The decision to utilize this style to create the ZMQ/TCP Proxy Module was to take advantage of the caching style necessary to facilitate voluminous amounts of data coming in from many potential sources (other elements within Spyder who want to make language requests). The ZMQ portion of the element provides a queue of requests so that the TCP portion can handle as fast as it can. Since ZMQ requests are so much faster than TCP, a queue within this element is necessary to cache buffered language requests as necessary.
+
+### Usage guide 
+
+The language server should already be initialized, it is an external resource.
+ Here we initialize the ZMQ/TCP Proxy Module (can be from main)
 
 
