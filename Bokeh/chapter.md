@@ -11,23 +11,23 @@
 5. [Utility Tree](#utility-tree)
 6. [Quality Attribute Scenarios](#quality-attribute-scenarios)
 7. [Module View](#module-view)  
-    * [Primary Presentation](#primary-presentation)
-    * [Element Catalog](#element-catalog)
-        * [Elements and their Properties](#m-elements)
-        * [Relations and their Properties](#m-relations)
-        * [Element Behaviour](#m-behaviour)
-    * [Context Diagram](#m-context-diagram)
-    * [Rationale](#m-rationale)
+    * Primary Presentation
+    * Element Catalog
+        * Elements and their Properties
+        * Relations and their Properties
+        * Element Behaviour
+    * Context Diagram
+    * Rationale
 8. [Component and Connector View](#component-and-connector-view)
-    * [Primary Presentation](#c-primary-presentation)
-    * [Element Catalog](#c-element-catalog)
-        * [Elements](#c-elements)
-        * [Relationships](#c-relationships)
-        * [Interfaces](#c-interfaces)
-        * [Behaviour](#c-behaviour)
-    * [Context Diagram](#c-context-diagram)
-    * [Variability Guide](#c-variability-guide)
-    * [Rationale](#c-rationale)
+    * Primary Presentation
+    * Element Catalog
+        * Elements
+        * Relationships
+        * Interfaces
+        * Behaviour
+    * Context Diagram
+    * Variability Guide
+    * Rationale
 9. [Code Quality and Technical Debt](#code-quality-and-technical-debt)
 10. [Pull Request](#pull-request)
 11. [Conclusion](#conclusion)
@@ -254,7 +254,7 @@ Bokeh interacts with external entities as shown in the diagram above. There are 
 
 To serve a Bokeh web application publicly on the internet, it is often desirable to host the Bokeh application module on an internal network with proxy connections to it through a dedicated HTTP server. This functionality is not illustrated in the above diagram, however a Bokeh application can utilize Nginx or Apache to serve this purpose. The Bokeh server architecture is also designed to be scalable, so if you need more capacity, you simply run additional servers. It may be a good idea to run all the Bokeh server instances behind a load balancer. Nginx also offers this load balancing capability.
 
-### Rationale <a name="m--rationale"></a>
+### Rationale <a name="m-rationale"></a>
 
 The system designers of Bokeh put in a lot of effort into the layout of all the system modules. Their attention to detail becomes most apparent when exploring the source code of the application and discovering the astute approached to software architecture. As stated by the Bokeh documentation, there are many modules that make up this application but the more significant and important ones are:
 
@@ -283,7 +283,7 @@ With all of this said, and additional quality attribute that greatly benefits fr
 
 ### Primary Presentation <a name="c-primary-presentation"></a>
 
-![Primary-Presentation](../images/Bokeh/m-primary-presentation.png)
+![Primary-Presentation](../images/Bokeh/cc-primary-presentation.png)
 
 ### Element Catalog <a name="m-element-catalogue"></a>
 
