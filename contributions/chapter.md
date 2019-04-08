@@ -22,3 +22,24 @@ As part of our evaluation and assessment of JSettlers2, we submitted a number of
 * Our next pull request simply involved making small changes to an assortment of methods and classes to make the code easier to read. In addition, a few of our changes were intended to slightly optimize the software. (https://github.com/jdmonin/JSettlers2/pull/55)
 * Our next pull request removed an unused method and used StringBuilder instead of StringBuffer. StringBuffer is thread-safe whereas StringBuilder is not. However, multiple threads were not accessing the StringBuffer. Therefore, there it was needless to use StringBuffer so we used StringBuilder instead. (https://github.com/jdmonin/JSettlers2/pull/59)
 * Our last pull request was relatively trivial, as we removed two unused constructors. (https://github.com/jdmonin/JSettlers2/pull/61)
+
+## Teammates
+Part of #9560
+
+The issue #9561 mentioned to use Jmeter GUI for creation of test plan. I planned to contribute on this issue and it covers the following:
+
+Basic Test Plan for JMeter GUI (.jmx file) including User defined variables, HTTP Cookie Manager, Thread group and Summary Report.
+Implemented the performance test scenarios for Admin Authentication, Adding Instructor, Loading the courses.
+Used Regular Expression Extractor for fetching the CSRF-Token and using it for generating the cookie parameter for the future web requests.
+Steps for execution:
+
+Setup JMeter on your system.
+Enable the cookies in Jmeter user.properties file in bin folder by adding "CookieManager.save.cookies=true" at the end of the file.
+Run JMeter GUI and open the jmeter_testplan.jmx file.
+Update the required parameters in the Test Plan User Defined Variables such as urlFrontend, urlBackend, portFrontend and portBackend based on your environment setup and save the test plan.
+You can also configure the user workload in Thread Group based on the requirement. By default, the test runs with one user(thread).
+To run the performance test, Jmeter GUI is not recommended as it has its own overhead. You should run the tests from the Console using the command "jmeter -n –t jmeter_testplan.jmx -l testresults.jtl".
+Things to be worked upon:
+
+More performance test scenarios are to be added based on the requirements.
+Adding Instructor scenario request gives response code 403 due to invalid CSRF token. Need some guidance for this issue to be resolved. This forbidden request does not allow us to move to load courses scenario.
