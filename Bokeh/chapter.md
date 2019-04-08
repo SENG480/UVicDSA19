@@ -1,4 +1,4 @@
-# [Bokeh]() - Documentation
+# [Bokeh](https://github.com/bokeh/bokeh) - Documentation
 
 ![Bokeh Logo](../images/Bokeh/bokeh-logo.png)
 
