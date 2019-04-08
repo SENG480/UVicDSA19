@@ -46,7 +46,7 @@ Mailpile is different from most MUAs predominantly in that its architectural par
 |------|--------|--------|
 | Acquirers | Oversee the procurement of the system or product| [Mailpile](https://www.mailpile.is/)/Co-founders(Bjarni Einarsson, Smári McCarthy, Brennan Novak) |
 | Assessors | 	Oversee the Mailpile’s conformance to standards and legal regulation |  co-founder and lead developer Bjarni Einarsson |
-| Communicators | Explain the system to other stakeholders via its documentation and training materials | Mailpile [Wiki](https://github.com/mailpile/Mailpile/wiki), Mailpile [blogs](https://www.mailpile.is/blog/) , Mailpile [Help](https://www.mailpile.is/faq/) |
+| Communicators | Explain the system to other stakeholders via its documentation and training materials | Bjarni Einarsson, Smári McCarthy, Brennan Novak |
 | Developers | Construct and deploy the system from specifications (or lead the teams that do this) | Lead developers( Bjarni Einarsson, Smári McCarthy, Brennan Novak, Alexandre Viau, Alexander Haase, Páll Hilmarsson) and over 100 Mailpile's open source community [contributors](https://github.com/mailpile/Mailpile/graphs/contributors)  |
 | Maintainers | Manage the evolution of the system once it is operational | Mailpile's opensouce community and core management team(Bjarni Einarsson, Smári McCarthy, Brennan Novak) |
 | Support Staff | Provide support to users for the product or system when it is running| Mailpile's core developer's team |
@@ -65,12 +65,12 @@ The system should be safe, easy and allow users to read, write, search and organ
 
 | Business Goal | Description |
 |------|--------|
-| Privacy | The content of the email is encrypted and only visible to the sender and receiver |
+| Privacy | Secured communication of e-mails |
 | Integrity | The messages are original (not forged or false) |
 | Delivery | Messages are delivered undamaged and within a timely manner |
-| Storage Privacy | Unauthorized 3rd parties cannot read the content of the email |
+| Storage Privacy |Secured storage of email messages at user's machine |
 | Storage Integrity | Unauthorized 3rd parties cannot modify the email |
-| Availability | Users should be able to easily and safely access the content of their email |
+| Availability | Having more relaible email client  |
 | Metadata Privacy | The only people who can know the identity of the communicators are those who are involved in the conversation  |
 | User Experience | To implement simple, safe and easy to use user interface which reduces cognitive load and risk of errors |
 | Organize | User should be able to have fast search and organize their large volume of emails. |
