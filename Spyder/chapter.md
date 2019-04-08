@@ -519,6 +519,58 @@ The \_run_cell_text function in the editor is connected to sig_run_cell signal w
 
 \_run_cell_in_ipyclient is the function in run cell text which is in the Editor stack. It calls the \_run_cell_in_ipyclient which created a chain of events creating the signal. It's an editor window and editor stack has a code window. Editor stacks have code editors. Each editor stack contains a code editor. Each code editor stack has a code editor which has a code which is known as the cell. The Cell can run, either the full code or just a part of it.
 
+![Editor Stack](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/EditorStack.PNG?raw=true)
+
+### run_cell_in_ipyclient
+
+Editor stack calls the function run_cell_in_ipyclient, it emits another signal which is the run_cell function in IPythonClient. This function is another step in the chain of commands triggered by the original GUI run cell broadcast.
+
+### run_cell_in_ipyclient
+
+This is a signal emitted by the Editor stack. Run_cell_in_ipyclient is another QTcore signal. This has a connected function and an emit function, the emit function is a qtcore function which is attached to the qtcore signal object.
+
+This is a QTCore signal which is emitted by the editor stack and run_cell_in_ipyclient function. It has a connected function and an emit function, the emit function is a QTCore function which is attached to the qtcore signal object.
+
+### plugins.plots.widgets.IPythonClient
+
+IPythonClient stands for interactive python client and is also an instantiated member of each shell widget. The IPythonClient class forms a point of communication with either internal or external kernels which execute formatted code taken from either the code editor or the shell widget code cells.
+
+### run_cell
+
+A function of the IPythonClient. Another step in passing executable code down from the initial emitted broadcast due to a GUI event that in turn will trigger the silent_execute function within IPythonClient as well.
+
+### silent_execute
+
+The result of calling IPythonClient's run_cell command also results in this function being called, taking executable code from the source of a GUI event in which a user triggers "run cel", and finally forwarding that code to either an internal or external kernel which will evaluate the code and return a result.
+
+### plugins.plots.widgets.ShellWidget
+
+The shell widget can be observed in the following diagram (figure 3) as a tab labeled (for example) as "Console 1/A", "Console 2/A" etc. This is essentially a console instance embedded within a code editor. The ShellWidget contains an instantiation of an IPythonConsole which acts as a client for communication with an internal or external kernel. For the purposes of the Component and Connector view, the ShellWidget in this use case is one of the last few endpoints of execution as a result of a Signal emit broadcast that was triggered by a user clicking a GUI option essentially attempting to run a code cell.
+
+The executable code passed down from the events prior to this will be sent to CodeWidget and which will send the executable code to the external kernel for processing and interpretation. The image below is a slightly outdated version of Spyder taken from the project website. The image shown is actually the FeatureBrowser element, now partially separated out from the ShellWidget itself.
+
+![Shell Widget](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/ShellWidget.PNG?raw=true)
+
+### External Kernal
+
+This encompasses any qualifying external modules with a kernel such as Matplotlib, Pandas or SciPy. The kernel must notify the Shellwidget and figure browser of the results of any code execution.
+
+### Notify Data Change
+
+A generalized label provided to any event which is emitted as a result of execution from an external kernel.
+
+For the purpose of this view, the data change is an event caused by the external kernel causing a notification to be made available to ShellWidget, FigureBrowser, or any other listening widgets.
+
+### figurebrowser handle_new_figure
+
+The Notify data change which we got from the ShellWidget class will be passed to this signal handler Which will emit a UI event to the spyder CodeEditor. Figure browser is the class which, and handle_new_figure is the function that deals with changes broadcasted by the internal/external kernel.
+
+### UI Event
+
+Any event which triggers the user interface of Spyder to become changed in some way. In this particular case, the UI event is caused first by a user clicking Run Cell, culminating in a series of broadcasts and functions calls, leading to the rendering of an image on the FigureBrowser
+
+
+
 
 
 
