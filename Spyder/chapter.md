@@ -678,6 +678,101 @@ A Spyder Plugin Widget Interface allows a user to input value or performs a func
 
 ### Resources Provided
 
+1. get_plugin_title(): Return plugin title.
+2. get_plugin_icon(): Return plugin icon (QIcon instance).
+3. get_focus_widget(): Return the widget to give focus to. This is applied when plugin's dockwidget is raised on top-level.
+4. closing_plugin(): Perform actions before the parent main window is closed. Return True or False whether the plugin may be closed immediately or not.
+5. refresh_plugin(): Refreshes the widget
+6. get_plugin_actions(): Return a list of QAction's related to plugin. Note: These actions will be shown in the plugins Options menu.
+7. on_first_registration(): Action to be performed on first plugin registration.
+8. register_plugin(): Register plugin in Spyder's main window.
+9. update_font(): This must be reimplemented by plugins that need to adjust their fonts.
+10. apply_plugin_settings(): What to do to apply configuration plugin settings.
+
+### Resource Syntax
+
+~~~~ 
+    def get_plugin_title(self): ...
+    def get_plugin_icon(self): ...
+    def get_focus_widget(self): ...
+    def closing_plugin(self, cancelable=False): ...
+    def refresh_plugin(self): ...
+    def get_plugin_actions(self): ...
+    def register_plugin(self): ...
+    def on_first_registration(self): ...
+    def apply_plugin_settings(self, options): ...
+    def update_font(self): ...
+    def check_compatibility(self): ...
+~~~~
+
+### Resource Semantics
+
+The resources provided by the SpyderPluginWidget interface are quite self-explanatory. Each of the required functions allows the Spyder mainwindow to initialize each plugin, and apply settings as necessary to all widgets in a similar way. In the case of the CodeEditor which contains the ShellWidget, FigureBrowser, and IPythonClient widgets, a universal interface is necessary to keep all of the instances of these objects accessible and variable in the same way. That is, changes to the Spyder IDE must be reflected in all attached modules.
+
+### Resource Usage Restrictions
+
+The only restriction is that this resource must be implemented by any plugin module to be implemented within Spyder.
+Locally defined data types
+There are no locally defined custom datatypes to mention in order to utilize this resource.
+
+### Error handling
+
+The error handling required when utilizing this resource is just typical Python try excepts. The actual error handling will differ from plugin to plugin.
+
+### Variability provided
+
+There isn't a lot of room for variability when utilizing this interface. Changing the enforced function declarations would require a developer to change every other plugin that implements the SpyderPlyginWidget interface as well. This is prohibitive due to the time required unless the interface change is quite trivial. From the extensibility and modularity perspective, this interface allows variability in other ways. However, from a core architecture standpoint, the interface explicitly prohibits variation outside of what is required.
+
+### Quality attribute characteristics
+
+This interface is directly related to many quality attribute characteristics mentioned in this project, but specifically, it facilitates the integration of a code browser, together with a console widget with internal or external kernels to execute code cells, and an image browser to view the results of such code execution should a kernel produce an image.
+
+### What the element requires
+
+The element simply requires a plugin to be implemented in the correct way, "using" the interface means implementing its enforced functions. From the perspective of both elements which use the interface, one must implement, and one must utilize. So the interface element simply requires co-operation.
+
+### Rationale and design issues
+
+As mentioned in variability, the interface is restrictive in one way, but also provides extensibility in another. This style of design certainly lends itself to easy contribution from many sources and coding styles; perfect for an open source community driven project.
+
+## Context Diagram
+Here we see a very simple context diagram which highlights how the Spyder CodeEditor communicates with outside modules in order to interpret a user action in the GUI, resulting in a signal broadcast firing off a chain of events, eventually resulting in an image rendered to the FigureBrowser attached to the CodeEditor window.
+
+![](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/m4_context_diagram.png?raw=true)
+
+## Variability Guide
+
+The publisher and subscriber model is one that could easily be replaced with a variation to achieve the same rendering result at a similar rate. In addition, it might be better-structured code as well. As previously noted, the signals and listeners style of architecture, in this case, is quite prone to unreadable code and difficult to trace bugs and errors. In terms of performance, as long as the signals connected functions are structured well, and they themselves do not cause blocking behavior, then the overall behavior of Spyder will be quite fast at rendering images as a result of code execution, given the asynchronous nature of the QTCore signal library.
+
+The rendering speed of images also heavily relies upon the kernel within which the code cell is interpreted/executed. Here we have quite a lot of flexibility in terms of what kinds of code might be run by Spyder, and at what speed. This, of course, is facilitated by the SpyderPluginWidget interface which allows different plugins and modules to be used very easily, further increasing variability.
+
+It would seem that the codebase for Spyder can be easily used on many operating systems, not aimed at a specific one. However, there are pieces which account for specific operating system requirements such as "NT" assuming that most modern Windows systems are nicknamed NT by the Spyder Developers. This actually makes sense since most popular Windows releases are in fact "NT" releases. In any case, Spyder is compatible across Windows, MacOS, and Linux. So in terms of external variability, there is no issue here.
+
+In terms of hardware variability, the rendering of complex graphs may depend on the speed of various hardware. This would depend mostly on CPU utilization, but it some cases, depending on the type of external kernel used to interpret use code, dedicated graphics hardware might come into play. There is a lot of flexibility when it comes to how Spyder will behave in various hardware, combined with whatever external kernel is used as well.
+
+## Behaviour Diagram
+
+The following diagram outlines how the Spyder IDE achieves the requirements in the QAS for the Low Latency Dataset Graphing: 
+ 
+A user wishes to graph a three-dimensional dataset at the Large Hadron Collider based on particle acceleration and collision. Since these datasets are notoriously very large, the user is skeptical that the graph will render quickly, but is happy to discover that data processing and rendering is relatively fast (H M).
+
+![behaviour graph](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/behavior_graph_image.png?raw=true)
+
+## Rationale
+
+The developers of Spyder seemed to have chosen the Publisher-Subscriber model in order to display results of code cell execution to its users. We believe that this was due in large part to the modular nature of the program; the code cells can be executed from many locations, which all emit (publish) the same signal in order to trigger functions across many co-operating modules. As more modules get added to the code codebase, triggering the execution of code cells may require the results of the execution to be available in many locations, and in an asynchronous way. A potentially large code cell may be executed, but the users of the program do not want the GUI to be blocked by synchronous execution. The publisher-subscriber model, while not a necessity for this case, turned out to be a good design decision. However, there may be complications in the future of the program due to the potential for "spaghetti" code which is part of the issue in the publisher-subscriber model. Due to the thin coupling of emitted signals and their (potentially multiple) connected functions, such a design pattern might be difficult to debug should issues arise. In addition, maintainers and future developers may have a difficult time figuring out what published emissions cause what behavior and when.
+
+Although there are some potential issues with this particular style of publisher-subscriber implementation, it would seem that the underlying model which provides the cell-execution-and-results-display (like a rendered graph), can be easily replaced by a faster or more robust implementation. Indeed, the SpyderPluginWidget interface which provides communication between Spyder and any plugin module extensions such as the CodeEditor or ShellWidget sub-module plugin might be replaced should the current model prove too complicated or result in erroneous behavior.
+
+A lower level analysis of the code which implements the run-code-to-rendered-image functionality, there seem to be issues with complexity, and poor variable naming. In many cases, there are functions named exactly the same thing which pass the formatted executable code along with a chain resulting from the initial broadcast of the GUI event (Run Cell) in question. In addition, the use of anonymous functions was utilized to trigger some events in the chain of execution as well. While we support the utilization of most features within a programming language, the use of anonymous functions is not always necessary. In this case, a combination of poor function naming and inappropriate use of a random anonymous lambda function nested within a complex chain of commands. While we acknowledge that anonymous functions should be utilized at times, at this point it seems superfluous. Looking at a specific use of this anonymous function within a narrow scope of analysis (not considering the functions in this call chain before and after it) the use seems appropriate. However, we submit that it was an inappropriate design in that one case. These issues will be discussed at more length in the next section (Milestone 5) as they appear to be examples of possible technical debt which could accumulate into confusion and poor maintainability in the future.
+
+In summary, a publisher-subscriber style of design was utilized to provide code execution resulting in asynchronous image rendering in a code browser. In addition, the highly modular nature of Spyders architecture (heavily supported by the Spyder plugin widget interface) allows for relatively simple swapping and/or maintenance of modules deemed to have issues. The argument is not that the image rendering module is a problem at this point, but it is an example of how the publisher-subscriber style of design can lead to spaghetti code when in the wrong hands.
+
+# Code Quality and Technical Debt
+
+While writing software developers must frequently make design decisions about whether to write a piece of code the right way or the fast way. Sometimes the right way and the fast way are encompassed by the same solution. However, many times the right way to implement the solution proves to be slow and difficult. These decisions have implications for the future of the project that are frequently hard to predict. This is technical debt. Some of the most important aspects of a software development project have to do with code quality and technical debt. If code quality suffers, it can directly contribute to an accumulation of technical debt in terms of the time that will be required to refactor the project in the future should the code base become unmanageable, or if the direction of the project needs to change in a significant way that would require refactoring anyway. Technical debt is partly affected by code quality, but it is also affected by design decisions along the path of development. These design decisions can, many times, have unpredictable consequences for the future of the project. This part of the report serves to highlight an analysis of both code quality and the perceived technical debt of the Spyder IDE project.
+
+## Code Quality Analysis Tools
 
 
 
