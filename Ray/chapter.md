@@ -160,31 +160,28 @@ Ray relies on object serialization to distribute necessary resources as well as 
 Ray is designed to execute massive work loads over potentially long periods of time. Faults in the system cannot be permitted to upset these processes, as the cost of lost work would be intolerable to its users.
 
 # 7. Quality Attributes 
-For Ray to satisfy the stakeholders' needs and expectations, we examine the quality attributes on this system to ensure it achieves their business goals. "Usability" and "Performance” are the two most fundamental attributes for parallelizing AI applications. Together they improve the system flexibility too. "Testability" and "Interoperability" support the goal of managing change in environmental factors. The “Modifiability” attributes achieve the goal of contributing to open source software solutions. Although these quality attributes do not cover all the business goals, they maintain the system to satisfy all the stakeholders' needs.
+For Ray to satisfy the stakeholders’ needs and expectations, the architecture design must consider specific quality attributes to ensure the system can achieve their business goals. Performance and usability were identified as the two most fundamental attributes for parallelizing AI application. Testability and Interoperability support the goal of managing change in environmental factors. Modifiability of the system is crucial to achieve the goal of contributing to open source software solutions. Although these quality attributes do not cover all the business goals, they ensure the system satisfies all the stakeholders’ needs.
 
 ### 1. Performance
-When the system is running, events such as messages, client requests from users, the system must respond to the events in an acceptable amount of time and not exceed (be tolerable to) the expectations of the stakeholders. 
-When the system generates a response to an event, the processing time for generating this response will define the performance of the system. Usually, a shorter processing time indicates better system performance, i.e. a low-latency system.
+When the system is running it must respond to events such as messages and client requests from users in an acceptable amount of time as to not exceed the expectations oft eh stakeholders. When the system generates a response to an event, the processing time for generating this response will define the performance of the system. Usually, a shorter processing time indicates better system performance, i.e. a low-latency system. Ray utilizes clustering to improve the performance of AI application by distributing the computation across a set of nodes or cores.
 
 ### 2. Modifiability
-To be modifiable, the system should be able to change. These changes can come from the functional requirements, qualities attributes, or business goals. At a systems level, these changes can be the adaptability of architecture to new challenges faced by the system. 
+The system should be structured in a modular fashion in order to allow for easier system modification. Ray is comprised of a core module containing all its base functionality along with several extended modules that allow additional behavior to be imported. This modularized structure not only ensures that users can import only the functionality they need without the bulk of unnecessary function, but also eases the effort required to modify a specific behavior. 
 
 ### 3. Usability 
 The system should provide an easy way for the user to achieve their goal. This can be achieved through proper documentation and/or user guides about the system. The learning cost for the new system should be minimized. A system is considered highly usable if users are satisfied with the ease of their interaction.
 
 ### 4. Testability
-When the developers are testing the system, the system should be able to pass the required test cases provided by general and specific testing approaches. A system with an architecture that can reduce the cost of failed testing can be considered a highly testable system.
+When the developers are testing the system, the system should be able to pass the required test cases provided by general and specific testing approaches. A system with an architecture that can reduce the cost of failed testing can be considered a highly testable system. Ray utilizes Bazel to automate and improve efficiency of testing.
 
 ### 5. Interoperability
-The system should be able to allow easy interface and exchange information with its own modules and other systems or software running on different platforms. When the system is exchanging information with other programs, it should have the ability to correctly decode and interpret the information correctly.
+The system should be able to allow easy interface and exchange information with its own modules and other systems or software running on different platforms. When the system is exchanging information with other programs, it should have the ability to correctly decode and interpret the information correctly. As Ray is a distributed system, interoperability is crucial for efficient communication between nodes of a given cluster.
 
 ### 6. Scalability
-The system should be extensible, allowing for the addition of more logic units and models. If a new logic unit is added into the system, the system should be able to run efficiently and securely with the new module and with minimal noticeable performance drawbacks. 
-
+The system should be extensible, allowing for the addition of more logic units and models. If a new logic unit is added into the system, the system should be able to run efficiently and securely with the new module and with minimal noticeable performance drawbacks. Ray’s modular structure again contributes to its scalability, allowing additional functionality to be added in the form of extended modules. 
 
 ### 7. Security
-When the system is running, it should have the capacity to protect its data and private information from hacker attacks. However, it should always ensure integrity and should provide secure access to the data and information to properly authorised individuals.  
-
+When the system is running, it should have the capacity to protect its data and private information from hacker attacks. However, it should always ensure integrity and should provide secure access to the data and information to properly authorized individuals. Ray utilizes Redis port authentication to improve system security. 
 
 ## Quality Attribute Scenarios (QAS)
 Quality attribute scenarios are used to qualitatively measure the success of an architecturally significant requirement. 
