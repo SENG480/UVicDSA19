@@ -24,6 +24,9 @@ As part of our evaluation and assessment of JSettlers2, we submitted a number of
 * Our last pull request was relatively trivial, as we removed two unused constructors. (https://github.com/jdmonin/JSettlers2/pull/61)
 
 ## Teammates
+
+[Pull Request](https://github.com/TEAMMATES/teammates/pull/9655)
+
 Part of #9560
 
 The issue #9561 mentioned to use Jmeter GUI for creation of test plan. I planned to contribute on this issue and it covers the following:
