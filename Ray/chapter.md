@@ -78,14 +78,24 @@ The Ray system was created with the goal of parallelizing AI applications in ord
 | Users |	Define the system’s functionality and ultimately make use of it | AI Application Programmers |
 
 # 4. Business Goals
-- Parallelize AI Applications
-- Improve end system performance and flexibility
-- Abstract distribution from AI Applications so the developers can focus more on the application itself
-- Reducing cost and time for end users who utilize Ray
-- Contributing to open source software solutions
-- Responsibility to society
-- Improving business processes
-- Managing change in environmental factors
+
+### Parallelize AI Applications
+Ray's primary purpose is to provide an easily utlized framework for the execution of machine learning tasks in a parallelized environent.
+
+### Improve end system performance and flexibility
+By providing on-demand scalability with Tune, Ray can increase performance and adapt to rapidly changing task demands without incurring drastically greater costs for processor time.
+
+### Abstract distribution from AI Applications so the developers can focus more on the application itself
+Ray exists so that application developers do not have to be concerned with how the details of task parallelization is handled. Ray intends to handle all the complexities of handling parallelization so that developers can focus on their own project goals.
+
+### Reducing cost and time for end users who utilize Ray
+Ray's on-demand scalability to changing task processing requirements allows it to accomodate those demands moment to moment, providing power when it is necessary, and scaling back to reduce costs when it is not.
+
+### Contributing to open source software solutions
+Ray's RLlib is built to enable open source developers to further capitalize on the parallelization opportunities Ray provides.
+
+### Managing change in environmental factors
+Machine learning is a changing landscape, and so Ray remains in development in an effort to meet the changing needs of AI application developers.
 
 --- 
 
