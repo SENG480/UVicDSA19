@@ -501,13 +501,13 @@ The list of IP addresses could be easily configured in a separate configuration 
 
 # 7.0 Pull request for Multifactor Authentication workflow diagram
 
-The figure 1 depicts to MFA workflow diagram of Home Assistant project. Home Assistant supports two-factor authentication that ensures valuable information availability only to authorized users. The diagram is important to Home Assistant new developers that want to make changes or improve the specific parts in mfa module. It can help to easily understand how mfa components are interconnected and get idea of mfa process overall. Moreover, it is helpful to all HomeAssistant community and users to be aware of workflow of mfa module cause it protects their personal data from intruders.
+Since we have examined the architecture and documented it for this past 3-4 months, we wanted to contribute to their developer documentation. Their documentation can be found [here](https://developers.home-assistant.io/) and the repository [here](https://github.com/home-assistant/developers.home-assistant). In their documentation, there was a clear `TODO` to draw a diagram for the Multi Factor Authentication Workflow. We examined the architecture of Multifactor Authentication and built a diagram of the workflow. Fig. 16 shows the workflow diagram.
 
-![alt text](https://github.com/alvi2496/UVicDSA19/blob/master/images/homeassistant/milestone_4/mfa_diagram.png "The MFA workflow diagram")
+![alt text](https://github.com/alvi2496/UVicDSA19/blob/master/images/homeassistant/milestone_7/ha_mfa_workflow.png "Multifactor Authentication Workflow")
 
-The pull request were made to HomeAssistant developer document repository. It has passed the CLA and deploy test. The figure 2 shows the process of acceptance of pull request.
+**Good news is the pull request was reviewed by the founder of Home Assistant and  accepted. He asked for the link of the image for any future work that could be needed and was very nice to thank us for contribution.**
 
-![alt text](https://github.com/alvi2496/UVicDSA19/blob/master/images/homeassistant/milestone_4/pullrequest.png "Example of pull request")
+Link of the pull request: [Multi Factor Authentication Workflow Diagram Pull Request](https://github.com/home-assistant/developers.home-assistant/pull/216)
 
 # 8.0 Conclusion
 
