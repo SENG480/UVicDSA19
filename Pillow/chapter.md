@@ -2,7 +2,7 @@
 
 This is a project our group completed at University of Victoria for the course Documenting and Understanding Software Systems. Our main goal was to provide a concise and in-depth analysis of an open-source software system to show a deeper understanding of Pillow’s architecture, implementation, and main purpose. As previously mentioned, the system we chose was Pillow, a powerful image processing tool that can be accessed as a Python library. Pillow is a friendly PIL fork by Alex Clark and many other contributors. It is written in Python and C for the purpose of giving end users a solid image processing toolset that can produce images and image manipulations very efficiently. Pillow does this by allowing extensive file format support, fast access to pixel formats data, and powerful image processing capabilities.  
 
-The following chapters show the results of our analysis of Pillow. Over the course of the semester we analyzed the existing the documentation, the GitHub repository, and Pillow’s functionality as an open source software system. For our project we analyzed stakeholders, business goals, quality attributes, architecturally significant requirements, a module view of the system, a component and connector view of the system, and the quality of code in an attempt to better document and understand this software system. 
+The following chapters show the results of our analysis of Pillow. Over the course of the semester we analyzed the existing the documentation, the GitHub repository, and Pillow’s functionality as an open source software system. For our project we analyzed stakeholders, business goals, quality attributes, architecturally significant requirements, a module view of the system, a component and connector view of the system, and the quality of code in an attempt to better document and understand this software system.
 
 ## 0.1 Group Members
 
@@ -855,3 +855,10 @@ The above image is from the Pillow documentation page. Here it just describes th
 So, we added this above code block, which shows how to blur an image using the method filter.
 
 Similarly, we have added the code documentation to seven essential functions and added as a pull request. The methods include: crop(), filter(), getbands(), getbbox(), resize(), rotate(), transpose().
+
+
+# 8.0 Project Conclusion
+
+In conclusion our team found, overall, Pillow to have a good design and good architecture, being that it is open source project. We found that the library was split into different modules that carried different functionalities within them. The library was carefully thought out to be made to work on Windows, Linux, Mac OS, and Python mobile interpreters. We were able to analyze the stakeholders and different use cases they might have and investigate whether Pillow met the expectations of these Quality Attribute Scenarios. Analyzing the code quality and technical debt, led us to find very small issues/vulnerabilities with the code, yielding to fairly low technical debt.
+
+Initially, we slightly struggled understanding the design of the project. We believe that is because Pillow is a library and not an entire application, with a front end and back end with connecting interfaces. This made it hard for us to come up with a primary presentation that would generalize the entire project. During the last part of this project, when we were asked to create a pull request to the project, we decided Pillow would best benefit from a pull request that improved their documentation. We hope that this pull request will encourage more people to get involved in this project.
