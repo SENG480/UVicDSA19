@@ -449,7 +449,75 @@ A user works on a large piece of code for an hour having saved once at the begin
 
 ### Details of Interaction (Autosave Sequence Diagram) 
 
+The manual and autosave functionality is detailed in the above sequence diagram. This diagram shows how the interactions that take place between a user, the core Spyder code (specifically the Editor), and some of the external libraries which provide GUI functionality, culminate in the eventual saving of a file; a user opens Spyder which subsequently initalizes a CodeEditor, and it's EditorStack (which is a stack of Editor widgets that represent one file each). A user must first manually save a file before it is autosaved. A user clicks one of the GUI options for saving, the Editor retrieves the stack of Editor widgets, locates the current editor (the one that the user has active), and calls the save function. The editor stack then calls it's "_write_to_file" function. This is where the actual file saving occurs. But it also triggers a number of other functions that tell the autosave timer to actually start. The autosave timer calls the exact same function, write_to_file.
 
+### Sequence Diagram for QAS2
+
+The following diagram outlines how the Spyder IDE achieves the requirements in the QAS for the IDE CodeCompletion system:
+
+A developer is writing many classes with similarly structured code, each of which will require customized tweaks based on a boilerplate style of initial design but cannot be compressed into a single class. To save time, the user presses a combination of keys to activate the code-completion feature and is able to select from a saved list of code templates (H H).
+
+![Code Completion Sequence](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/code_completion_sequence_diagram.png?raw=true)
+
+### Details of Interaction (Code Completion Sequence Diagram)
+
+This diagram highlights the sequence actions that takes place within the Spyder code base when a user opens the program, types something into a code editor, and the subsequent functional behavior that occurs and causes a code completion, syntax highlighting, or symbol definition event to take place. 
+
+When the user starts the Spyder program, the MainWindow module initializes an Editor module, which initializes a CodeEditor object as well. The CodeEditor object represents the actual window that a user types characters into. Once the CodeEditor is started, it initializes an LSPClient, which forms part of the communication triad between itself, the ZMQ messaging library, adn the LanguageServerClient. The LanguageServerClient's initalization is also shown (top right of the diagram) which, chronologically, is initalized prior to the CodeEditor. When the LanguageServerClient is started, it starts listening and forwarding threads and sockets for data to and from both the LSPClient (on the Spyder side) and an external language server that utilizes the Microsoft Language Server Protocol.Rationale
+
+### Rationale
+
+The Spyder Integrated Development Environment (Spyder) appears to have been designed with extensibility in mind. Every feature available to a developer in Spyder is implemented as a plugin. These plugins are divided in such a way that there is a clear distinction between the responsibility of each feature. There is a central module which handles initialization of all primary plugins. Any plugin that is to be made part of Spyder must implement a plugin interface so that any such plugin can be easily integrated by the central module. The benefit of dividing these plugins by functionality, but forcing them to implement an interface, is that developers do not need to concern themselves with the constraint that alteration of one plugin, or the central code, will negatively affect the behaviour of the system, so long as the set of inputs and outputs (based on the standards established by interface functions) is adhered to.
+
+Spyder also utilizes client-server architecture in order to provide services common to many development environments. Specifically, the ability to recognize syntax, code insights, and look up definitions. The client-server architecture is a software design pattern in which the server hosts, supplies, and manages most of a client's resources and services. The client-server architecture was used here specifically to maintain both modularity, in the sense that the Language Server Protocol features and functionality remain outside of the primary code base, and usability, in the form of speed due to the concurrency of an asynchronous messaging library and queue-based interface system. The modular approach allows external language clients to be switched out, as well as the interface (the ZMQ/TCP Proxy module) between the Spyder client and the language server itself.
+
+For one of our quality attribute scenarios, we highlighted the use of the ZMQ which is a high performance messaging library and Language Server Protocol (LSP) which allows the Microsoft Intellisense feature to be present in the Spyder IDE. The Spyder IDE acts as a client and communicates with an LSP server through a ZMQ/TCP proxy system. The ZMQ/TCP proxy system code is contained within the Spyder IDE codebase, but it is executed independently from the main Spyder IDE MainWindow and CodeEditor. Here we have a client-server style of communication taking place between two or more modules, but acting independently with minimal coupling due to the highly modular plugin system.
+
+Spyder is a perfect example of the benefits of modular software design. If, at some point in the future, the Spyder Development community decides to alter the code editor so that it uses a faster communication protocol, either in its ZMQ/TCP proxy, or in its LSPClient, minimal changes are required in either the central code, or any other plugins that make use of the Language Server as well. This, of course, is not limited to just the CodeEditor and the Language Server. The debugger, help system, console, linting system, and many others are all implemented using the plugin system, all of which implement the plugin interface.
+
+# Component and Connector View
+
+## Primary Presentation 
+
+![Primary Presentation M4](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/PrimaryPresentationM4.png?raw=true)
+
+## Element Catalogue
+
+### Spyder Code Edito
+
+The Spyder CodeEditor is a child to the parent module, Editor, which is more of a manager class for EditorStack objects (similar to an editor tab in your favorite IDE) which themselves contain CodeEditor objects. However, the CodeEditor's themselves utilize FigureBrowser class in order to display the results of code cells executed from within either the CodeEditor or an attached ShellWidget.
+
+### plugins.editor.Editor
+
+The plugins.editor.Editor registers the signal at the start of the event causing a chain reaction. The editor registers sig_run_cell as well as the _run_cell_in_ipyclient signals making a connection with them.
+
+### plugins.plots.Plots
+
+This class binds the ShellWidget to the figurebrowser class, because of this, whenever the ShellWidget notifies the figurebrowser about the data change, the figurebrowser class automatically display that change.
+
+### Run Cell (GUI event)
+
+"Run Cell" is the GUI event which gets called whenever the user clicks on the run cell button which is present in the UI, presses the F5 key, or clicks the context menu item "Run Cell" in order to execute the written code. The result of this event is that a signal object emits (publishes) an event to its connected functions, triggering a chain of events eventually culminating in the render and display of a graph from the internal/external kernel should an image result from that execution.
+
+### sig_run_cell
+
+This is a QTCore Signal object which is initialized during registration of a CodeEditor object which is initialized by an EditorStack parent class, which in turn is managed and initialized by a parent Editor object. The Editor object, during initial program startup, causes the sig_run_cell signal object to become connected to functions which trigger a series of other signals (emits/publishing actions) to eventually execute a code cell.
+
+### QTCore emit
+
+Emit is a function of the QTCore package which broadcasts a signal to any functions connected to it. The connected functions listen (subscribe) to incoming signals and become activated when a signal emit is heard.
+
+### QTCore Signal
+
+QtCore.Signal() is a resource provided by the QTCore signaling interface which facilitates asynchronous communication between thinly connected signals and functions. Such functions may be anonymous, and many such functions can be connected to one signal object. For example, one such signal handler is a QTcore signal object which is connected to the Signal emit function \_run_cell_text. Every signal may be attached to a connected function run_cell_copde, and there can be multiple connected functions acting as multiple listeners. This particular one is calling a function run cell.
+
+### \_run_cell_text
+
+The \_run_cell_text function in the editor is connected to sig_run_cell signal within the editor stack. This function is a chain of function calls formatting the code into an executable format.
+
+### plugins.editor.widgets.EditorStack
+
+\_run_cell_in_ipyclient is the function in run cell text which is in the Editor stack. It calls the \_run_cell_in_ipyclient which created a chain of events creating the signal. It's an editor window and editor stack has a code window. Editor stacks have code editors. Each editor stack contains a code editor. Each code editor stack has a code editor which has a code which is known as the cell. The Cell can run, either the full code or just a part of it.
 
 
 
