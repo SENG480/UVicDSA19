@@ -415,7 +415,7 @@ Data Transfer interface is another important interface used by Teammates storage
 
     **c. Error Handling:** The resource performs the validity checks on parameter values. The null value exceptions are handled.  
 
-3. Data Types: The data types of the variables are as follow:
+3. Data Types: The data types of the variables are as follows: <br>
     a. courseId: String  
     b. courseName: String  
     c. timezone: ZoneId  
