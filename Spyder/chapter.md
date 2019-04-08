@@ -334,5 +334,123 @@ For this section, the rationale should explain the motivation behind the design.
 
 The language server should already be initialized, it is an external resource.
  Here we initialize the ZMQ/TCP Proxy Module (can be from main)
+ 
+ ~~~~ client = LanguageServerClient(host=args.server_host,
+                                  port=args.server_port,
+                                  workspace=args.folder,
+                                  zmq_in_port=args.zmq_in_port,
+                                  zmq_out_port=args.zmq_out_port,
+                                  use_external_server=args.external_server,
+                                  server=args.server,
+                                  server_args=unknownargs)
+    client.start()
+    try:
+        while True:
+            client.listen()
+    except TerminateSignal:
+        pass
+    client.stop() 
+~~~~
+
+Calls to the ZMQ/TCP Proxy Module can be made like:
+
+~~~~ msg = {
+            'id': self.request_seq,
+            'method': method,
+            'params': params
+        }
+        if requires_response:
+            self.req_status[self.request_seq] = method
+
+        logger.debug('{} request: {}'.format(self.language, method))
+        self.zmq_out_socket.send_pyobj(msg)
+~~~~
+
+### Element Interface
+
+![Interface 2](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/interface2.png?raw=true)
+
+An interface is a boundary across which two independent entities meet and interact or communicate with each other.
+
+### Interface Identity 
+
+EditorStack is the module which facilitates communication between Spyder and the host machine. Specifically, writing to a file and receiving a success or error code.
+
+### Resources Provided
+
+A python object which contains data to be written to a file, or a code which indicates success or failure to Spyder.
+
+### Resource Syntax
+
+self._write_to_file(finfo, finfo.filename)
+
+### Resource Semantics
+
+1. finfo contains the actual information which is to be written to the filesystem. Filename contains the metadata that will be contained in the file written out.
+2. The response code from the operating system from which the file is written will be interpreted by Python as a success or failure depending on the code received, and an exception will be thrown as appropriate.
+
+### Resource Usage Restrictions
+
+This section defines the circumstances under which the resource may be used. From the client portion (Spyder) there must exist changes to a file that can be written to the file system. For the second client to use the resource it simply has to be running (Spyder) and it has to have been preceded by a file write request in order to make a request to the Spyder program.
+
+### Locally defined data types
+
+Spyder fileinfo (which contains python objects and metadata) is the only locally defined datatype required for this interface.
+
+### Error handling
+
+Errors are handled by Python try-except. Attempting to write to a file that cannot be opened by the second client (the host machine) will result in the return of the requisite error code which will trigger an exception in Python, handled as an EnvironmentError.
+
+### Variability provided
+
+This section highlights how the interface may allow the element to be configured in some way. There is no specific variability to the file to be written out except for the contents in the python byte object, and the filename which will be created or written to by the host machine.
+
+### Quality attribute characteristics
+
+The architect needs to document what quality attribute characteristics the interface makes known to the element’s users. Autosaving was deemed to be an important feature for the Spyder IDE. Aside from the _write_to_file function, there is nothing else made apparent to the elements users.
+
+### What the element requires
+
+This element requires data from the file to be written to, which include changes byte data that reflects changes made to the file in the Editor stack, a file name (and other metadata) and it needs a response code from the host machine.
+
+### Rationale and design issues
+
+The design of this interface seems to be a standard design pattern for writing to and receiving responses from host machines as necessary. There aren't many design issues to consider other than how the interface handles errors from both clients ends. For example, if an illegal filename is provided, or how to handle not enough memory errors (on disk). The Spyder interface, EditorStack, surrounds its actions with try except and shows a dialog to the end user should an error occur, indicating what the problem was. or the host machine (the secondary client) there are no design issues to consider aside from how the interface is designed to write data, which is controlled via system API dependent on the host machine.
+
+### Usage guide
+
+~~~~ try:
+            self._write_to_file(finfo, finfo.filename)
+            ...
+        except EnvironmentError as error:
+            self.msgbox = QMessageBox(
+                    QMessageBox.Critical,
+                    _("Save Error"),
+                    _("<b>Unable to save file '%s'</b>"
+                      "<br><br>Error message:<br>%s"
+                      ) % (osp.basename(finfo.filename),
+                                        str(error)),
+                    parent=self)
+~~~~
+
+### Context Diagram
+
+This view shows how the Spyder IDE interacts with its external environment. Note the external libraries that are optional, but could be imported by a Spyder user to add plotting functionality. In addition, Spyder utilizes both ascii based file input and output, as well as the popular HDF5 file format more suited to large numerical datasets. We also show the interaction with Spyder and it's end users, as well as Jupyter console input and output. Finally, this view highlights how Spyder meets one of the QAS where a user has access to Code Completion behavior in the Spyder editor window, and how this feature is facilitated by an external highspeed ZMQ messaging system as a proxy to an external Language Server via TCP.
+
+![Context Diagram](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/context_diagram.png?raw=true) 
+
+### Sequence Diagram for QAS1 
+
+The following diagram outlines how the Spyder IDE achieves the requirements in the QAS for the IDE autosaving system:
+
+A user works on a large piece of code for an hour having saved once at the beginning, the power goes out and the user attempts to recover lost work. The user finds that 98% of their code is still available due to the automatic backup system (H L).
+
+![Autosave Sequence Diagram](https://github.com/Zhend/UVicDSA19/blob/master/images/Spyder/autosave_sequence_diagram.png?raw=true)
+
+### Details of Interaction (Autosave Sequence Diagram) 
+
+
+
+
 
 
