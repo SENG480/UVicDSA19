@@ -1,5 +1,9 @@
 # 0. Introduction
 
+This is a project our group completed at University of Victoria for the course Documenting and Understanding Software Systems. Our main goal was to provide a concise and in-depth analysis of an open-source software system to show a deeper understanding of Pillow’s architecture, implementation, and main purpose. As previously mentioned, the system we chose was Pillow, a powerful image processing tool that can be accessed as a Python library. Pillow is a friendly PIL fork by Alex Clark and many other contributors. It is written in Python and C for the purpose of giving end users a solid image processing toolset that can produce images and image manipulations very efficiently. Pillow does this by allowing extensive file format support, fast access to pixel formats data, and powerful image processing capabilities.  
+
+The following chapters show the results of our analysis of Pillow. Over the course of the semester we analyzed the existing the documentation, the GitHub repository, and Pillow’s functionality as an open source software system. For our project we analyzed stakeholders, business goals, quality attributes, architecturally significant requirements, a module view of the system, a component and connector view of the system, and the quality of code in an attempt to better document and understand this software system. 
+
 ## 0.1 Group Members
 
 1. Cameron Zarubiak
