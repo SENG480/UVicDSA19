@@ -31,7 +31,7 @@ As shown in [this image](../images/Terraform/PullRequest/01-state.png), when app
 
 ### Pull Request 
 
-Our pull request consists of a first step towards the achievement of secure sensitive data in the local state. For this, we added new modules for encrypting and decrypting values in the JSON file that contains the configuration properties of the resources being managed. Moreover, using the knowledge acquired while understanding and documenting the project, we identified the Terraform [module](https://github.com/hashicorp/terraform/blob/master/states/statefile/version4.go) in charge of serializing and deserializing the JSON file containing the state, and integrate it with our encryption and decryption functions. In this way, we were able to provide a secure mechanism for storing values in a local state.
+Our [pull request](https://github.com/hashicorp/terraform/pull/20962) consists of a first step towards the achievement of secure sensitive data in the local state. For this, we added new modules for encrypting and decrypting values in the JSON file that contains the configuration properties of the resources being managed. Moreover, using the knowledge acquired while understanding and documenting the project, we identified the Terraform [module](https://github.com/hashicorp/terraform/blob/master/states/statefile/version4.go) in charge of serializing and deserializing the JSON file containing the state, and integrate it with our encryption and decryption functions. In this way, we were able to provide a secure mechanism for storing values in a local state.
 
 ### Validation
 
