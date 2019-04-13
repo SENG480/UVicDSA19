@@ -49,6 +49,18 @@ As part of our evaluation and assessment of JSettlers2, we submitted a number of
 * Our next pull request removed an unused method and used StringBuilder instead of StringBuffer. StringBuffer is thread-safe whereas StringBuilder is not. However, multiple threads were not accessing the StringBuffer. Therefore, there it was needless to use StringBuffer so we used StringBuilder instead. (https://github.com/jdmonin/JSettlers2/pull/59)
 * Our last pull request was relatively trivial, as we removed two unused constructors. (https://github.com/jdmonin/JSettlers2/pull/61)
 
+## Spyder
+
+https://github.com/spyder-ide/spyder/pull/9109 
+
+This pull requests adds a GUI feature to the Spyder IDE. Since the Spyder IDE is primarily feature based, it is assumed that a utility based feature that contributes to the overall functionality of the application is welcome. The utility feature added was a menu item that performs a lexographical sorting of the tabs of the main Editor window of Spyder. Most developers have experienced a time during the use of an IDE where multiple open tabs can become overwhelming and disorganized. By sorting the tabs by filename, navigation of these tabs becomes easier since the feature facilitates visual searching (or manual tabbing over) by lexographical order.
+
+The feature sorts the tabs and maintains their file contents, and does not change file focus. For example, if a user is looking at file A.txt, and does a sort, the position of A.txt's tab may change, but the file remains open, its contents are still in view, and the tab remains selected.
+
+https://github.com/SENG480/project-team-1/blob/master/images_m7/sort_tabs_1.PNG 
+
+https://github.com/SENG480/project-team-1/blob/master/images_m7/sort_tabs_2.PNG
+
 ## Mailpile
 
 [Pull Request](https://github.com/mailpile/Mailpile/pull/2215)
@@ -73,3 +85,4 @@ This pull request focuses on the development of a Performance Test Plan for Team
 Link to PR: https://github.com/bokeh/bokeh/pull/8823
 
 This PR adds a new subclass for generalized "indicators" to be incorported in a Bokeh plot "document" (and subsequently serialized for syncronization between client and server). Indicators can be useful for a variety of reasons, but with this PR we illustrate their use in showing the connection status between a bokeh plot and a bokeh server - these can help to lighten the learning curve when working with websockets and/or bokeh server.
+
