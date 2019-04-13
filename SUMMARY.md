@@ -12,4 +12,4 @@
 * [Spyder](Spyder/chapter.md)
 * [Teammates](Teammates/chapter.md)
 * [Terraform](Terraform/chapter.md)
-*  [Contributions](contrib.md)
+* [Contributions](contributions/chapter.md)
