@@ -2,6 +2,32 @@
 
 This chapter outlines some of the contributions---in the form of pull requests---made by several teams to their open source project.
 
+## Pillow:
+
+The pull request is available at this link:
+
+https://github.com/python-pillow/Pillow/pull/3776
+
+![](../images/Pillow/pull_req.png)
+
+### 1. Problem Description:
+
+On the Pillow documentation page, the authors provide only a small description of how different methods work. But for many functions, it is not clear how to use them properly. And there are many issues related to it in the Pillow GitHub repository.
+
+
+### 2. Proposed Solution:
+We have taken seven essential and most commonly used functions and provided some examples with helpful comments on explaining how to use that particular method properly. As an example, we have attached a small picture below.
+
+![](../images/Pillow/filter_doc.png)
+
+The above image is from the Pillow documentation page. Here it just describes that the method is used to filter an image. It would be helpful to users if they could provide an example of how to use it.
+
+![](../images/Pillow/filter_doc_example.png)
+
+So, we added this above code block, which shows how to blur an image using the method filter.
+
+Similarly, we have added the code documentation to seven essential functions and added as a pull request. The methods include: crop(), filter(), getbands(), getbbox(), resize(), rotate(), transpose().
+
 
 ## IPython
 
@@ -34,3 +60,29 @@ The feature sorts the tabs and maintains their file contents, and does not chang
 https://github.com/SENG480/project-team-1/blob/master/images_m7/sort_tabs_1.PNG 
 
 https://github.com/SENG480/project-team-1/blob/master/images_m7/sort_tabs_2.PNG
+
+## Mailpile
+
+[Pull Request](https://github.com/mailpile/Mailpile/pull/2215)
+
+Nowadays, there are many sites like google drive, dropbox, onedrive, etc, which allows to create, edit and save the document online. Users can share these online file using URLs. Mailpile being a morder e-mail client, should be able to send URLs of these files as attachement instead of sending the actual file. We found this [issue](https://github.com/mailpile/Mailpile/issues/2204) in Mailpile's github issue tracker raised by Mailpile's lead developer Mr. Bjarni Rúnar Einarsson. He created a list [list of tasks](https://github.com/mailpile/Mailpile/issues/2204#issue-403099577) to be completed to implement this feature .Initial two tasks were already completed in a commit. However, there are still other tasks that needs to be completed.
+
+In our pull request, we have completed some tasks to implement beforementioned feature as follows.
+1. We have extended `read_email` function in `mailpile/search.py` to scan and find any valid URL present in the email text. For this we have used a regular expression to identify any valid URL within the text. Once the URL is idetified, it is being added to the `att_urls` list which contains attachement URLs.
+2. We have created a large list of regular expresssions of trusted URLs of common file sharing sites like dropbox, google drive, etc.
+3. We added the list created in second task to default list of attachement URLs in the session configurations. 
+
+## Teammates
+
+[Pull Request](https://github.com/TEAMMATES/teammates/pull/9655)
+
+This pull request focuses on the development of a Performance Test Plan for Teammates using JMeter tool. There has been no contribution yet for the measurement of the performance scenarios and we found it as an open issue in Teammates issue tracker. Hence, we planned to contribute to it. Our contribution includes the following:
+* Basic Test Plan for JMeter GUI (.jmx file) including User defined variables, HTTP Cookie Manager, Thread group and Summary Report.
+* Implemented the performance test scenarios for Admin Authentication, Adding Instructor, Loading the courses.
+* Used Regular Expression Extractor for fetching the CSRF-Token and using it for generating the cookie parameter for the future web requests.
+
+## Bokeh
+Link to PR: https://github.com/bokeh/bokeh/pull/8823
+
+This PR adds a new subclass for generalized "indicators" to be incorported in a Bokeh plot "document" (and subsequently serialized for syncronization between client and server). Indicators can be useful for a variety of reasons, but with this PR we illustrate their use in showing the connection status between a bokeh plot and a bokeh server - these can help to lighten the learning curve when working with websockets and/or bokeh server.
+
