@@ -23,6 +23,7 @@ As part of our evaluation and assessment of JSettlers2, we submitted a number of
 * Our next pull request removed an unused method and used StringBuilder instead of StringBuffer. StringBuffer is thread-safe whereas StringBuilder is not. However, multiple threads were not accessing the StringBuffer. Therefore, there it was needless to use StringBuffer so we used StringBuilder instead. (https://github.com/jdmonin/JSettlers2/pull/59)
 * Our last pull request was relatively trivial, as we removed two unused constructors. (https://github.com/jdmonin/JSettlers2/pull/61)
 
+
 ## Teammates
 
 [Pull Request](https://github.com/TEAMMATES/teammates/pull/9655)
@@ -31,3 +32,10 @@ This pull request focuses on the development of a Performance Test Plan for Team
 * Basic Test Plan for JMeter GUI (.jmx file) including User defined variables, HTTP Cookie Manager, Thread group and Summary Report.
 * Implemented the performance test scenarios for Admin Authentication, Adding Instructor, Loading the courses.
 * Used Regular Expression Extractor for fetching the CSRF-Token and using it for generating the cookie parameter for the future web requests.
+
+
+## Bokeh
+Link to PR: https://github.com/bokeh/bokeh/pull/8823
+
+This PR adds a new subclass for generalized "indicators" to be incorported in a Bokeh plot "document" (and subsequently serialized for syncronization between client and server). Indicators can be useful for a variety of reasons, but with this PR we illustrate their use in showing the connection status between a bokeh plot and a bokeh server - these can help to lighten the learning curve when working with websockets and/or bokeh server.
+
