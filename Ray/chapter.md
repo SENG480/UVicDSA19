@@ -40,7 +40,6 @@
 | David Toole |
 | Devin Hewett | 
 | Hannah Raju | 
-| Kun Ye (Dropped Feb, 28) |
 
 --- 
 
