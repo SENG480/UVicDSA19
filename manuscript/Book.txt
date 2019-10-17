@@ -1,1 +1,12 @@
+intro2019.md
 HomeAssistant/chapter.md
+IPython/chapter.md
+JSettlers/chapter.md
+Mailpile/chapter.md
+Pillow/chapter.md
+Quake3/chapter.md
+Ray/chapter.md
+Spyder/chapter.md
+Teammates/chapter.md
+Terraform/chapter.md
+contributions/chapter.md
