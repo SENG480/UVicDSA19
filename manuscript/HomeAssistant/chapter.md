@@ -1,23 +1,23 @@
-![alt text](images/HomeAssistant/logo/logo.png)
- 
- 
-     Kathy Do, Nicholas Francis, Alvi Mahadi, Aigerim Mashkanova
-# 1.0 Introduction
+-# HomeBrew
+ Kathy Do, Nicholas Francis, Alvi Mahadi, Aigerim Mashkanova
 
-## 1.1 Purpose
-This is Team 11's final project in partial fulfillment of Spring 2019 SENG480A class at the University of Victoria. The purpose of which was to analyze the software architecture of an open source project on GitHub: outlining their stakeholders and business goals, determining their architecturally significant requirments and relevent quality attribute scenarios, developing a module and component and connector view for their architecture based on paramount QAS, conducting a software quality and technical deby analysis. All of which is shown in this document.  
+# Introduction
+![Homebrew](images/HomeAssistant/logo/logo.png)
+ 
+##  Purpose
+This is Team 11's final project in partial fulfillment of Spring 2019 SENG480A class at the University of Victoria. The purpose of which was to analyze the software architecture of an open source project on GitHub: outlining their stakeholders and business goals, determining their architecturally significant requirements and relevant quality attribute scenarios, developing a module and component and connector view for their architecture based on paramount QAS, conducting a software quality and technical debt analysis. All of which is shown in this document.  
 
-## 1.2 About Home Assistant
+## About Home Assistant
 Home Assistant, when deployed on your home network using a home server or raspberry pi, can be used to monitor, control and automate (ie. create routines for) all the electronic “smart” devices in your home. These range from climate control and home security devices to coffee makers and light switches. Home Assistant integrates the control of all these devices into one clean User Interface.
 
-## 1.3 Our Team
+## Our Team
 Our team consists of four University of Victoria students. We all share a passion for software and more specifically, things written in python. Our Grad Students: Alvi Mahadi and Aigerim Mashkanova. Our Bachelor Students: Kathy Do and Nicholas Francis.
 
 
-# 2.0 Business Orientation
-To get a sense of the audience for the architectual documentation we were to create for Home Assistant, we did an analysis on their stakeholders and business goals. The results of this analysis are presented in this section.
+#  Business Orientation
+To get a sense of the audience for the architectural documentation we were to create for Home Assistant, we did an analysis on their stakeholders and business goals. The results of this analysis are presented in this section.
 
-## 2.1 Stakeholders
+## Stakeholders
 Table 1. Stakeholders of Home Assistant
 
 | Role | Concerns | Instances |
@@ -34,7 +34,7 @@ Table 1. Stakeholders of Home Assistant
 | Testers |	Test the system to ensure that it is suitable for use | **See developers.** Developers of the system are required to conduct unit tests on code as written in their [docs](https://developers.home-assistant.io/docs/en/development_testing.html). |
 | Users |	Define the system’s functionality and ultimately make use of it | Home owners who wish to implement smart technology into their homes. Hobbyists interested in smart technology. Commercial businesses that want to automate specific business processes. |
 
-## 2.2 Business Goals
+## Business Goals
 Business goals involve the business prospects of a project. The following topics can well be the business prospect of Home Assistant. 
 ### Privacy 
 One of the main goals of home assistant is to make the user data private and secure. The lead developer of this project started this project with the aim of keeping the user data private. All the user data will be stored locally.
@@ -51,10 +51,10 @@ Home Assistant has partnerships with several Hardware Manufacturers, Software De
 3. The system is developed using a modular approach so that support for other devices and operations can be implemented easily. The Home-Assistant author and lead developers always invite and welcome other developers to contribute to this project. This is a strategy to have more devices covered and more functionality implemented to have more users. This fulfills one of their primary goals of having a vast number of users to expand their business. 
 4. The developers are trying to make it more accessible to a vast number of users by various platform integrations such as [Mozilla’s Web Things API](https://iot.mozilla.org/wot/) to make it easier to interact with other home automation platforms. The introduced device management makes it perfectly aligned with the Web Things data model.
 
-# 3.0 Architecturally Significant Requirement (ASR) Analysis
+# Architecturally Significant Requirement (ASR) Analysis
 Utilizing the results from our analysis of their business orientation, we then isolated the key quality attributes that are yielded from the architecture of Home Assistant. Using the attributes, we then came up with a list of ten architectually significant requirments.
 
-## 3.1 Listing of ASRs
+## Listing of ASRs
 By the definition, "An architecturally significant requirement (ASR) is a requirement that will have a profound effect on the architecture that is, the architecture might well be dramatically different in the absence of such a requirement." We've attempted to ascertain these requirements by going through Home Assistants's documentation and online blogs, as well as developer discussions in forums and various channels. Using the infomation we gathered, we identified several Quality Attribute Scenarios (QAS) for our project. An analysis of our QASs resulted in the following ASRs.
 1. The system must have two factor authentication to prevent malicious access.
 2. The system requires an SSL certificate when the user wants to operate from online to secure the connection.
@@ -67,7 +67,7 @@ By the definition, "An architecturally significant requirement (ASR) is a requir
 9. The system allows a user to learn how to use a feature using their intuition in under 2 minutes
 10. The system logs system events for monitoring.
 
-## 3.2 Quality Attribute Scenarios (QAS)
+## Quality Attribute Scenarios (QAS)
 This section first outlines three QAS that our team felt most significant to Home Assistants architecture, then goes on to describe five additional QAS that are largely significant, but runners up to the three templated. 
 
 ### Authentication
@@ -124,20 +124,20 @@ The system should be available all the time to the user as it is going to be dep
 ### Exchange of information
 The system must have an easy way to exchange information with other systems to ensure interoperability. Interoperability is one of the most important business goals of the system and this easy data exchange mechanism should be built into the system.
 
-## 3.2 Utility Tree
+## Utility Tree
 Shown below in Figure. 1 is the Utility Tree we made to model our QAS's. Each QAS is ranked on technical difficulty and business priority as per the legend of the figure.
 
 ![alt text](images/HomeAssistant/milestone_2/utility_tree_new.png)
 Figure. 1: Utility Tree for QAS Analysis
-# 4.0 Module View
-## 4.1 Primary Presentation
+#  Module View
+## Primary Presentation
 Immediately below this prelude resides our primary presentation for the module view of Home Assistant's auth module. This view uses combination of view styles allows our primary presentation to show the integral elements of the auth module while indicating the inheritance and dependency relationships between them. It's essentially a class diagram that depicts "isa" relationships and internal dependencies.
 
-![alt text](images/HomeAssistant/milestone_3/primarypresentation.png "Primary Presentation")
+!["Primary Presentation"](images/HomeAssistant/milestone_3/primarypresentation.png)
 
 Figure. 2: Primary Presentation of Module View for Auth Module
 
-## 4.2 Element Catalog
+## Element Catalog
 1. Authentication Storage: Storage for auth models. 
    * AuthStore: Stores authentication info. Any mutation to an object should happen inside the auth store. 
    * System Admin Group: Creates system admin group.
@@ -194,26 +194,26 @@ Figure. 2: Primary Presentation of Module View for Auth Module
    * Generate Secret: Generate a secret from secrets.token_hex from python 3.6. 
    
 
-## 4.3 Context Diagram
+## Context Diagram
 From the definition of the textbook, a context diagram "shows how the system or portion of the system relates to its environment". We have shown the primary presentation of the Authentication System of Home Assistant which is a part of the Security QAS. In the context diagram below we have shown the scope and interaction of the Authentication System with respect to the other internal and external entities of Home Assistant.
 
 ![alt text](images/HomeAssistant/milestone_3/context%20diagram.png)
 
 Figure. 3: Context Diagram of Module View for Auth Module
 
-## 4.4 Behaviour Diagram
+## Behaviour Diagram
 The following behaviour diagram is a trace-based diagram that demonstrates the pattern of interaction between objects, and the sequence of actions involved in authenticating a user’s login to the system. The sequence diagram below takes a single trip through the authorization process, starting from the user logging into the client website, and the subsequent actions between the client and Home Assistant. After the client authorizes the URL, the user is redirected to ``redirect_url`` where the Home Assistant authorization provider then returns an authorization code to the client. The client then requests and receives JSON tokens from the Home Assistant authorization provider through HTTP POST requests.
 
 ![alt text](images/HomeAssistant/milestone_3/Behaviour%20Diagram.png "Behaviour Diagram")
 
 Figure. 4: Behavior Diagram of Module View for Auth Module
 
-## 4.5 Rationale
+## Rationale
 The Home Assistant security authentication module, ``auth``, is organized under three sub modules: ``mfa_modules``, ``permissions``, and ``providers``. The QAS we identified that is closely associated to this primary presentation deals with authentication. The QAS tests whether the system has authentication implemented with the response measure being the system allowing or blocking access to the user. In the auth main module, we can see that there is standard authentication implemented in the ``permissions`` and ``providers`` modules. The ``permissions`` module describes the user privileges and system policies for the user on a task level. The ``providers`` module describes the third party authentication providers and trusted network configurations. The ``mfa_modules`` module contains the implementation of pluggable multifactor authentication modules. A possible reason for why the designers organized the authentication system to utilize a third party authentication provider is to add a layer of security for the user’s sensitive information. Since the user is usually hosting their own home assistant system locally, there would be greater risk for the user if they were storing their own credentials. Handing off the authentication to a third party provider takes some responsibility off of the client in case of an external attempt to compromise sensitive data. The standard authentication implemented by the ``permissions`` and ``providers`` modules is further extended by the mfa_modules module that adds an extra layer of authentication that could allow or block access to a user.
 
 Another one of our QAS that we described previously was the ability to integrate an additional module which pertains to the modifiability of the architecture.  The authentication implementation follows an object oriented approach which provides a modular structure for the system. There is a benefit from using object oriented programming concepts of how objects can be reused within and across applications. This reuse of objects makes the software easier to maintain and enables faster development. More effort has been put into object oriented design and analysis, which lowers the cost of development. We can see the benefits of this modularity if we take the example of adding a new multifactor authentication module. Currently, in home assistant’s ``mfa_modules`` implementation, there are two different multifactor authentication schemes: Time Based One-time Password (TOTP) and HMAC-based One-time Password. The organization of the system modules by ``auth`` and then ``mfa_modules`` makes the multifactor authentication modules easy to identify and analyze. A reason for having the modules organized in this way keeps each functionality isolated from each other, so that one can navigate easily to the code that relates to the the new module to see how the additional module can fit. To add and integrate an additional module could then be added and there should not be severe side effects to the rest of the system. In our primary presentation diagram, we can see the dependencies of the authentication modules have no long chains of dependencies, neither are there any circular dependencies. As a result of this, a developer can quickly analyze the code structure to integrate an additional multifactor authentication module under ``mfa_modules`` quite easily.
 
-## 4.6 Interface
+## Interface
 Table. 5: Interface #1 for Module View
 
 Interface Identity: Authentication Service
@@ -306,16 +306,16 @@ The multifactor authentication interface is designed in a way that the user can 
 **Usage Guide**:<br/>
 Multi factor authentication module gives users the ability to secure their accounts, by linking their login and password for home assistant to any Authenticator App. After enabling mfa module, the qr code is generated automatically by home assistant. Then with the help of Google Authenticator, from qr code, the 6-digit number is generated and must be inserted as an mfa code. Afterwards, the mfa module will be enabled for the user. 
 
-# 5.0 Component and Connector (C&C) View 
+# Component and Connector (C&C) View 
 
-## 5.1 Primary Presentation
+## Primary Presentation
 
 Component and Connector view is one fundamental view of the software architecture where component is a unit of behaviour that defines what the component can do and what it requires to do that job. Connector on the other hand is an indication that there is a mechanism that relates one component to another usually shown through relationships such as data flow or control flow. We are taking **Event logging** capability of Home Assistant that defines the reliability of the system. We have choosen Pipe and Filter to explain the **System Log** of Home Assistant that achieves this functionality.
 
 ![alt text](images/HomeAssistant/milestone_4/c%26c.png "Component and Connector View")
 Figure. 5: Primary Presentation of Component & Connector View for System Log
 
-## 5.2 Element Catalog
+## Element Catalog
 1. System Log: The `system_log` component stores information about all logged errors and warnings in Home Assistant. 
    * **Services:** The configuration for the system log. This configuration provides the clear and read mechanisms. Also it provides the log structure such as the description, message, level(debug, info, warning, error critical) and the logger name under which to log the message. This is set default to `system_log.external`.
    * **Logger Component:** The interaface to set up the logger components. This component performs tasks like handling the logger services and removing logging handler when Home Assistant is shut down.
@@ -326,7 +326,7 @@ Figure. 5: Primary Presentation of Component & Connector View for System Log
 2. BootStrap: This component is used to provide methods to bootstrap a Home Assistant instance. This component gets all the logging information from the `logger` library and the logging system is invoked everytime when there is some exception regarding trying to configure Home Assistant from a configuration dictionary to initialize, install or start any component of the system.
 3. FrontEnd: This component handles the frontend for Home Assistant. Every component and event of the system is linked to this component such as Panel, Registration etc. Every event is logged as `info` and `warnings` and exceptions are logged as `error` or `critical`. The debug mode is logged as `debug`.
 
-## 5.3 Context Diagram
+## Context Diagram
 
 The context diagram below outlines the System Log component and it's scope of interaction with internal and external entities of Home Assistant.
 
@@ -335,7 +335,7 @@ The context diagram below outlines the System Log component and it's scope of in
 Figure. 6: Context Diagram of Component & Connector View for System Log
 
 
-## 5.4 Behaviour Diagram
+## Behaviour Diagram
 
 The UML state diagram below models the states of the Home Assistant system and its event logging behaviour. In a UML state diagram, each entity or each of sub-entities is always in exactly one of a number of possible states. There are well defined conditional transitions between the states. Many software systems are event-driven, which means that they continuously wait for the occurrence of some external or internal even. In our case, the arrival of an event data packet is the event that triggers the system_log module. After recognizing the event, such systems react by performing the appropriate computation that may include manipulating the hardware or generating “soft” events that trigger other internal software components. We model the ``system_log`` “soft” events within a composite state that expands upon the log processing state into substates.
 
@@ -343,11 +343,11 @@ The UML state diagram below models the states of the Home Assistant system and i
 
 Figure. 7: Behavior of Component & Connector View for System Log
 
-## 5.5 Variability Guide
+## Variability Guide
 
 In the above C&C view of the Home Assistant event logging system, the architecture in the view shown will not change dramatically due to optional components, selection of different implementations of an element, nor replication of components and connectors. Being that the event logging system is self contained and contains all of the functionality needed for this task, there is no functional need for additional variability mechanisms. One optional component that was identified was NetDisco, a web based network management tool which discovers local devices devices and services. The method ``figure_out_source`` in the ``system_log`` init file checks to see if NetDisco was installed and if so, imports the NetDisco path to use. The main variability in the system that can be changed is the configuration file that the user may modify. Several fields in the configuration can be modified, one main field being ``CONF_MAX_ENTRIES`` which defines the maximum number of log entries that can be stored in the buffer.
 
-## 5.6 Interface
+## Interface
 Table. 7: Interface for C&C View
 
 | Elements | Description | 
@@ -361,11 +361,11 @@ Table. 7: Interface for C&C View
 | Usage Guide        | The LogInterface gives the user’s ability to easily see and configure the log files. Examples of the log events can also be found in Home Assistant log file (home-assistant.log). An example of the log file: ![alt text](images/HomeAssistant/milestone_4/system_log_event.png "Interface") |
 
 
-# 6.0 Code Quality & Technical Debt Analysis
+# Code Quality & Technical Debt Analysis
 
 Herein resides a report on our analysis of Home Assistant’s codebase to assess software quality and technical debt. To conduct our analysis, we first, utilizing the tool SonarQube, identified and analyzed metrics pertinent to software quality. Second, we surveyed the issue tracking section of the Home Assistant GitHub repository to discern and discuss two design tradeoffs that could potentially have long term consequences. In our analysis, we use a local instance of SonarQube, but a instance of the prokect can be found on SonarCloud at this [link.](https://sonarcloud.io/dashboard?id=l33th4cker_home-assistant)
 
-## 6.1 SonarQube
+## SonarQube
 
 SonarQube is a critically acclaimed, robust, static analysis programming tool that can quickly scan large codebases, detecting bugs, code smells, and security vulnerabilities on over 20 programming languages [1]. Figure. 8 is an overview of the results from a scan of Home Assistant’s codebase using SonarQube.
 
@@ -484,7 +484,7 @@ Coverage is a mix of Line Coverage and Condition Coverage. Line Coverage answers
 ### Duplication
 SonarQube found that only 2.3% of Home Assistant's lines are duplicates. Most of these duplicates are from unit tests. Refactoring these duplications could improve compilation and testing time.
 
-## 6.2 Technical Debt in issue tracker and source code
+## Technical Debt in issue tracker and source code
 
 ### Not Upgrading Z-wave 
 Technical debt occurs when a design or construction approach is taken that's expedient in the short term, but that creates a technical context that increases complexity and cost in the long term. Currently, home assistant's current integration is using Z-Wave while there is a newer version released called OpenZWave. Z-Wave is a mesh network, where each node knows its surrounding nodes and can send packets through them. Using routing allows the system to successfully overcome obstacles between nodes that prevent them from communicating directly. There are some visible issues that Z-wave causes as when the number of devices for the system becomes large, users have reported large delays in the network. These issues have been reported on GitHub issues and on the home assistant forums, which the cost of fixing each issue would place a significant burden on developers. Replacing Z-Wave with OpenZWave implemented by SiLabs public SDK could alleviate the cost of maintaining the network in HomeAssistant as OpenZWave is upgraded to be more reliable, and is actively maintained. Not replacing Z-Wave would accrue debt interest of having more complicated code to handle the Z-Wave problems, resulting in longer release times, and longer test runs.
@@ -499,7 +499,7 @@ Looking into the code, we noticed that the private network allocations are hardc
 
 The list of IP addresses could be easily configured in a separate configuration file that could be added to .gitignore to ensure secrecy of any sensitive address. The configuration file could then be easily changed as needed to use in different environments.
 
-# 7.0 Pull request for Multifactor Authentication workflow diagram
+# Pull request for Multifactor Authentication workflow diagram
 
 Since we have examined the architecture and documented it for this past 3-4 months, we wanted to contribute to their developer documentation. Their documentation can be found [here](https://developers.home-assistant.io/) and the repository [here](https://github.com/home-assistant/developers.home-assistant). In their documentation, there was a clear `TODO` to draw a diagram for the Multi Factor Authentication Workflow. We examined the architecture of Multifactor Authentication and built a diagram of the workflow. Fig. 16 shows the workflow diagram.
 
@@ -511,7 +511,7 @@ Figure. 16
 Link of the pull request: [Multi Factor Authentication Workflow Diagram Pull Request](https://github.com/home-assistant/developers.home-assistant/pull/216)  
 
 
-# 8.0 Conclusion
+# Conclusion
 
 Through assessing Home Assistant’s business orientation and then determining their ASR’s we were able to identify the relevant QAS’s that are fulfilled by the Home Assistant platform. We used these QAS’s as a guide to create both a module and C&C view--architectural documentation that we hope prove useful to users of the system and, more specifically, the relevant modules. We then conducted a code quality and technical debt analysis using the static analysis tool SonarQube. Using this tool and knowledge we gathered by reading community posts and the issues section of Home Assistant’s GitHub repository, we found two issues that have incurred technical debt for Home Assistant. However, although our analysis found a couple instances of incurred technical debt, it largely revealed how well-developed Home Assistant is. It was great to work on this project and we were amazed by their platform and its architecture.
 

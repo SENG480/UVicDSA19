@@ -1,4 +1,4 @@
-# Contributions
+-# Contributions
 
 This chapter outlines some of the contributions---in the form of pull requests---made by several teams to their open source project.
 
@@ -54,7 +54,7 @@ As part of our evaluation and assessment of JSettlers2, we submitted a number of
 
 ### Motivation
 
-As shown in [this image](../images/Terraform/PullRequest/01-state.png), when applying changes to managed infrastructure (e.g., adding simple DigialOcean [droplet](../images/Terraform/PullRequest/02-do-droplet.png)), using a plain-text JSON file, Terraform will store the latest known configuration properties (state) of the resource, as defined in the target environment. This might include properties that can be considered as sensitive, such as the resource ID, IP addresses used, SSH fingerprints, database passwords, geographical region, among others. Malicious users could take advantage of these properties to perform harmful actions over the infrastructure resources being managed, thus affecting the normal operation of the system that relies upon the correct behaviour of the infrastructure. According to [available documentation](https://www.terraform.io/docs/state/sensitive-data.html), there is no mechanism in the current version of Terraform that enables users to secure sensitive data stored in the local state.
+As shown in [this image](images/Terraform/PullRequest/01-state.png), when applying changes to managed infrastructure (e.g., adding simple DigitalOcean [droplet](/images/Terraform/PullRequest/02-do-droplet.png), using a plain-text JSON file, Terraform will store the latest known configuration properties (state) of the resource, as defined in the target environment. This might include properties that can be considered as sensitive, such as the resource ID, IP addresses used, SSH fingerprints, database passwords, geographical region, among others. Malicious users could take advantage of these properties to perform harmful actions over the infrastructure resources being managed, thus affecting the normal operation of the system that relies upon the correct behaviour of the infrastructure. According to [available documentation](https://www.terraform.io/docs/state/sensitive-data.html), there is no mechanism in the current version of Terraform that enables users to secure sensitive data stored in the local state.
 
 ### Pull Request 
 
