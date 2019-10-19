@@ -1,4 +1,4 @@
-![alt text](images/logo/logo.png)
+![alt text](images/HomeAssistant/logo/logo.png)
  
  
      Kathy Do, Nicholas Francis, Alvi Mahadi, Aigerim Mashkanova
@@ -127,13 +127,13 @@ The system must have an easy way to exchange information with other systems to e
 ## 3.2 Utility Tree
 Shown below in Figure. 1 is the Utility Tree we made to model our QAS's. Each QAS is ranked on technical difficulty and business priority as per the legend of the figure.
 
-![alt text](images/milestone_2/utility_tree_new.png)
+![alt text](images/HomeAssistant/milestone_2/utility_tree_new.png)
 Figure. 1: Utility Tree for QAS Analysis
 # 4.0 Module View
 ## 4.1 Primary Presentation
 Immediately below this prelude resides our primary presentation for the module view of Home Assistant's auth module. This view uses combination of view styles allows our primary presentation to show the integral elements of the auth module while indicating the inheritance and dependency relationships between them. It's essentially a class diagram that depicts "isa" relationships and internal dependencies.
 
-![alt text](images/milestone_3/primarypresentation.png "Primary Presentation")
+![alt text](images/HomeAssistant/milestone_3/primarypresentation.png "Primary Presentation")
 
 Figure. 2: Primary Presentation of Module View for Auth Module
 
@@ -197,14 +197,14 @@ Figure. 2: Primary Presentation of Module View for Auth Module
 ## 4.3 Context Diagram
 From the definition of the textbook, a context diagram "shows how the system or portion of the system relates to its environment". We have shown the primary presentation of the Authentication System of Home Assistant which is a part of the Security QAS. In the context diagram below we have shown the scope and interaction of the Authentication System with respect to the other internal and external entities of Home Assistant.
 
-![alt text](images/milestone_3/context%20diagram.png)
+![alt text](images/HomeAssistant/milestone_3/context%20diagram.png)
 
 Figure. 3: Context Diagram of Module View for Auth Module
 
 ## 4.4 Behaviour Diagram
 The following behaviour diagram is a trace-based diagram that demonstrates the pattern of interaction between objects, and the sequence of actions involved in authenticating a user’s login to the system. The sequence diagram below takes a single trip through the authorization process, starting from the user logging into the client website, and the subsequent actions between the client and Home Assistant. After the client authorizes the URL, the user is redirected to ``redirect_url`` where the Home Assistant authorization provider then returns an authorization code to the client. The client then requests and receives JSON tokens from the Home Assistant authorization provider through HTTP POST requests.
 
-![alt text](images/milestone_3/Behaviour%20Diagram.png "Behaviour Diagram")
+![alt text](images/HomeAssistant/milestone_3/Behaviour%20Diagram.png "Behaviour Diagram")
 
 Figure. 4: Behavior Diagram of Module View for Auth Module
 
@@ -312,7 +312,7 @@ Multi factor authentication module gives users the ability to secure their accou
 
 Component and Connector view is one fundamental view of the software architecture where component is a unit of behaviour that defines what the component can do and what it requires to do that job. Connector on the other hand is an indication that there is a mechanism that relates one component to another usually shown through relationships such as data flow or control flow. We are taking **Event logging** capability of Home Assistant that defines the reliability of the system. We have choosen Pipe and Filter to explain the **System Log** of Home Assistant that achieves this functionality.
 
-![alt text](images/milestone_4/c%26c.png "Component and Connector View")
+![alt text](images/HomeAssistant/milestone_4/c%26c.png "Component and Connector View")
 Figure. 5: Primary Presentation of Component & Connector View for System Log
 
 ## 5.2 Element Catalog
@@ -330,7 +330,7 @@ Figure. 5: Primary Presentation of Component & Connector View for System Log
 
 The context diagram below outlines the System Log component and it's scope of interaction with internal and external entities of Home Assistant.
 
-![alt text](images/milestone_4/contextdiagram.png "Context Diagram")
+![alt text](images/HomeAssistant/milestone_4/contextdiagram.png "Context Diagram")
 
 Figure. 6: Context Diagram of Component & Connector View for System Log
 
@@ -339,7 +339,7 @@ Figure. 6: Context Diagram of Component & Connector View for System Log
 
 The UML state diagram below models the states of the Home Assistant system and its event logging behaviour. In a UML state diagram, each entity or each of sub-entities is always in exactly one of a number of possible states. There are well defined conditional transitions between the states. Many software systems are event-driven, which means that they continuously wait for the occurrence of some external or internal even. In our case, the arrival of an event data packet is the event that triggers the system_log module. After recognizing the event, such systems react by performing the appropriate computation that may include manipulating the hardware or generating “soft” events that trigger other internal software components. We model the ``system_log`` “soft” events within a composite state that expands upon the log processing state into substates.
 
-![alt text](images/milestone_4/behaviourdiagram.png "Behaviour Diagram")
+![alt text](images/HomeAssistant/milestone_4/behaviourdiagram.png "Behaviour Diagram")
 
 Figure. 7: Behavior of Component & Connector View for System Log
 
@@ -358,7 +358,7 @@ Table. 7: Interface for C&C View
 | Error Handling     | 1. 500 Server Error: Internal Server Error ("can not get logs from container which is dead or marked for removal") <br> The error occurs when system could not get logs <br> 2. ERROR (MainThread) [homeassistant.bootstrap] Unable to setup error log /config/home-assistant.log (access denied) <br> The error occurs when system tries to setup the error log <br> 3. ERROR (MainThread) [homeassistant.loader] Error loading homeassistant.components.variable. <br> The error occurs when system tries to find the installed dependencies |
 | Quality Attribute  | Reliability : The interface ensures the quality attribute and enables to access to the information about all logged errors and warning messages from Home Assistant. Only 50 last errors and warnings can be shown in the interface. Users can change number of logs with the help of max_entries parameter. |
 | Rationale          | The LogInterface allows users keeps track of log data and make it simple to differentiate different types of logs such as warning,error or fatal. The users can filter the system log based on their requirements,  by changing the filters. |
-| Usage Guide        | The LogInterface gives the user’s ability to easily see and configure the log files. Examples of the log events can also be found in Home Assistant log file (home-assistant.log). An example of the log file: ![alt text](images/milestone_4/system_log_event.png "Interface") |
+| Usage Guide        | The LogInterface gives the user’s ability to easily see and configure the log files. Examples of the log events can also be found in Home Assistant log file (home-assistant.log). An example of the log file: ![alt text](images/HomeAssistant/milestone_4/system_log_event.png "Interface") |
 
 
 # 6.0 Code Quality & Technical Debt Analysis
@@ -369,7 +369,7 @@ Herein resides a report on our analysis of Home Assistant’s codebase to assess
 
 SonarQube is a critically acclaimed, robust, static analysis programming tool that can quickly scan large codebases, detecting bugs, code smells, and security vulnerabilities on over 20 programming languages [1]. Figure. 8 is an overview of the results from a scan of Home Assistant’s codebase using SonarQube.
 
-![alt text](images/milestone_5/sonarqubeoverview.png)
+![alt text](images/HomeAssistant/milestone_5/sonarqubeoverview.png)
 
 Figure. 8: Project Overview
 
@@ -381,7 +381,7 @@ SonarQube identified 19 bugs in the Home Assistant codebase. None of which are f
 
 ### Type 1
 
-![alt text](images/milestone_5/bug1.png)
+![alt text](images/HomeAssistant/milestone_5/bug1.png)
 Figure. 9: Type 1 Bug Flag
 
 Noncompliant Code Example
@@ -401,7 +401,7 @@ Using both yield and return in a function can result in a syntax error, but it i
 
 ### Type 2
 
-![alt text](images/milestone_5/bug2.png)
+![alt text](images/HomeAssistant/milestone_5/bug2.png)
 
 Figure. 10: Type 2 Bug Flag
 
@@ -419,7 +419,7 @@ These self assignment bugs are simply workarounds to ensure proper functionality
 
 ### Type 3
 
-![alt text](images/milestone_5/bug3.png)
+![alt text](images/HomeAssistant/milestone_5/bug3.png)
 
 Figure. 11: Type 3 Bug Flag
 
@@ -433,7 +433,7 @@ These assertions are used to do testing for Home Assistant. Therefore, they are 
 ### Vulnerabilities
 SonarQube found 704 vulnerabilities in Home Assistants codebase. All 704 vulnerabilities flagged by SonaQube are the same. Each of them are of the form shown in Figure. 12.
 
-![alt text](images/milestone_5/bug2.png)
+![alt text](images/HomeAssistant/milestone_5/bug2.png)
 
 Figure. 12: Vulnerability Example
 
@@ -451,7 +451,7 @@ SonarQube found 826 code smells in Home Assistant's codebase. There are too many
 
 #### Type 1
 
-![alt text](images/milestone_5/smell1.png)
+![alt text](images/HomeAssistant/milestone_5/smell1.png)
 
 Figure. 13: Type 1 Smell Flag
 
@@ -459,7 +459,7 @@ Cognitive Complexity is a rating of how hard it is to understand the code's cont
 
 #### Type 2
 
-![alt text](images/milestone_5/smell2.png)
+![alt text](images/HomeAssistant/milestone_5/smell2.png)
 
 Figure. 14: Type 2 Smell Flag
 
@@ -467,7 +467,7 @@ This is another smell that comprises a large portion of Home Assistant's code sm
 
 #### Type 3
 
-![alt text](images/milestone_5/smell3.png)
+![alt text](images/HomeAssistant/milestone_5/smell3.png)
 
 Figure. 15: Type 3 Smell Flag
 
@@ -503,7 +503,7 @@ The list of IP addresses could be easily configured in a separate configuration 
 
 Since we have examined the architecture and documented it for this past 3-4 months, we wanted to contribute to their developer documentation. Their documentation can be found [here](https://developers.home-assistant.io/) and the repository [here](https://github.com/home-assistant/developers.home-assistant). In their documentation, there was a clear `TODO` to draw a diagram for the Multi Factor Authentication Workflow. We examined the architecture of Multifactor Authentication and built a diagram of the workflow. Fig. 16 shows the workflow diagram.
 
-![alt text](images/milestone_7/ha_mfa_workflow.png "Multifactor Authentication Workflow")  
+![alt text](images/HomeAssistant/milestone_7/ha_mfa_workflow.png "Multifactor Authentication Workflow")  
 Figure. 16
 
 **Good news is the pull request was reviewed by the founder of Home Assistant and  accepted. He asked for the link of the image for any future work that could be needed and was very nice to thank us for contribution.**
